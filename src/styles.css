@@ -4,11 +4,16 @@ html,
 body { 
     margin: 0; 
     font-family: roboto, "Helvetica Neue", sans-serif !important;
-    margin-top: 2rem; 
+    /* margin-top: 2rem;  */
 }
 
 .bgcolor{
-    background-image: linear-gradient(to right, #2e2952,#352e62);
+    background-image: linear-gradient(to right, #29244d,#352e62);
+    /* background-color: #2e2952; */
+}
+
+.radialbgcolor{
+    background-image: radial-gradient(closest-side,#393268, #29244d);
     /* background-color: #2e2952; */
 }
 

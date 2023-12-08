@@ -1,0 +1,66 @@
+.outerbenefit{
+    padding: 30px 50px;
+}
+.headingtxt{
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+}
+
+.percenttxt{
+    font-size: 4rem;
+    font-weight: 800;
+    color: white;
+}
+.descstyle{
+    background-color: #fff;
+    padding: 10px 15px;
+    width: max-content;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    border-radius: 10px;
+}
+
+.para{
+    color: rgb(153, 153, 153);
+}
+
+.div1{
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    background-color: #314f47b8;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+.div1 h3{
+    color: white;
+}
+.div1 p{
+    color: rgb(153, 153, 153);
+}
+.div2{
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    background-color: #314f47b8;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+}
+.div2 h3{
+    color: white;
+}
+.div2 p{
+    color: rgb(153, 153, 153);
+}
+
+@media (max-width:576px) {
+    .outerbenefit{
+        padding: 30px 20px;
+    }
+}

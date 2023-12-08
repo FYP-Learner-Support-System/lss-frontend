@@ -1,0 +1,84 @@
+.hero{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.herotxt{
+  color: #fff;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.heropara{
+  font-size: 2.5rem;
+}
+
+.hometxt{
+  text-align: justify;
+}
+
+.joinbtn{
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: black;
+    border-radius: 10px;                   
+    padding: 10px 60px;
+}
+
+.joinbtn:hover{
+    background-color: rgb(214, 214, 214);
+    color: black;
+    transition: 0.6s ease all;
+}
+
+.boxstyle{
+    /* height: 30dvh;  */
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media (max-width:576px){
+  .herotxt{
+    font-size: 3rem;
+    text-align: start;
+  }
+  
+  .heropara{
+    font-size: 2rem;
+    text-align: start;
+  }
+  .heropara2{
+    text-align: start;
+  }
+  .hero{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:992px){
+  /* .heroimg{
+    position: absolute;
+    opacity: 0.1;
+    top: -250px;
+  } */
+
+  .hero{
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

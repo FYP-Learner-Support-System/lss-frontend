@@ -1,0 +1,87 @@
+.outerroadmap{
+    color: #fff;
+}
+
+.textinfo{
+
+}
+/* START TIMELINE 
+ the width of the list parent is optional 
+if you set this width 
+A hover sample effect is added as well as an active state*/
+.base-timeline {
+    list-style-type: none;
+    counter-reset: number;
+    position: relative;
+    display: block;
+    z-index: 2;
+    width: 73%;
+}
+
+.base-timeline::before {
+    content: '';
+    width: 95%;
+    border-top: 2px solid rgb(255, 255, 255);
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+}
+
+.base-timeline__item {
+    position: relative;
+    display: inline-block;
+    width: calc(100% / 3 - 15px);
+}
+
+.base-timeline__item::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* counter-increment: number;
+    content: counter(number) ''; */
+    content: '';
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: #28224e;
+    color: white;
+    font-weight: bold;
+    transition: all 0.6s ease-in-out;
+    box-sizing: border-box;
+}
+
+.base-timeline__item:hover::before {
+    background-color: rgb(225, 114, 114);
+    transform: scale(2);
+}
+
+.base-timeline__item--active::before {
+    border: 1px solid rgb(255, 255, 255);
+    background-color: #28224e;
+}
+
+.base-timeline__item:last-child {
+    width: 0;
+}
+
+.base-timeline__summary-text{
+    position: absolute;
+    bottom: -2em;
+    left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.base-timeline__item:nth-child(even) .base-timeline__summary-text {
+    top: -150px; /* Adjust the position for even elements */
+    left: -35px;
+}
+
+.base-timeline__item:nth-child(odd) .base-timeline__summary-text {
+    top: 100px; /* Adjust the position for even elements */
+    left: -35px;
+}

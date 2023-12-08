@@ -1,3 +1,25 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<mat-drawer-container class="example-container" hasBackdrop="true" >
+
+    <mat-drawer class="bgcolordark" #drawer mode="over" opened="false">
+        <img class="img-fluid p-5" src="assets/verification.svg" alt="">
+        <div class="w-100">
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/'?'active':''" routerLink="/" (click)="drawer.toggle()"><span class="material-icons me-3">home</span>Home</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/about'?'active':''" routerLink="/about" (click)="drawer.toggle()"><span class="material-icons me-3">info</span>About</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/support'?'active':''" routerLink="/support" (click)="drawer.toggle()"><span class="material-icons me-3">support_agent</span>Support</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/contact'?'active':''" routerLink="/contact" (click)="drawer.toggle()"><span class="material-icons me-3">contact_page</span>Contact</button>
+            <div class="mt-3 d-flex justify-content-center align-items-center">
+                <button class="btn rolebtn me-2" routerLink="/login" (click)="drawer.toggle()">Log In</button>
+                <button class="btn rolebtn" routerLink="/signup" (click)="drawer.toggle()">Sign Up</button>
+            </div>
+        </div>
+    </mat-drawer>
+
+    <mat-drawer-content class="stopscrollings">
+
+        <app-navbar [drawer]="drawer"></app-navbar>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+
+    </mat-drawer-content>
+
+  </mat-drawer-container>

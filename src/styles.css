@@ -4,8 +4,13 @@ html,
 body { 
     margin: 0; 
     font-family: roboto, "Helvetica Neue", sans-serif !important;
+    /* overflow: hidden; */
     /* margin-top: 2rem;  */
 }
+
+body.side-nav-open {
+    overflow: hidden;
+  }
 
 .bgcolor{
     background-image: linear-gradient(to right, #29244d,#352e62);
@@ -18,6 +23,6 @@ body {
 }
 
 .bgcolordark{
-    background-color: #28224e;
+    background-color: #28224e !important;
 }
 

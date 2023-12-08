@@ -58,3 +58,9 @@
 .div2 p{
     color: rgb(153, 153, 153);
 }
+
+@media (max-width:576px) {
+    .outerbenefit{
+        padding: 30px 20px;
+    }
+}

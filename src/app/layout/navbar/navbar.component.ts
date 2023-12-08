@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatDrawer } from '@angular/material/sidenav';
 
 
 @Component({
@@ -12,6 +13,13 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
 
+  @Input() drawer: MatDrawer;
+
+  // Initialize the property in the constructor
+  constructor() {
+    this.drawer = {} as MatDrawer;
+  }
+  
   colorchange:boolean = false;
 
   ngOnInit(){

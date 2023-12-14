@@ -21,14 +21,14 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent {
 
-  @ViewChild('drawer') drawer!: MatDrawer;
-  isDrawerOpen = true;
+  // @ViewChild('drawer') drawer!: MatDrawer;
+  // isDrawerOpen = true;
 
-  // Add a method to toggle the state of the drawer
-   toggleDrawer() {
-    this.drawer.toggle();
-    this.isDrawerOpen = this.drawer.opened;
-  }
+  // // Add a method to toggle the state of the drawer
+  //  toggleDrawer() {
+  //   this.drawer.toggle();
+  //   this.isDrawerOpen = this.drawer.opened;
+  // }
 
 
   //logic to get current path

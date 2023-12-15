@@ -13,28 +13,40 @@ mat-drawer{
     padding: 20px 30px;
     color: #fff;
     border-radius: 0px;
-    background-color: #352e628a;
+    /* background-color: #352e628a; */
     margin-bottom: 2px;
     border: transparent;
     text-align: left;
 }
+
+.brandname{
+    font-weight:normal;
+    color: #fff;
+  }
+  .brandname span{
+    font-weight:bold;
+    color: #ef04cf;
+  }
 
 .active{
     border-right: 4px solid #fff;
     background-color: #352e62;
 }
 
+.profiledp{
+    border-radius: 75px;
+    aspect-ratio: 1;
+    border: 2px solid #ef04cf;
+}
+
 .rolebtn{
     padding: 8px 40px;
     color: #fff;
-    border-radius: 0px;
-    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #352e62;
+    width: 80%;
   }
 
   .rolebtn:hover{
-    padding: 8px 40px;
-    color: #fff;
     background-color: #3f3c8d;
-    border-radius: 0px;
-    border: 1px solid #fff;
   }

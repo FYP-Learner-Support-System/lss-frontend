@@ -1,17 +1,18 @@
 import {NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-step-two',
   standalone: true,
-  imports: [NgFor,FormsModule],
+  imports: [NgFor,FormsModule,RouterModule],
   templateUrl: './step-two.component.html',
   styleUrl: './step-two.component.css'
 })
 export class StepTwoComponent {
 
-  designations = [
+  designations: string[] = [
     "Software Engineer",
     "Data Scientist",
     "Product Manager",

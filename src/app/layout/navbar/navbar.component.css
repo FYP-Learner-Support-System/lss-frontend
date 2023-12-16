@@ -1,6 +1,19 @@
 .nav-item{
     margin-right: 8px;
     padding: 10px;
+} 
+
+.brandname{
+  font-weight:normal;
+}
+
+.brandname span{
+  font-weight:bold;
+  color: #ef04cf;
+}
+
+.nav-item a{
+    font-size: 1.2rem;
 }
 
 .bgtransparent{

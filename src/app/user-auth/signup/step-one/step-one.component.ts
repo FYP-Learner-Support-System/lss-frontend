@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-step-one',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './step-one.component.html',
   styleUrl: './step-one.component.css'
 })

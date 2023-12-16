@@ -26,7 +26,7 @@ ul{
 
 .newsform {
     position: relative;
-    height: 60px;
+    height: 50px;
     background-color: #5e5b7a !important;
     border-radius: 7px;
 }
@@ -54,6 +54,7 @@ input::placeholder{
     right: 10px;
     bottom: 10px;
     border-radius: 6px;
+    padding-top: 2px;
     color: #fff !important;
     transition: all .2s ease-in-out 0s;
 }

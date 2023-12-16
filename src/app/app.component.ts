@@ -11,6 +11,8 @@ import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
 import { Router,NavigationEnd  } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+import AOS from "aos";
+
 
 @Component({
   selector: 'app-root',
@@ -20,16 +22,6 @@ import { filter } from 'rxjs/operators';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-
-  // @ViewChild('drawer') drawer!: MatDrawer;
-  // isDrawerOpen = true;
-
-  // // Add a method to toggle the state of the drawer
-  //  toggleDrawer() {
-  //   this.drawer.toggle();
-  //   this.isDrawerOpen = this.drawer.opened;
-  // }
-
 
   //logic to get current path
   currentPath: string = "";
@@ -43,6 +35,10 @@ export class AppComponent {
     });
   }
   //logic to get current path
+
+  ngOnInit(){
+    AOS.init();
+  }
 
   title = 'lss-frontend';
 }

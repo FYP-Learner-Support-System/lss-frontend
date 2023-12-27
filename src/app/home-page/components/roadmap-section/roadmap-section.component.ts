@@ -46,6 +46,30 @@ export class RoadmapSectionComponent {
         alt: 'classroom',
         title: ''
       },
+      {
+        image: 'assets/pearson.png',
+        thumbImage: 'assets/pearson.png',
+        alt: 'classroom',
+        title: ''
+      },
+      {
+        image: 'assets/oxford.png',
+        thumbImage: 'assets/oxford.png',
+        alt: 'classroom',
+        title: ''
+      },
+      {
+        image: 'assets/cambridge.png',
+        thumbImage: 'assets/cambridge.png',
+        alt: 'classroom',
+        title: ''
+      },
+      {
+        image: 'assets/pearson.png',
+        thumbImage: 'assets/pearson.png',
+        alt: 'classroom',
+        title: ''
+      },
 
   ]
 }

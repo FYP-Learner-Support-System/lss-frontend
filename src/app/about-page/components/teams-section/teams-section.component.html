@@ -1,0 +1,13 @@
+<section class="outerservice">
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center flex-column mb-5">
+            <h2 class="headingtxt text-center my-2">Meet Our <span>Team</span></h2>
+            <p class="fs-5 para my-2">Hey everyone, meet our amazing advisers! They're here to help and guide us through anything.</p>
+        </div>
+        <div class="row g-5" style="display: flex; justify-content: space-around; align-items: center;">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 p-0 p-md-4" *ngFor="let person of teamdetails">
+                <app-teamcard [item]="person"></app-teamcard>
+            </div>
+        </div>
+    </div>
+</section>

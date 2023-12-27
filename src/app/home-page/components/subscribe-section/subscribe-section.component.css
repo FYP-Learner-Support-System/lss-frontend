@@ -54,7 +54,7 @@
 .newsform {
   position: relative;
   height: 50px;
-  background-color: #5e5b7a !important;
+  background-color: #cacad1 !important;
   border-radius: 7px;
 }
 
@@ -63,13 +63,15 @@ input {
   height: 100%;
   border: none;
   background: transparent;
-  color: white;
+  color: #353555;
+  /* color: white; */
   padding: 0 50px 0 20px;
   border-radius: 7px;
 }
 
 input::placeholder{
-  color: rgb(221, 221, 221);
+  color: #353555;
+  /* color: rgb(221, 221, 221); */
 }
 
 .sendbtn {
@@ -82,7 +84,8 @@ input::placeholder{
   bottom: 10px;
   padding-top: 2px;
   border-radius: 6px;
-  color: #fff !important;
+  color: #353555 !important;
+  /* color: #fff !important; */
   transition: all .2s ease-in-out 0s;
 }
 

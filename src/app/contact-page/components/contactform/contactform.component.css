@@ -1,0 +1,96 @@
+.outerdiv{
+    padding: 0px 80px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #00150ff4; */
+}
+
+.iconsize{
+    height: 48px;
+    width: 48px;
+  }
+
+.iconsize:hover{
+    color: #ef04cf;
+    transition: 0.5s ease all;
+}
+
+.txtdiv h2{
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+}
+.txtdiv span{
+    color: #ef04cf;
+}
+
+.icondiv{
+    /* padding: 20px; */
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 2px solid white;
+    /* background-color: #112721; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    background-color: rgba(255, 255, 255, 0.466);
+    border-color: rgb(134, 134, 134);
+    color: white;
+    padding: 10px;
+}
+.input::placeholder{
+    color: white;
+}
+
+.joinbtn{
+    background-color: #ef04cf;
+    color: white;
+    border-radius: 10px;                   
+    padding: 10px 60px;
+    transition: 0.5s ease all;
+}
+
+.joinbtn:hover{
+    background-color: #d103b6;
+    color: white;
+    transition: 0.5s ease all;
+}
+
+.socialicons{
+    padding: 0px;
+    border-radius: 50%;
+    border-color: transparent;
+    background-color: transparent;
+    margin-right: 5px;
+    transition: 0.5s ease all;
+}
+.socialicons:hover{
+    background-color: #ef04cf;
+    transition: 0.5s ease all;
+}
+
+.mailtxt{
+    text-wrap: wrap;
+}
+
+@media (max-width: 576px){
+    .outerdiv{
+        padding: 0px 15px 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* background-color: #00150ff4; */
+    }
+
+    .iconsize{
+        height: 32px;
+        width: 32px;
+      }
+}

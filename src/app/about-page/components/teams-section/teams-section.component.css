@@ -1,0 +1,29 @@
+.outerservice{
+    /* background-color: #00150ff4; */
+    padding: 0px 100px;
+    padding-bottom: 50px;
+    /* height: 80vh; */
+}
+
+.headingtxt{
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+}
+.headingtxt span{
+    color: #ef04cf;
+}
+
+.para{
+    color: rgb(170, 170, 170);
+    text-align: center;
+}
+
+@media (max-width:576px) {
+    .outerservice{
+        /* background-color: #00150ff4; */
+        padding: 0px 40px;
+        padding-bottom: 50px;
+        /* height: 80vh; */
+    }
+}

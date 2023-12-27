@@ -14,9 +14,9 @@
         </div>
         <div class="w-100 my-3">
             <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/'?'active':''" routerLink="/" (click)="drawer.toggle()"><span class="material-icons me-3">home</span>Home</button>
-            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/about'?'active':''" routerLink="/about" (click)="drawer.toggle()"><span class="material-icons me-3">info</span>About</button>
-            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/support'?'active':''" routerLink="/support" (click)="drawer.toggle()"><span class="material-icons me-3">support</span>Support</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/about'?'active':''" routerLink="/about" (click)="drawer.toggle()"><span class="material-icons me-3">groups</span>About</button>
             <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/contact'?'active':''" routerLink="/contact" (click)="drawer.toggle()"><span class="material-icons me-3">call</span>Contact</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/support'?'active':''" routerLink="/support" (click)="drawer.toggle()"><span class="material-icons me-3"><span class="material-symbols-outlined">verified_user</span></span>Support</button>
             <button class="w-100 btn custommenu d-flex justify-content-start align-items-center mt-4" [ngClass]="currentPath=='/contact'?'active':''" routerLink="/contact" (click)="drawer.toggle()"><span class="material-icons me-3">logout</span>Signout</button>
         </div>
     </mat-drawer>

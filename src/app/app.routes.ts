@@ -5,6 +5,7 @@ import { LoginPageComponent } from './user-auth/login/login-page/login-page.comp
 import { SignupPageComponent } from './user-auth/signup/signup-page/signup-page.component';
 import { StepOneComponent } from './user-auth/signup/step-one/step-one.component';
 import { StepTwoComponent } from './user-auth/signup/step-two/step-two.component';
+import { ContactComponent } from './contact-page/contact/contact.component';
 
 export const routes: Routes = [
     {
@@ -14,6 +15,10 @@ export const routes: Routes = [
     {
         path:"about",
         component: AboutComponent
+    },
+    {
+        path:"contact",
+        component: ContactComponent
     },
     {
         path:"login",

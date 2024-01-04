@@ -1,0 +1,60 @@
+.outerdb{
+    height: 100dvh;
+}
+
+
+mat-drawer{
+    width: 300px;
+    /* height: 100dvh; */
+}
+
+mat-drawer-content{
+   overflow: hidden !important;
+}
+
+.stopscrolling{
+    height: 100dvh; 
+    overflow: hidden;
+}
+
+.custommenu{
+    padding: 20px 30px;
+    color: #cacaca;
+    border-radius: 0px;
+    /* background-color: #352e628a; */
+    margin-bottom: 2px;
+    border: transparent;
+    text-align: left;
+}
+
+.brandname{
+    font-weight:normal;
+    color: #fff;
+  }
+  .brandname span{
+    font-weight:bold;
+    color: #ef04cf;
+  }
+
+.active{
+    border-right: 4px solid #fff;
+    background-color: #352e62;
+}
+
+.profiledp{
+    border-radius: 75px;
+    aspect-ratio: 1;
+    border: 2px solid #ef04cf;
+}
+
+.rolebtn{
+    padding: 8px 40px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #352e62;
+    width: 80%;
+  }
+
+  .rolebtn:hover{
+    background-color: #3f3c8d;
+  }

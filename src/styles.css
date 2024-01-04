@@ -32,3 +32,41 @@ body.side-nav-open {
     background-color: #1d173f !important;
 }
 
+.classSection{
+    height: 95dvh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    margin-left: 0px !important;
+}
+
+.navbar1{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row !important;
+    border-bottom: 2px solid #b7b7b7;
+    height: 65px;
+    width: 100%;
+    color: #333252;
+}
+
+.searchinput{
+    border: 1px solid #b7b7b7;
+    border-radius: 20px;
+    width: 70%;
+    color: #8f8f8f;
+}
+
+.searchicon{
+    border: 1px solid #b7b7b7;
+    border-radius: 20px;
+}
+
+.input-group{
+    width: max-content;
+}
+

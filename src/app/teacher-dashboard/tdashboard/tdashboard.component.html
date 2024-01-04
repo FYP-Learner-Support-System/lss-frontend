@@ -1,0 +1,39 @@
+<mat-drawer-container class="example-container" hasBackdrop="true">
+
+    <mat-drawer class="bgcolordark position-fixed" #drawer mode="over" opened="false">
+        <div class="d-flex justify-content-center">
+            <a class="navbar-brand brandname fs-3 my-5" href="#"><img class="img-fluid my-auto me-3" src="assets/askspherelogo.png" alt="" width="48px">Ask<span>Sphere</span></a>
+        </div>
+        <!-- <div class="d-flex justify-content-start align-items-center flex-column">
+            <button class="btn rolebtn mb-3" routerLink="/login" (click)="drawer.toggle()">Log In</button>
+            <button class="btn rolebtn" routerLink="/signup" (click)="drawer.toggle()">Sign Up</button>
+        </div> -->
+        <div class="d-flex justify-content-center align-items-center flex-column w-100 mb-3">
+            <img class="img-fluid profiledp" src="assets/profiledp.jpg" alt="" width="125px" height="125px">
+            <h5 class="text-light fw-bold my-4">Muhammad Abdul Rafay</h5>
+        </div>
+        <div class="w-100 my-3">
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/'?'active':''" routerLink="/" (click)="drawer.toggle()"><span class="material-icons me-3">home</span>Home</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/about'?'active':''" routerLink="/about" (click)="drawer.toggle()"><span class="material-icons me-3">groups</span>About</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/contact'?'active':''" routerLink="/contact" (click)="drawer.toggle()"><span class="material-icons me-3">call</span>Contact</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/support'?'active':''" routerLink="/support" (click)="drawer.toggle()"><span class="material-icons me-3"><span class="material-symbols-outlined">verified_user</span></span>Support</button>
+            <button class="w-100 btn custommenu d-flex justify-content-start align-items-center mt-4" [ngClass]="currentPath=='/contact'?'active':''" routerLink="/contact" (click)="drawer.toggle()"><span class="material-icons me-3">logout</span>Signout</button>
+        </div>
+    </mat-drawer>
+
+    <mat-drawer-content class="stopscrollings">
+        <div class="w-100 outerdb bgcolordark text-light">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-3">
+                    <app-sidenav/>
+                </div>
+                <div class="col-9">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+

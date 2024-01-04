@@ -1,0 +1,57 @@
+.sidenav{
+    height: 95dvh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2a294b;
+    border-radius: 15px;
+}
+
+.brandname{
+    font-weight:normal;
+    color: #fff;
+  }
+  .brandname span{
+    font-weight:bold;
+    color: #ef04cf;
+  }
+
+.sidenavbtn{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.usernamebtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    
+}
+
+.active{
+    background-color: #333252;
+    border: 0px;
+}
+
+.divider{
+    background-color: white;
+    height: 1px;
+    width: 100%;
+}
+
+.logout{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    color: #a2a1b1;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}

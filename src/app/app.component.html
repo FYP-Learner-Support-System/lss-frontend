@@ -1,4 +1,4 @@
-<mat-drawer-container class="example-container" hasBackdrop="true" >
+<mat-drawer-container class="example-container" hasBackdrop="true">
 
     <mat-drawer class="bgcolordark position-fixed" #drawer mode="over" opened="false">
         <div class="d-flex justify-content-center">
@@ -23,9 +23,9 @@
 
     <mat-drawer-content class="stopscrollings">
 
-        <app-navbar [drawer]="drawer"></app-navbar>
+        <app-navbar [drawer]="drawer" *ngIf="!isDashboardRoute"></app-navbar>
         <router-outlet></router-outlet>
-        <app-footer></app-footer>
+        <app-footer *ngIf="!isDashboardRoute"></app-footer>
 
     </mat-drawer-content>
 

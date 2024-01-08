@@ -13,6 +13,7 @@
             <h5 class="text-light fw-bold my-4">Muhammad Abdul Rafay</h5>
         </div>
         <div class="w-100 my-3">
+            <a class="btn btn-outline-light d-flex justify-content-center align-items-center px-3 mx-3 mb-3" routerLink="/v1/dashboard"><span class="material-icons me-2">logout</span>Dashboard</a>
             <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/'?'active':''" routerLink="/" (click)="drawer.toggle()"><span class="material-icons me-3">home</span>Home</button>
             <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/about'?'active':''" routerLink="/about" (click)="drawer.toggle()"><span class="material-icons me-3">groups</span>About</button>
             <button class="w-100 btn custommenu d-flex justify-content-start align-items-center" [ngClass]="currentPath=='/contact'?'active':''" routerLink="/contact" (click)="drawer.toggle()"><span class="material-icons me-3">call</span>Contact</button>

@@ -1,0 +1,38 @@
+<div class="classSection m-0 m-lg-3 mb-0 mb-lg-3">
+
+    <div class="navbar1">
+        <button class="btn mx-3 navbtn d-flex d-lg-none" (click)="drawer.toggle()" [disabled]="disabled"><span class="material-icons mb-0">menu</span></button>
+        
+        <h4 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">Classes</h4>
+        <div class="input-group d-none d-lg-flex" style="border-radius: 20px;">
+            <span class="input-group-text searchicon pe-0" id="basic-addon1" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
+            <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
+        </div>
+        <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">add</span></button>
+        <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">notifications</span></button>
+        <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">info</span></button>
+    </div>
+
+    <div class="contentcontainer">
+        <app-class-material *ngIf="currentPath==materialroute"/>
+        <app-class-students *ngIf="currentPath==studentsroute"/>
+        <app-class-settings *ngIf="currentPath==settingsroute"/>
+    </div>
+
+    <hr class="m-0 mb-auto">
+    <div class="row snackbar">
+        <div class="col-4 snackstyle1" [ngClass]="currentPath==materialroute?'active':''">
+            <a class="btn snackbtn" [routerLink]="materialroute"><span class="pi pi-fw pi-book me-1"></span>Materials</a>
+        </div>
+        <div class="col-4 snackstyle2" [ngClass]="currentPath==studentsroute?'active':''">
+            <a class="btn snackbtn" [routerLink]="studentsroute"><span class="pi pi-fw pi-user"></span>Students</a>
+        </div>
+        <div class="col-4 snackstyle3" [ngClass]="currentPath==settingsroute?'active':''">
+            <a class="btn snackbtn" [routerLink]="settingsroute"><span class="pi pi-fw pi-cog"></span>Settings</a>
+        </div>
+    </div>
+
+</div>
+
+
+

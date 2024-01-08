@@ -58,3 +58,78 @@ mat-drawer-content{
   .rolebtn:hover{
     background-color: #3f3c8d;
   }
+
+  .sidenavbtn{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.sidenavbtn:hover{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: #333252;
+    /* border: 0px; */
+}
+
+.usernamebtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.usernamebtn:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: #545377;
+    transition: 0.7 ease-in-out all;
+}
+
+
+.active{
+  background-color: #333252;
+  border: 0px;
+}
+
+.divider{
+  background-color: white;
+  height: 1px;
+  width: 100%;
+}
+
+.logout{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  color: #a2a1b1;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+
+.sidenavmobile{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}

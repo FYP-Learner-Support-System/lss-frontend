@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
 html,
 body { 
     margin: 0; 
@@ -41,6 +45,7 @@ body.side-nav-open {
     background-color: white;
     border-radius: 15px;
     margin-left: 0px !important;
+    overflow-y: auto;
 }
 
 .navbar1{
@@ -52,6 +57,7 @@ body.side-nav-open {
     height: 65px;
     width: 100%;
     color: #333252;
+    background-color: #f6f1fc;
 }
 
 .searchinput{
@@ -64,9 +70,109 @@ body.side-nav-open {
 .searchicon{
     border: 1px solid #b7b7b7;
     border-radius: 20px;
+    background-color: white;
 }
 
 .input-group{
     width: max-content;
 }
 
+.snackbar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row !important;
+    border-top: 2px solid #b7b7b7;
+    height: 65px;
+    width: 100%;
+    color: #333252;
+}
+
+.snackbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 100%;
+    height: 100%;
+    transition: 0.6s ease all;
+}
+
+.snackbtn:focus{
+    border: 3px transparent;
+}
+
+.snackstyle1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 0px 0px 0px 15px;
+}
+.snackstyle2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.snackstyle3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 0px 0px 15px 0px;
+}
+.snackstyle1:hover, .snackstyle2:hover, .snackstyle3:hover{
+    background-color: #f6f1fc;
+    transition: 0.5s ease all;
+}
+
+.navbtn{
+    border: 1px solid #1d173f;
+}
+.navbtn:hover{
+    border: 1px solid #1d173f;
+    background-color: #1d173f;
+    color: white;
+}
+
+
+@media (max-width:996px){
+    .classSection{
+        height: 100dvh;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 0px;
+        margin-left: 0px !important;
+    }
+    .navbar1{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: row !important;
+        border-bottom: 2px solid #b7b7b7;
+        height: 65px;
+        width: 100%;
+        color: #333252;
+        padding: 30px 2px;
+    }
+}
+
+@media (max-width:576px){
+    .snackbtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: 1.1rem;
+        width: 100%;
+        height: 100%;
+        transition: 0.6s ease all;
+    }
+}

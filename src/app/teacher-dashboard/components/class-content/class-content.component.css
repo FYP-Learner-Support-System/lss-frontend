@@ -1,0 +1,18 @@
+.active{
+    border-top: 2px solid #1d173f !important;
+    background-color: #f6f1fc;
+}
+
+.contentcontainer{
+    height: 75vh; 
+    overflow-y: auto; 
+    width: 100%;
+}
+
+@media (max-width:996px){
+    .contentcontainer{
+        height: 80dvh; 
+        overflow-y: auto; 
+        width: 100%;
+    }
+}

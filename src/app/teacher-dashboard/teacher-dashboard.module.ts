@@ -5,18 +5,17 @@ import { CommonModule } from '@angular/common';
 import { TdashboardComponent } from './tdashboard/tdashboard.component';
 import { ClassPageComponent } from './components/class-page/class-page.component';
 
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    // TeacherDashboardRoutingModule,
     TdashboardComponent,
-    ClassPageComponent
+    ClassPageComponent,
   ],
   exports: [
     TdashboardComponent,
-    ClassPageComponent
+    ClassPageComponent,
+
   ]
 })
 export class TeacherDashboardModule { }

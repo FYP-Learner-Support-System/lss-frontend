@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Router,NavigationEnd  } from '@angular/router';
 import { filter } from 'rxjs';
@@ -7,6 +7,8 @@ import { filter } from 'rxjs';
 import AOS from "aos";
 import { NgClass } from '@angular/common';
 import { SidenavComponent } from "../components/sidenav/sidenav.component";
+import { DrawerService } from '../../services/drawer-service.service';
+import { CurrentPathService } from '../../services/current-path.service';
 
 @Component({
     selector: 'app-tdashboard',
@@ -15,31 +17,29 @@ import { SidenavComponent } from "../components/sidenav/sidenav.component";
     styleUrl: './tdashboard.component.css',
     imports: [RouterModule, MatSidenavModule, NgClass, SidenavComponent]
 })
-export class TdashboardComponent {
-//logic to get current path
+export class TdashboardComponent implements OnInit{
+
+  @ViewChild('drawer') public drawer!: MatDrawer;
+
 currentPath: string = "";
 isDashboardRoute: boolean = false;
 
-constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-  this.router.events.pipe(
-    filter((event): event is NavigationEnd => event instanceof NavigationEnd)
-  ).subscribe((event: NavigationEnd) => {
-    // Access the current route URL
-    this.currentPath = event.url;
-
-    // Check if the current route or any of its ancestors matches /v1/dashboard
-    this.isDashboardRoute = event.url.startsWith("/v1/dashboard");
-    // this.isDashboardRoute = this.activatedRoute.snapshot.pathFromRoot.some(route => route.routeConfig?.path === '/v1/dashboard');
-    console.log(this.isDashboardRoute, this.currentPath)
-  });
+constructor(private routeService: CurrentPathService,private drawerService: DrawerService) {
+  
 }
-//logic to get current path
 
+  ngAfterViewInit(): void {
+    // console.log("tdashboard: ",this.drawer)
+    this.drawerService.setDrawer(this.drawer);
+  }
 
-
-ngOnInit(){
-  AOS.init();
- 
-}
+  ngOnInit(){
+    setTimeout(() => { 
+      this.currentPath = this.routeService.getCurrentPath();
+      this.isDashboardRoute = this.routeService.checkIsDashboardRoute();
+    }, 200);
+    AOS.init();
+  
+  }
 
 }

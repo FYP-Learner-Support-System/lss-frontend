@@ -1,0 +1,24 @@
+:host ::ng-deep .p-tag-success{
+    background-color: #383453;
+}
+
+:host ::ng-deep .p-tag-info{
+    background-color: #e7e7e7;
+    color: #1f1b3f;
+}
+
+:host ::ng-deep .p-panel-header {
+    border-color: #e7e7e7;
+    /* border-color: #1d173f; */
+    border-radius: 15px 15px 0px 0px;
+}
+
+:host ::ng-deep .p-panel-content {
+    border-color: #e7e7e7;
+    border-radius: 0px 0px 15px 15px;
+}
+:host ::ng-deep .p-panel:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+}

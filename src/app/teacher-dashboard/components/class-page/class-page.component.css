@@ -1,0 +1,71 @@
+.navbtn{
+    border: 1px solid #333252;
+    color: #333252;
+    transition: 0.7 ease-in-out all;
+
+}
+
+.navbtn:hover{
+    border: 1px solid #333252;
+    color: white;
+    background-color: #333252;
+    transition: 0.7 ease-in-out all;
+}
+
+.sidenavbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: #333252;
+}
+
+.sidenavbtn:hover{
+    background-color: #474669;
+    /* border: 0px; */
+}
+
+.active{
+    background-color: #333252;
+    border: 0px;
+}
+
+.custominput{
+    border-radius: 10px;
+    padding: 15px 10px;
+    width: 100%;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    color: rgb(65, 57, 94);
+    border: 1px solid rgb(74, 61, 97);
+  }
+  
+  .custominput::placeholder{
+    color: rgb(65, 57, 94);
+  }
+
+  .modalheading{
+    margin-bottom: 0px;
+  }
+
+
+  @media (max-width:576px){
+    .sidenavbtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        color: white;
+        font-size: 1rem;
+        border-radius: 10px;
+        background-color: #333252;
+    }
+    .modalheading{
+        font-size: 1.1rem;
+        margin-bottom: 0px;
+      }
+  }

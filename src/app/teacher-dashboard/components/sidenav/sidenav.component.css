@@ -27,12 +27,40 @@
     border-radius: 10px;
 }
 
+.sidenavbtn:hover{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: #333252;
+    /* border: 0px; */
+}
+
 .usernamebtn{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
-    
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.usernamebtn:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    width: 85%;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: #545377;
+    transition: 0.7 ease-in-out all;
 }
 
 .active{

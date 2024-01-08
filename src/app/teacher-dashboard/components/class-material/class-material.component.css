@@ -1,0 +1,59 @@
+.classintro{
+    background-image: url('../../../../assets/img_bookclub.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30dvh;
+    width: 70dvw;
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.classname{
+    font-weight: 550;
+    font-size: 2rem;
+    margin: 30px;
+}
+
+.classform{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 20px;
+    margin: 0px 10px;
+}
+.classform1{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 20px;
+    margin: 0px 10px;
+    width: 50%;
+}
+
+.thumbnail{
+    background-image: url('../../../../assets/nlpbookcover.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px 0px 0px 20px;
+}
+
+@media (max-width:996px){
+    .classintro{
+        background-image: url('../../../../assets/img_bookclub.jpg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center;
+        height: 30dvh;
+        width: 90dvw;
+        border-radius: 20px;
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .classform1{
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        border-radius: 20px;
+        margin: 0px 10px;
+        width: 90%;
+    }
+}

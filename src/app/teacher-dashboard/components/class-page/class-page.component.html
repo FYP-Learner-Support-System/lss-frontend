@@ -1,18 +1,47 @@
-<div class="classSection m-3 mb-3">
+<div class="classSection m-0 m-lg-3 mb-0 mb-lg-3">
 
     <div class="navbar1">
-        <h4 class="mb-0 ms-5 me-auto fw-bold">Classes</h4>
-        <div class="input-group" style="border-radius: 20px;">
-            <span class="input-group-text searchicon" id="basic-addon1" style="background-color: transparent; border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
+        <button class="btn mx-3 navbtn d-flex d-lg-none" (click)="drawer.toggle()" [disabled]="disabled"><span class="material-icons mb-0">menu</span></button>
+        
+        <h4 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">Classes</h4>
+        <div class="input-group d-none d-lg-flex" style="border-radius: 20px;">
+            <span class="input-group-text searchicon pe-0" id="basic-addon1" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
             <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
-        <button class="btn"><span class="material-icons me-2 mb-0" style="color: #333252;">notifications</span></button>
-        <button class="btn"><span class="material-icons me-2 mb-0" style="color: #333252;">info</span></button>
+        <button class="btn me-3 pb-0 navbtn"><span class="material-icons mb-0">add</span></button>
+        <button class="btn me-3 pb-0 navbtn"><span class="material-icons mb-0">notifications</span></button>
+        <button class="btn me-3 pb-0 navbtn"><span class="material-icons mb-0">info</span></button>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center h-100">
-        <button class="btn d-flex justify-content-center align-items-center flex-column fw-normal fs-3" style="color: #b7b7b7;"><span class="material-icons" style="color: #b7b7b7; font-size: 10rem;">add_circle</span>Create a New Class</button>
-
-
+    <div class="d-flex justify-content-center align-items-center h-100" *ngIf="classList.length===0; else elseBlock">
+        <button (click)="showDialog()" class="btn d-flex justify-content-center align-items-center flex-column fw-normal fs-3" style="color: #b7b7b7;"><span class="material-icons" style="color: #b7b7b7; font-size: 10rem;">add_circle</span>Create a New Class</button>
     </div>
+
+    <ng-template #elseBlock>
+        <div class="container my-4">
+            <div class="row d-flex justify-content-start align-items-center">
+                <div class="col-sm-12 col-md-4 my-3" *ngFor="let each of classList">
+                    <app-class-item [eachitem]="each"/>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <p-dialog header="Header" [(visible)]="visible" [modal]="true" [breakpoints]="{ '960px': '75vw' }" [draggable]="false" [resizable]="false" [style]="{width: '40vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+        <ng-template pTemplate="header">
+            <h5 class="white-space-nowrap fw-bold modalheading">Create a New Class</h5>
+        </ng-template>
+        <label for="exampleFormControlInput1" class="mb-1">Course Name</label>
+        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Enter Class Name">
+        <label for="exampleFormControlInput2" class="mb-1">Course Description</label>
+        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput2" placeholder="Enter Description">
+        <label for="exampleFormControlInput3" class="mb-1">Course code</label>
+        <input type="text" class="form-control custominput" id="exampleFormControlInput3" placeholder="Enter Course Code">
+        <ng-template pTemplate="footer">
+            <div class="w-100 d-flex justify-content-center align-items-center">
+                <a class="btn sidenavbtn"><span class="material-icons me-2">add</span>Add Class</a>
+            </div>
+        </ng-template>
+    </p-dialog>
+
 </div>

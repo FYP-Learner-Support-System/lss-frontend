@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { BehaviorSubject, filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,8 @@ import { filter } from 'rxjs';
 export class CurrentPathService {
 
     //logic to get current path
-  currentPath: string = "";
+  currentPath = new BehaviorSubject<string>("");
+  currentpath$ = this.currentPath.asObservable();
   isDashboardRoute: boolean = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
@@ -16,7 +17,7 @@ export class CurrentPathService {
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       // Access the current route URL
-      this.currentPath = event.url;
+      this.currentPath.next(event.url);
 
       // Check if the current route or any of its ancestors matches /v1/dashboard
       this.isDashboardRoute = event.url.startsWith("/v1/dashboard");

@@ -34,8 +34,10 @@ constructor(private routeService: CurrentPathService,private drawerService: Draw
   }
 
   ngOnInit(){
+    this.routeService.currentpath$.subscribe(data=>{
+      this.currentPath = data
+    });
     setTimeout(() => { 
-      this.currentPath = this.routeService.getCurrentPath();
       this.isDashboardRoute = this.routeService.checkIsDashboardRoute();
     }, 200);
     AOS.init();

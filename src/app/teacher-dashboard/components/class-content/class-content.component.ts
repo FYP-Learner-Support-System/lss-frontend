@@ -9,14 +9,16 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CurrentPathService } from '../../../services/current-path.service';
 import { ClassMaterialComponent } from "../class-material/class-material.component";
 import { ClassStudentsComponent } from "../class-students/class-students.component";
-import { ClassSettingsComponent } from "../class-settings/class-settings.component";
+import { ClassChatComponent } from '../class-chat/class-chat.component';
+import { DialogModule } from 'primeng/dialog';
+
 
 @Component({
     selector: 'app-class-content',
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassSettingsComponent]
+    imports: [TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 
@@ -28,7 +30,9 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   currentClassId!:number;
   materialroute:string = ""
   studentsroute:string = ""
-  settingsroute:string = ""
+  chatroute:string = ""
+
+  visible: boolean = false;
 
   currentPath: string = "";
 
@@ -42,16 +46,24 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   }
   ngOnInit(): void {
-    setTimeout(() => { 
-      this.currentPath = this.routeService.getCurrentPath();
-    }, 200);
+    // setTimeout(() => { 
+    //   this.currentPath = this.routeService.getCurrentPath();
+    // }, 200);
+    this.routeService.currentpath$.subscribe(data=>{
+      this.currentPath = data
+    })
 
     this.activatedRoute.params.subscribe(data=>{
       this.currentClassId = data['id']
       this.materialroute = `/v1/dashboard/classes/${this.currentClassId}/materials`
       this.studentsroute = `/v1/dashboard/classes/${this.currentClassId}/students`
-      this.settingsroute = `/v1/dashboard/classes/${this.currentClassId}/settings`
+      this.chatroute = `/v1/dashboard/classes/${this.currentClassId}/chat`
     })
   }
+
+  showDialog() {
+    this.visible = true;
+  }
+
 
 }

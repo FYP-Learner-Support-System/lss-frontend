@@ -1,3 +1,7 @@
+:host ::ng-deep .p-dialog-header{
+    padding: 0.9rem !important;
+}
+
 .navbtn{
     border: 1px solid #333252;
     color: #333252;

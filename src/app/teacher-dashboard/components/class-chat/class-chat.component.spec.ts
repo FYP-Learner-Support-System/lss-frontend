@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClassSettingsComponent } from './class-settings.component';
+import { ClassChatComponent } from './class-chat.component';
 
-describe('ClassSettingsComponent', () => {
-  let component: ClassSettingsComponent;
-  let fixture: ComponentFixture<ClassSettingsComponent>;
+describe('ClassChatComponent', () => {
+  let component: ClassChatComponent;
+  let fixture: ComponentFixture<ClassChatComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ClassSettingsComponent]
+      imports: [ClassChatComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ClassSettingsComponent);
+    fixture = TestBed.createComponent(ClassChatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

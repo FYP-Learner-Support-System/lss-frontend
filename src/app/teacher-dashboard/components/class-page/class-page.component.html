@@ -3,14 +3,14 @@
     <div class="navbar1">
         <button class="btn mx-3 navbtn d-flex d-lg-none" (click)="drawer.toggle()" [disabled]="disabled"><span class="material-icons mb-0">menu</span></button>
         
-        <h4 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">Classes</h4>
+        <h5 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">Classes</h5>
         <div class="input-group d-none d-lg-flex" style="border-radius: 20px;">
             <span class="input-group-text searchicon pe-0" id="basic-addon1" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
             <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
-        <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">add</span></button>
+        <button class="btn me-2 pb-0 navbtn" (click)="showDialog()"><span class="material-icons mb-0">add</span></button>
         <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">notifications</span></button>
-        <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">info</span></button>
+        <!-- <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">info</span></button> -->
     </div>
 
     <div class="d-flex justify-content-center align-items-center h-100" *ngIf="classList.length===0; else elseBlock">
@@ -27,11 +27,11 @@
         </div>
     </ng-template>
 
-    <p-dialog header="Header" [(visible)]="visible" [modal]="true" [breakpoints]="{ '960px': '75vw' }" [draggable]="false" [resizable]="false" [style]="{width: '40vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+    <p-dialog header="Header" [(visible)]="visible" [modal]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '40vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
         <ng-template pTemplate="header">
             <h5 class="white-space-nowrap fw-bold modalheading">Create a New Class</h5>
         </ng-template>
-        <label for="exampleFormControlInput1" class="mb-1">Course Name</label>
+        <label for="exampleFormControlInput1" class="mb-1 mt-3">Course Name</label>
         <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Enter Class Name">
         <label for="exampleFormControlInput2" class="mb-1">Course Description</label>
         <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput2" placeholder="Enter Description">

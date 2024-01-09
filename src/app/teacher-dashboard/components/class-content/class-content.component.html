@@ -22,20 +22,20 @@
 
     <hr class="m-0 mb-auto">
     <form *ngIf="currentPath==chatroute" class="d-flex justify-content-center align-items-center newsform my-3" action="">
-        <input required type="email" class="form-control chatinput" placeholder="Message AskSphere..."/>
+        <input required type="text" class="form-control chatinput" placeholder="Message AskSphere..."/>
         <button class="btn sendbtn" type="submit"><span class="material-icons sendicon mt-1">send</span></button>
     </form>
     <!-- <input *ngIf="currentPath==chatroute" class="form-control chatinput my-3" type="text" placeholder="Message AskSphere..."> -->
     <div class="row snackbar">
-        <div class="col-4 snackstyle3" [ngClass]="currentPath==chatroute?'active':''">
+        <div class="col-4 snackstyle1" [ngClass]="currentPath==chatroute?'active':''">
             <a class="btn snackbtn" [routerLink]="chatroute"><span class="pi pi-fw pi-comments"></span>Chat</a>
         </div>
 
-        <div class="col-4 snackstyle1" [ngClass]="currentPath==materialroute?'active':''">
+        <div class="col-4 snackstyle2" [ngClass]="currentPath==materialroute?'active':''">
             <a class="btn snackbtn" [routerLink]="materialroute"><span class="pi pi-fw pi-book me-1"></span>Materials</a>
         </div>
 
-        <div class="col-4 snackstyle2" [ngClass]="currentPath==studentsroute?'active':''">
+        <div class="col-4 snackstyle3" [ngClass]="currentPath==studentsroute?'active':''">
             <a class="btn snackbtn" [routerLink]="studentsroute"><span class="pi pi-fw pi-users"></span>Students</a>
         </div>
     </div>

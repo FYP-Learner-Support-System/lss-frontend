@@ -10,9 +10,19 @@ export class CurrentPathService {
     //logic to get current path
   currentPath = new BehaviorSubject<string>("");
   currentpath$ = this.currentPath.asObservable();
+
+  currentPathId = new BehaviorSubject<number>(0);
+  currentpathId$ = this.currentPath.asObservable();
+
   isDashboardRoute: boolean = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+
+    this.activatedRoute.params.subscribe(data=>{
+      // console.log("service: ", data)
+      this.currentPathId.next(data['id'])
+    })
+
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
@@ -29,6 +39,9 @@ export class CurrentPathService {
 
   getCurrentPath = ()=>{
     return this.currentPath
+  }
+  getCurrentPathId = ()=>{
+    return this.currentPathId
   }
   checkIsDashboardRoute = ()=>{
     return this.isDashboardRoute

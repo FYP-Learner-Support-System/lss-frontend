@@ -28,7 +28,7 @@
     <!-- <input *ngIf="currentPath==chatroute" class="form-control chatinput my-3" type="text" placeholder="Message AskSphere..."> -->
     <div class="row snackbar">
         <div class="col-4 snackstyle1" [ngClass]="currentPath==chatroute?'active':''">
-            <a class="btn snackbtn" [routerLink]="chatroute"><span class="pi pi-fw pi-comments"></span>Chat</a>
+            <a class="btn snackbtn" [routerLink]="chatroute"><span class="pi pi-fw pi-comments me-1"></span>Chat</a>
         </div>
 
         <div class="col-4 snackstyle2" [ngClass]="currentPath==materialroute?'active':''">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="col-4 snackstyle3" [ngClass]="currentPath==studentsroute?'active':''">
-            <a class="btn snackbtn" [routerLink]="studentsroute"><span class="pi pi-fw pi-users"></span>Students</a>
+            <a class="btn snackbtn" [routerLink]="studentsroute"><span class="pi pi-fw pi-users me-1"></span>Students</a>
         </div>
     </div>
 

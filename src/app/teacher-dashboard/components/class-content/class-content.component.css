@@ -24,12 +24,12 @@
     width: 100%;
 }
 
-.chatinput{
+/* .chatinput{
     width: 70%;
     border: 1px solid grey;
     padding: 10px;
     border-radius: 15px;
-}
+} */
 
 .custominput{
     border-radius: 10px;
@@ -76,17 +76,17 @@
     border-radius: 15px;
 }
 
-input {
+.chatinput {
     width: 100%;
     height: 100%;
     border: none;
     background: transparent;
-    color: white;
+    color: black;
     padding: 0 70px 0 20px;
     border-radius: 15px;
 }
 
-input::placeholder{
+.chatinput::placeholder{
     color: rgb(138, 138, 138);
 }
 

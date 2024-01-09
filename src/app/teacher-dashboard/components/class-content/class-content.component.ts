@@ -11,6 +11,7 @@ import { ClassMaterialComponent } from "../class-material/class-material.compone
 import { ClassStudentsComponent } from "../class-students/class-students.component";
 import { ClassChatComponent } from '../class-chat/class-chat.component';
 import { DialogModule } from 'primeng/dialog';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { DialogModule } from 'primeng/dialog';
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule]
+    imports: [TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 

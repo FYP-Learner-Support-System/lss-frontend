@@ -17,10 +17,15 @@
         <app-class-material *ngIf="currentPath==materialroute"/>
         <app-class-students *ngIf="currentPath==studentsroute"/>
         <app-class-chat *ngIf="currentPath==chatroute"/>
+        <!-- <p-scrollTop *ngIf="currentPath==chatroute" target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop> -->
     </div>
 
     <hr class="m-0 mb-auto">
-    <input *ngIf="currentPath==chatroute" class="form-control chatinput my-3" type="text" placeholder="Message ChatGPT...">
+    <form *ngIf="currentPath==chatroute" class="d-flex justify-content-center align-items-center newsform my-3" action="">
+        <input required type="email" class="form-control" placeholder="Message AskSphere..."/>
+        <button class="btn sendbtn" type="submit"><span class="material-icons sendicon mt-1">send</span></button>
+    </form>
+    <!-- <input *ngIf="currentPath==chatroute" class="form-control chatinput my-3" type="text" placeholder="Message AskSphere..."> -->
     <div class="row snackbar">
         <div class="col-4 snackstyle3" [ngClass]="currentPath==chatroute?'active':''">
             <a class="btn snackbtn" [routerLink]="chatroute"><span class="pi pi-fw pi-comments"></span>Chat</a>

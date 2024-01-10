@@ -1,5 +1,5 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MenuItem } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
@@ -12,6 +12,8 @@ import { ClassStudentsComponent } from "../class-students/class-students.compone
 import { ClassChatComponent } from '../class-chat/class-chat.component';
 import { DialogModule } from 'primeng/dialog';
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { Store } from '@ngrx/store';
+import { Observable, map } from 'rxjs';
 
 
 @Component({
@@ -25,6 +27,8 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   constructor(private routeService: CurrentPathService, private drawerService: DrawerService, private activatedRoute:ActivatedRoute) {}
 
+  store = inject(Store)
+
   drawer!: MatDrawer;
   disabled:boolean=true;
 
@@ -37,6 +41,8 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   currentPath: string = "";
 
+  currentClass!:any;
+
   ngAfterViewInit(): void {
     setTimeout(() => {  
         const drawer = this.drawerService.getDrawer();
@@ -47,19 +53,24 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   }
   ngOnInit(): void {
-    // setTimeout(() => { 
-    //   this.currentPath = this.routeService.getCurrentPath();
-    // }, 200);
     this.routeService.currentpath$.subscribe(data=>{
       this.currentPath = data
     })
 
     this.activatedRoute.params.subscribe(data=>{
       this.currentClassId = data['id']
+      this.getClassCode(+this.currentClassId).subscribe(data=>{
+        this.currentClass = data[0]
+      })
       this.materialroute = `/v1/dashboard/classes/${this.currentClassId}/materials`
       this.studentsroute = `/v1/dashboard/classes/${this.currentClassId}/students`
       this.chatroute = `/v1/dashboard/classes/${this.currentClassId}/chat`
     })
+
+  }
+
+  getClassCode(id:number): Observable<any>{
+    return this.store.select('classes').pipe(map((data: any[])=>data.filter(each => each.id === id)))
   }
 
   showDialog() {

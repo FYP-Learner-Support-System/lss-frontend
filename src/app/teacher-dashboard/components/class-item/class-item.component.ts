@@ -21,7 +21,7 @@ export class ClassItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.class = this.eachitem
-    console.log("classitem: ",this.class)
+    // console.log("classitem: ",this.class)
   }
 
   navigate(){

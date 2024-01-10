@@ -7,7 +7,8 @@ import { AvatarModule } from 'primeng/avatar';
 import { Store } from '@ngrx/store';
 import { NgFor, NgIf } from '@angular/common';
 import { ClassItemComponent } from "../class-item/class-item.component";
-import { RippleModule } from 'primeng/ripple';
+import { FormsModule } from '@angular/forms';
+import { addclass } from '../../../store/classes/classes.actions';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { RippleModule } from 'primeng/ripple';
     standalone: true,
     templateUrl: './class-page.component.html',
     styleUrl: './class-page.component.css',
-    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,RippleModule]
+    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule]
 })
 export class ClassPageComponent implements AfterViewInit, OnInit {
    constructor(private drawerService: DrawerService) {}
@@ -26,6 +27,8 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
    visible: boolean = false;
    classList:object[] = [];
 
+   addClass = {name:"",desc:"",courseCode:"",content:[],instructor:{name:"",email:""},students:[]}
+
   ngAfterViewInit(): void {
     setTimeout(() => {  
         const drawer = this.drawerService.getDrawer();
@@ -35,15 +38,21 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
     }, 500);
 
     // Now you can use the 'drawer' reference in this component
-}
+    }
 
-ngOnInit(): void {
-    this.store.select('classes').subscribe(data=> this.classList = data)
-    console.log("classPage: ",this.classList)
-}
+    ngOnInit(): void {
+        this.store.select('classes').subscribe(data=> this.classList = data)
+        
+        this.addClass.instructor.name = "Abdul Karim Kazi"
+    }
 
     showDialog() {
         this.visible = true;
     }
+
+    submitForm(){
+        console.log(this.addClass)
+    }
+
 
 }

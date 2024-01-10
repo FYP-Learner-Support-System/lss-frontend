@@ -1,5 +1,6 @@
 <div class="sidenav m-3 me-0 mb-3">
     <a class="navbar-brand brandname fs-3 mt-4 mb-5" href="#"><img class="img-fluid my-auto me-3" src="assets/askspherelogo.png" alt="" width="48px">Ask<span>Sphere</span></a>
+    <a class="btn btn-outline-light d-flex justify-content-center align-items-center px-3 mb-4" style="width: 80%;" routerLink=""><span class="material-icons me-2">logout</span>Home</a>
     <a class="btn sidenavbtn mb-3" [ngClass]="currentPath==='/v1/dashboard' || currentPath==='/v1/dashboard/classes' || currentPath.startsWith('/v1/dashboard/classes/')?'active':''" routerLink="/v1/dashboard"><span class="material-icons me-3">school</span> Classes</a>
     <a class="btn sidenavbtn mb-3" [ngClass]="currentPath=='/v1/dashboard/quiz'?'active':''" routerLink="/v1/dashboard/quiz"><span class="material-icons me-3">description</span> Quiz Maker</a>
     <a class="btn sidenavbtn mb-3" [ngClass]="currentPath=='/v1/dashboard/statistics'?'active':''" routerLink="/v1/dashboard/statistics"><span class="material-icons me-3">bar_chart</span> Statistics</a>

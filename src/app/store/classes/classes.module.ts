@@ -5,5 +5,5 @@ export type classesInterface = Array<{
     courseCode: string,
     content: object[],
     instructor: object,
-    students: object[]
+    students: object[],
 }>

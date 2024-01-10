@@ -1,3 +1,37 @@
+:host ::ng-deep .p-inplace-display{
+    padding: 0px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+:host ::ng-deep .p-inplace-display:hover{
+   background-color: transparent;
+}
+
+:host ::ng-deep .p-button{
+   background-color: #393268;
+   padding: 2px !important;
+   width: 32px;
+   height: 32px;
+   border-radius: 16px;
+   margin: 10px 0px;
+}
+
+:host ::ng-deep .p-inplace-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewmore{
+    color: #393268;
+    font-weight: bold;
+}
+
 .classintro{
     background-image: url('../../../../assets/img_bookclub.jpg');
     background-repeat: no-repeat;

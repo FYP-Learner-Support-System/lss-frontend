@@ -7,6 +7,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { Store } from '@ngrx/store';
 import { NgFor, NgIf } from '@angular/common';
 import { ClassItemComponent } from "../class-item/class-item.component";
+import { RippleModule } from 'primeng/ripple';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { ClassItemComponent } from "../class-item/class-item.component";
     standalone: true,
     templateUrl: './class-page.component.html',
     styleUrl: './class-page.component.css',
-    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent]
+    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,RippleModule]
 })
 export class ClassPageComponent implements AfterViewInit, OnInit {
    constructor(private drawerService: DrawerService) {}

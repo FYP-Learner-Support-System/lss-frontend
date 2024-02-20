@@ -24,12 +24,9 @@
     width: 100%;
 }
 
-/* .chatinput{
-    width: 70%;
-    border: 1px solid grey;
-    padding: 10px;
-    border-radius: 15px;
-} */
+.chatinput{
+    padding: 10px !important;
+}
 
 .custominput{
     border-radius: 10px;

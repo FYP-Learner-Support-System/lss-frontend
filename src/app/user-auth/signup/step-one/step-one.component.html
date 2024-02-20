@@ -1,25 +1,31 @@
-<div class="hero bgcolor1">
-    <div class="container insidebox" data-aos="fade-right" data-aos-duration="3000">
+<div class="customheight">
+    <form [formGroup]="formgroup1" (ngSubmit)="emailHandler()">
         <div class="row d-flex justify-content-center align-content-center">
-            <div class="col-sm-12 col-lg-8 position-relative d-flex justify-content-center align-items-start flex-column leftsection">
-                <img class="heroimg animate img-fluid mx-auto" src="assets/signup.svg" alt="hero" width="400vw">
-                <div class="welcometag px-5">
-                    <h6 class="text-center text-light m-0">STEP 1</h6>
+            <div class="col-sm-12 col-lg-7 position-relative d-flex justify-content-center align-items-start flex-column leftsection">
+                <img class="heroimg animate img-fluid" src="assets/emailbg.png" alt="hero" width="500vw">
+                <!-- <h5 class="fw-semibold mx-auto mt-5" style="color: rgb(168, 168, 168);">Askphere</h5> -->
+                <div class="px-3">
+                    <p class="fw-bold text-center mt-5" *ngIf="textNumb === 1" data-aos="fade-up" data-aos-duration="500">Resetting password allows users to regain access to their accounts in case they forget their password or suspect unauthorized access.</p>
+                    <p class="fw-bold text-center mt-5" *ngIf="textNumb === 2" data-aos="fade-up" data-aos-duration="500">Facilitate password recovery with a secure email-based reset process, empowering users to regain access to their accounts swiftly.</p>
+                    <p class="fw-bold text-center mt-5" *ngIf="textNumb === 3" data-aos="fade-up" data-aos-duration="500">Ensure user account protection by offering an email-driven password reset mechanism, enhancing security and user confidence.</p>
+                </div>
+                <div class="welcometag">
+                    <h6 class="text-center text-light m-0">Reset Password</h6>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4 text-light position-relative d-flex justify-content-center align-items-center flex-column rightsection">
-                <h1 class="herotxt my-5">What is your role</h1>
-                <div class="mb-5">
-                    <button class="btn rolebtn">Student</button>
-                    <button class="btn rolebtn">Teacher</button>
+            <div class="col-sm-12 col-lg-5 text-light position-relative d-flex justify-content-center align-items-center flex-column rightsection">
+                <h1 class="herotxt my-5 mb-3">Reset Your Password</h1>
+                <div class="mb-4 w-75">
+                    <p class="text-center">Please provide the email associated with your AskSphere account.</p>
                 </div>
-                <div class="mb-4">
-                    <button class="btn loginbtn d-flex justify-content-center align-items-center fs-5" routerLink="/signup/verification">Continue</button>
+                <input type="email" [formControl]="email" class="form-control custominput mb-4" id="email" placeholder="Enter Your Email">
+                <div class="mb-4 w-75">
+                    <button type="submit" class="btn loginbtn d-flex justify-content-center align-items-center fs-5 w-100" routerLink="/signup/verification">Reset Password</button>
                 </div>
-                <div class="w-100 mb-2">
-                    <a class='input' style="text-decoration: none;"><p class='text-center' style="color:#ffffff; cursor: pointer;">Already have an account? Log In</p></a>
+                <div class="w-100 d-flex justify-content-center align-items-center flex-row">
+                    <p class='text-center mb-0 me-2' style="color:#ffffff;">Already have an account? </p><a class='input' style="color: white" routerLink="/login">Log In</a>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>

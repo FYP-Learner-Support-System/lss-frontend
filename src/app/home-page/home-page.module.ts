@@ -16,14 +16,14 @@ import { RoadmapSectionComponent } from './components/roadmap-section/roadmap-se
     TransformingSectionComponent,
     ReadingSectionComponent,
     SubscribeSectionComponent,
-    RoadmapSectionComponent
+    RoadmapSectionComponent,
   ],
   exports: [
     HeroSectionComponent,
     TransformingSectionComponent,
     ReadingSectionComponent,
     SubscribeSectionComponent,
-    RoadmapSectionComponent
+    RoadmapSectionComponent,
   ]
 })
 export class HomePageModule { }

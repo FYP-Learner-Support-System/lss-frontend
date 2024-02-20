@@ -14,6 +14,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { Observable, map } from 'rxjs';
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule]
+    imports: [TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 
@@ -43,6 +44,8 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   currentClass!:any;
 
+  question: string=""
+
   ngAfterViewInit(): void {
     setTimeout(() => {  
         const drawer = this.drawerService.getDrawer();
@@ -52,6 +55,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
     }, 500);
 
   }
+
   ngOnInit(): void {
     this.routeService.currentpath$.subscribe(data=>{
       this.currentPath = data

@@ -31,10 +31,10 @@
     </mat-drawer>
 
     <mat-drawer-content class="stopscrollings">
-
-        <app-navbar [drawer]="drawer" *ngIf="!isDashboardRoute"></app-navbar>
+        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+        <app-navbar [drawer]="drawer" *ngIf="!isDashboardRoute && !isloginRoute && !issignupRoute && !isresetRoute && !isnewpassRoute"></app-navbar>
         <router-outlet></router-outlet>
-        <app-footer *ngIf="!isDashboardRoute"></app-footer>
+        <app-footer *ngIf="!isDashboardRoute && !isloginRoute && !issignupRoute && !isresetRoute && !isnewpassRoute"></app-footer>
 
     </mat-drawer-content>
 

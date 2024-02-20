@@ -1,6 +1,6 @@
 import { Component, ViewChild  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationStart, RouterEvent, RouterModule, RouterOutlet } from '@angular/router';
 import {MatChipsModule} from '@angular/material/chips';
 import { LayoutModule } from './layout/layout.module';
 
@@ -10,6 +10,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
 import { Router,NavigationEnd  } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 import AOS from "aos";
 
@@ -17,7 +19,7 @@ import AOS from "aos";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterModule, RouterOutlet, MatChipsModule,LayoutModule,MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule],
+  imports: [CommonModule,RouterModule, RouterOutlet, MatChipsModule,LayoutModule,MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule,MatProgressBarModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -26,8 +28,14 @@ export class AppComponent {
   //logic to get current path
   currentPath: string = "";
   isDashboardRoute: boolean = false;
+  isloginRoute: boolean = false;
+  issignupRoute: boolean = false;
+  isresetRoute: boolean = false;
+  isnewpassRoute: boolean = false;
+  progress = 0;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
@@ -36,6 +44,11 @@ export class AppComponent {
 
       // Check if the current route or any of its ancestors matches /v1/dashboard
       this.isDashboardRoute = event.url.startsWith("/v1/dashboard");
+      this.isloginRoute = event.url.startsWith("/login");
+      this.issignupRoute = event.url.startsWith("/signup");
+      this.isresetRoute = event.url.startsWith("/resetpassword");
+      this.isnewpassRoute = event.url.startsWith("/newpassword");
+      
       // this.isDashboardRoute = this.activatedRoute.snapshot.pathFromRoot.some(route => route.routeConfig?.path === '/v1/dashboard');
       console.log(this.isDashboardRoute, this.currentPath)
     });
@@ -45,8 +58,7 @@ export class AppComponent {
 
 
   ngOnInit(){
-    AOS.init();
-   
+    AOS.init()
   }
 
   title = 'AskSphere - Home';

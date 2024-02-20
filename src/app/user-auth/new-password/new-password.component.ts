@@ -5,32 +5,26 @@ import { RouterModule } from '@angular/router';
 import { RadioButtonModule } from 'primeng/radiobutton';
 
 @Component({
-  selector: 'app-signup-page',
+  selector: 'app-new-password',
   standalone: true,
   imports: [RouterModule,ReactiveFormsModule,RadioButtonModule,NgIf],
-  templateUrl: './signup-page.component.html',
-  styleUrl: './signup-page.component.css'
+  templateUrl: './new-password.component.html',
+  styleUrl: './new-password.component.css'
 })
-export class SignupPageComponent implements OnInit,OnDestroy {
+export class NewPasswordComponent implements OnInit, OnDestroy {
 
-  email = new FormControl('',Validators.compose([Validators.required,Validators.email]))
   password = new FormControl('',Validators.compose([Validators.required, Validators.minLength(8)]))
   cpassword = new FormControl('',Validators.compose([Validators.required, Validators.minLength(8)]))
-  tnc = new FormControl(false,Validators.requiredTrue)
-  role = new FormControl("",Validators.required)
 
-  cred:any = {email:"", password:"",cpassword:""}
+  cred:any = {password:""}
 
   formgroup1 = new FormGroup({
-    email:this.email,
     password: this.password,
     cpassword: this.cpassword,
-    tnc: this.tnc,
-    role: this.role,
   },{ validators: this.passwordMatchValidator });
 
-  signupHandler(){
-    this.cred = {...this.cred,email:this.email.value,password:this.password.value,cpassword:this.cpassword.value,role: this.role.value}
+  newPassHandler(){
+    this.cred = {password:this.password.value}
     console.log(this.cred)
   }
 

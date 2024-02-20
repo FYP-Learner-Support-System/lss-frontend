@@ -1,31 +1,37 @@
-<form action="" [formGroup]="formgroup" (ngSubmit)="loginhandler()">
-<div class="hero bgcolor1">
-    <div class="container insidebox"  data-aos="fade-left" data-aos-duration="3000">
+<div class="customheight">
+    <form [formGroup]="formgroup" (ngSubmit)="loginhandler()">
         <div class="row d-flex justify-content-center align-content-center">
-            <div class="col-sm-12 col-lg-8 position-relative d-flex justify-content-center align-items-start flex-column leftsection">
-                <img class="heroimg animate img-fluid" src="assets/login.svg" alt="hero" width="600vw">
+            <div class="col-sm-12 col-lg-7 position-relative d-flex justify-content-center align-items-start flex-column leftsection">
+                <!-- <img class="heroimg animate img-fluid mx-auto" src="assets/askspherelogo.png" alt="hero" width="64"> -->
+                <img class="heroimg animate img-fluid mx-auto" src="assets/loginbgimg.png" alt="hero" width="500vw">
+                <div class="px-3">
+                    <h5 class="fw-semibold mt-4" style="color: rgb(168, 168, 168);">Askphere</h5>
+                    <p class="fw-bold" *ngIf="textNumb === 1" data-aos="fade-up" data-aos-duration="500">Welcome back! Sign in to your account to explore personalized features, manage your preferences, and connect with your community.</p>
+                    <p class="fw-bold" *ngIf="textNumb === 2" data-aos="fade-up" data-aos-duration="500">Secure your account with a robust login system, ensuring authentication integrity and user privacy.</p>
+                    <p class="fw-bold" *ngIf="textNumb === 3" data-aos="fade-up" data-aos-duration="500">Simplify user access through a seamless login process, enhancing user experience and engagement.</p>
+                    <a class="btn btn-outline-dark" routerLink="/">Back to Homepage</a>
+                </div>
                 <div class="welcometag">
                     <h6 class="text-center text-light m-0">Welcome Back!</h6>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4 text-light position-relative d-flex justify-content-center align-items-center flex-column rightsection">
-                <h1 class="herotxt my-5">Login your account</h1>
+            <div class="col-sm-12 col-lg-5 text-light position-relative d-flex justify-content-center align-items-center flex-column rightsection">
+                <h1 class="herotxt my-5">Login your Account</h1>
 
                 <input type="email" [formControl]="email" class="form-control custominput mb-4" id="email" placeholder="Enter Username or Email">
 
                 <input type="password" [formControl]="password" class="form-control custominput mb-2" id="password" placeholder="Enter Password">
 
                 <div class="w-75 mb-2">
-                    <a class='input' style="text-decoration: none;"><p class='text-end' style="color:#ffffff; cursor: pointer">Forgot Password?</p></a>
+                    <a class='input' routerLink="/resetpassword"><p class='text-end forgetpass'>Forgot Password?</p></a>
                 </div>
-                <div class="mb-4">
-                    <button class="btn loginbtn d-flex justify-content-center align-items-center fs-5" type="submit" [disabled]="!formgroup.valid">Log In</button>
+                <div class="mb-4 w-75">
+                    <button class="btn loginbtn d-flex justify-content-center align-items-center fs-5 w-100" type="submit" [disabled]="!formgroup.valid">Log In</button>
                 </div>
-                <div class="w-100 mb-2">
-                    <a class='input' style="text-decoration: none;"><p class='text-center' style="color:#ffffff; cursor: pointer;">Don't have an account? Signup</p></a>
+                <div class="w-100 d-flex justify-content-center align-items-center flex-row mb-2">
+                    <p class='text-center mb-0 me-2' style="color:#e7e7e7;">Don't have an account? </p><a class='input' style="color: #e7e7e7" routerLink="/signup">Signup</a>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
-</form>

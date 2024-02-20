@@ -6,6 +6,7 @@ import { SignupPageComponent } from './user-auth/signup/signup-page/signup-page.
 import { StepOneComponent } from './user-auth/signup/step-one/step-one.component';
 import { StepTwoComponent } from './user-auth/signup/step-two/step-two.component';
 import { ContactComponent } from './contact-page/contact/contact.component';
+import { NewPasswordComponent } from './user-auth/new-password/new-password.component';
 
 export const routes: Routes = [
     {
@@ -29,8 +30,12 @@ export const routes: Routes = [
         component: SignupPageComponent
     },
     {
-        path:"signup/selectrole",
+        path:"resetpassword",
         component: StepOneComponent
+    },
+    {
+        path:"newpassword",
+        component: NewPasswordComponent
     },
     {
         path:"signup/verification",

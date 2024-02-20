@@ -11,6 +11,7 @@ import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
 import { Router,NavigationEnd  } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ToastModule } from 'primeng/toast';
 
 
 import AOS from "aos";
@@ -19,7 +20,7 @@ import AOS from "aos";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterModule, RouterOutlet, MatChipsModule,LayoutModule,MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule,MatProgressBarModule],
+  imports: [CommonModule,RouterModule, RouterOutlet, MatChipsModule,LayoutModule,MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule,MatProgressBarModule,ToastModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

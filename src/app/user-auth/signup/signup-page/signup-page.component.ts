@@ -1,8 +1,11 @@
 import { NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { AuthService } from '../../../services/auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-signup-page',
@@ -13,15 +16,30 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 })
 export class SignupPageComponent implements OnInit,OnDestroy {
 
+  authService = inject(AuthService)
+  router = inject(Router)
+  messageService = inject(MessageService)
+
+  fname = new FormControl("",Validators.required)
+  lname = new FormControl("",Validators.required)
   email = new FormControl('',Validators.compose([Validators.required,Validators.email]))
   password = new FormControl('',Validators.compose([Validators.required, Validators.minLength(8)]))
   cpassword = new FormControl('',Validators.compose([Validators.required, Validators.minLength(8)]))
   tnc = new FormControl(false,Validators.requiredTrue)
   role = new FormControl("",Validators.required)
 
-  cred:any = {email:"", password:"",cpassword:""}
+  cred:any = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    userType: 0
+  }
 
   formgroup1 = new FormGroup({
+    fname:this.fname,
+    lname:this.lname,
     email:this.email,
     password: this.password,
     cpassword: this.cpassword,
@@ -30,8 +48,26 @@ export class SignupPageComponent implements OnInit,OnDestroy {
   },{ validators: this.passwordMatchValidator });
 
   signupHandler(){
-    this.cred = {...this.cred,email:this.email.value,password:this.password.value,cpassword:this.cpassword.value,role: this.role.value}
+    this.cred = {...this.cred,
+      firstName:this.fname.value,
+      lastName:this.lname.value,
+      email:this.email.value,
+      password:this.password.value,
+      confirmPassword:this.cpassword.value,
+      userType: parseInt(this.role.value || "0")
+    }
     console.log(this.cred)
+    try{
+      this.authService.signup(this.cred).subscribe(res=>{
+        this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res.body.message });
+        this.router.navigateByUrl('/signup/verification')
+      },error => {
+        this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error.message });
+      })
+    }
+    catch(err){
+      console.log("some error ocurred!!!")
+    }
   }
 
 

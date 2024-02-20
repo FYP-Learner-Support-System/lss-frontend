@@ -7,6 +7,7 @@ import { StepOneComponent } from './user-auth/signup/step-one/step-one.component
 import { StepTwoComponent } from './user-auth/signup/step-two/step-two.component';
 import { ContactComponent } from './contact-page/contact/contact.component';
 import { NewPasswordComponent } from './user-auth/new-password/new-password.component';
+import { VerifyEmailComponent } from './user-auth/verify-email/verify-email.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,10 @@ export const routes: Routes = [
     {
         path:"resetpassword",
         component: StepOneComponent
+    },
+    {
+        path:"resetpassword/verification",
+        component: VerifyEmailComponent
     },
     {
         path:"newpassword",

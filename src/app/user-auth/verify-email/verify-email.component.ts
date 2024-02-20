@@ -2,18 +2,18 @@ import {NgFor, NgIf } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { ZeroPrefixPipe } from '../../../pipes/zeroPrefix/zero-prefix.pipe';
-import { AuthService } from '../../../services/auth/auth.service';
+import { ZeroPrefixPipe } from '../../pipes/zeroPrefix/zero-prefix.pipe';
+import { AuthService } from '../../services/auth/auth.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-step-two',
+  selector: 'app-verify-email',
   standalone: true,
   imports: [NgFor,RouterModule,ReactiveFormsModule,ZeroPrefixPipe,NgIf],
-  templateUrl: './step-two.component.html',
-  styleUrl: './step-two.component.css'
+  templateUrl: './verify-email.component.html',
+  styleUrl: './verify-email.component.css'
 })
-export class StepTwoComponent implements OnInit,OnDestroy {
+export class VerifyEmailComponent {
 
   authService = inject(AuthService)
   router = inject(Router)
@@ -90,6 +90,5 @@ export class StepTwoComponent implements OnInit,OnDestroy {
       // Clear the interval using the property declared in the class
       clearInterval(this.increment);
   }
-
 
 }

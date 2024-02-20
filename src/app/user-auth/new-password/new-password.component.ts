@@ -1,8 +1,10 @@
 import { NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit,inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { MessageService } from 'primeng/api';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-new-password',
@@ -10,22 +12,40 @@ import { RadioButtonModule } from 'primeng/radiobutton';
   imports: [RouterModule,ReactiveFormsModule,RadioButtonModule,NgIf],
   templateUrl: './new-password.component.html',
   styleUrl: './new-password.component.css'
+  
 })
 export class NewPasswordComponent implements OnInit, OnDestroy {
 
+
+  authService = inject(AuthService)
+  router = inject(Router)
+  messageService = inject(MessageService)
+
+  token = new FormControl('',Validators.compose([Validators.required]))
   password = new FormControl('',Validators.compose([Validators.required, Validators.minLength(8)]))
   cpassword = new FormControl('',Validators.compose([Validators.required, Validators.minLength(8)]))
 
-  cred:any = {password:""}
+  cred:any = {token:"",password:"",confirmPassword:""}
 
   formgroup1 = new FormGroup({
+    token:this.token,
     password: this.password,
     cpassword: this.cpassword,
   },{ validators: this.passwordMatchValidator });
 
   newPassHandler(){
-    this.cred = {password:this.password.value}
-    console.log(this.cred)
+    this.cred = {token:this.token.value,password:this.password.value,confirmPassword:this.cpassword.value}
+    try{
+      this.authService.ResetPassword(this.cred).subscribe(res=>{
+        this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
+        this.router.navigateByUrl('/login')
+      },error => {
+        this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error?.message?.message });
+      })
+    }
+    catch(err){
+      console.log("some error ocurred!!!")
+    }
   }
 
 

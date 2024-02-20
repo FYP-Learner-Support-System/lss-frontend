@@ -33,6 +33,7 @@
     <mat-drawer-content class="stopscrollings">
         <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
         <app-navbar [drawer]="drawer" *ngIf="!isDashboardRoute && !isloginRoute && !issignupRoute && !isresetRoute && !isnewpassRoute"></app-navbar>
+        <p-toast position="top-left" key="tl"></p-toast>
         <router-outlet></router-outlet>
         <app-footer *ngIf="!isDashboardRoute && !isloginRoute && !issignupRoute && !isresetRoute && !isnewpassRoute"></app-footer>
 

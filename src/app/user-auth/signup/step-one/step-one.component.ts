@@ -1,8 +1,10 @@
 import { NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit,inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Router } from '@angular/router';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { MessageService } from 'primeng/api';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-step-one',
@@ -13,6 +15,11 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 })
 export class StepOneComponent {
 
+
+  authService = inject(AuthService)
+  router = inject(Router)
+  messageService = inject(MessageService)
+
   email = new FormControl('',Validators.compose([Validators.required,Validators.email]))
 
   formgroup1 = new FormGroup({
@@ -21,6 +28,17 @@ export class StepOneComponent {
 
   emailHandler(){
     console.log(this.email.value)
+    try{
+      this.authService.SendTokentoResetPassword(this.email.value).subscribe(res=>{
+        this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
+        this.router.navigateByUrl('/newpassword')
+      },error => {
+        this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error?.message?.message });
+      })
+    }
+    catch(err){
+      console.log("some error ocurred!!!")
+    }
   }
 
   // Declare increment as a property of the component class

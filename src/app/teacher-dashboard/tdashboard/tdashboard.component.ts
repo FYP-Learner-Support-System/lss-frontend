@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Route, RouterModule } from '@angular/router';
 import { Router,NavigationEnd  } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -24,7 +24,7 @@ export class TdashboardComponent implements OnInit{
 currentPath: string = "";
 isDashboardRoute: boolean = false;
 
-constructor(private routeService: CurrentPathService,private drawerService: DrawerService) {
+constructor(private routeService: CurrentPathService,private drawerService: DrawerService, private route : Router) {
   
 }
 
@@ -41,7 +41,9 @@ constructor(private routeService: CurrentPathService,private drawerService: Draw
       this.isDashboardRoute = this.routeService.checkIsDashboardRoute();
     }, 200);
     AOS.init();
-  
+    if(!localStorage.getItem('myUser')){
+      this.route.navigateByUrl('/')
+    }
   }
 
 }

@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit,inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit,ViewChild,inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -16,7 +16,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class NewPasswordComponent implements OnInit, OnDestroy {
 
-
+  @ViewChild('spinner') spinner!: ElementRef;
   authService = inject(AuthService)
   router = inject(Router)
   messageService = inject(MessageService)
@@ -34,16 +34,20 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
   },{ validators: this.passwordMatchValidator });
 
   newPassHandler(){
+    this.spinner.nativeElement.classList.remove('d-none')
     this.cred = {token:this.token.value,password:this.password.value,confirmPassword:this.cpassword.value}
     try{
       this.authService.ResetPassword(this.cred).subscribe(res=>{
         this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
+        this.spinner.nativeElement.classList.add('d-none')
         this.router.navigateByUrl('/login')
       },error => {
+        this.spinner.nativeElement.classList.add('d-none')
         this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error?.message?.message });
       })
     }
     catch(err){
+      this.spinner.nativeElement.classList.add('d-none')
       console.log("some error ocurred!!!")
     }
   }

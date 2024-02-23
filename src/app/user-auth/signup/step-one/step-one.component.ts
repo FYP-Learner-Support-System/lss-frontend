@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit,inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit,ViewChild,inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule,Router } from '@angular/router';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -16,6 +16,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 export class StepOneComponent {
 
 
+  @ViewChild('spinner') spinner!: ElementRef;
   authService = inject(AuthService)
   router = inject(Router)
   messageService = inject(MessageService)
@@ -27,16 +28,21 @@ export class StepOneComponent {
   });
 
   emailHandler(){
+    this.spinner.nativeElement.classList.remove('d-none')
     console.log(this.email.value)
     try{
       this.authService.SendTokentoResetPassword(this.email.value).subscribe(res=>{
         this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
+        this.spinner.nativeElement.classList.add('d-none')
         this.router.navigateByUrl('/newpassword')
       },error => {
+        this.spinner.nativeElement.classList.add('d-none')
+        console.log(error)
         this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error?.message?.message });
       })
     }
     catch(err){
+      this.spinner.nativeElement.classList.add('d-none')
       console.log("some error ocurred!!!")
     }
   }

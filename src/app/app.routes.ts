@@ -34,10 +34,10 @@ export const routes: Routes = [
         path:"resetpassword",
         component: StepOneComponent
     },
-    {
-        path:"resetpassword/verification",
-        component: VerifyEmailComponent
-    },
+    // {
+    //     path:"resetpassword/verification",
+    //     component: VerifyEmailComponent
+    // },
     {
         path:"newpassword",
         component: NewPasswordComponent

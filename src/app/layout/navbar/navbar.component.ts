@@ -1,19 +1,20 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { MatDrawer } from '@angular/material/sidenav';
 
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,NgIf],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
 
   @Input() drawer: MatDrawer;
+  loggedIn = false
 
   // Initialize the property in the constructor
   constructor() {
@@ -23,6 +24,11 @@ export class NavbarComponent {
   colorchange:boolean = false;
 
   ngOnInit(){
+    const status = JSON.parse(localStorage.getItem('myUser') || "[]")
+    //now in status there will be token we make api call and check if that token is expired or not if not then we proceed but for now I am just checking if token is there or not
+    if(status.token){
+      this.loggedIn = true
+    }
     const changeNavbarColor = () =>{
       if(window.scrollY >= 20){
         this.colorchange = true
@@ -33,5 +39,9 @@ export class NavbarComponent {
     };
     
     window.addEventListener('scroll', changeNavbarColor);
+  }
+
+  logoutHandler() {
+    localStorage.removeItem('myUser');
   }
 }

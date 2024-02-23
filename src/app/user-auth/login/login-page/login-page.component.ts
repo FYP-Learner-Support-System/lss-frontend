@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { Router, RouterModule } from '@angular/router';
@@ -15,6 +15,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class LoginPageComponent implements OnInit, OnDestroy{
 
+  @ViewChild('spinner') spinner!: ElementRef;
   authService = inject(AuthService)
   router = inject(Router)
   messageService = inject(MessageService)
@@ -50,18 +51,24 @@ export class LoginPageComponent implements OnInit, OnDestroy{
 
 
   loginhandler(){
+    this.spinner.nativeElement.classList.remove('d-none')
     this.cred = {...this.cred,email:this.email.value,password:this.password.value}
     console.log(this.cred)
     try{
       this.authService.login(this.cred).subscribe(res=>{
-        this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res.body.message });
+        this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: `Welcome Back, ${res.body.firstName}` });
+        this.spinner.nativeElement.classList.add('d-none')
+        // console.log(res.body)
+        localStorage.setItem('myUser',JSON.stringify(res.body))
         this.router.navigateByUrl('/')
       },error => {
-        this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error.message.message });
+        this.spinner.nativeElement.classList.add('d-none')
+        this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: "Please check your credentials again!" });
       })
     }
     catch(err){
       console.log("some error ocurred!!!")
+      this.spinner.nativeElement.classList.add('d-none')
     }
   }
 

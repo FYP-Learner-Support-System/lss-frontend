@@ -26,7 +26,7 @@
                     <a class='input' routerLink="/resetpassword"><p class='text-end forgetpass'>Forgot Password?</p></a>
                 </div>
                 <div class="mb-4 w-75">
-                    <button class="btn loginbtn d-flex justify-content-center align-items-center fs-5 w-100" type="submit" [disabled]="!formgroup.valid">Log In</button>
+                    <button class="btn loginbtn d-flex justify-content-center align-items-center fs-5 w-100" type="submit" [disabled]="!formgroup.valid"><i class="pi pi-spin pi-spinner me-2 d-none" #spinner style="font-size: 1rem"></i> Log In</button>
                 </div>
                 <div class="w-100 d-flex justify-content-center align-items-center flex-row mb-2">
                     <p class='text-center mb-0 me-2' style="color:#e7e7e7;">Don't have an account? </p><a class='input' style="color: #e7e7e7" routerLink="/signup">Signup</a>

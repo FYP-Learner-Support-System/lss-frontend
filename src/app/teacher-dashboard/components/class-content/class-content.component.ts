@@ -37,7 +37,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   materialroute:string = ""
   studentsroute:string = ""
   chatroute:string = ""
-
+  usertype = 0
   visible: boolean = false;
 
   currentPath: string = "";
@@ -57,6 +57,11 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    this.store.select('user').subscribe(data=>{
+      this.usertype = data.userType
+  })
+    
     this.routeService.currentpath$.subscribe(data=>{
       this.currentPath = data
     })

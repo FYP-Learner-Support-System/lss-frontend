@@ -25,9 +25,13 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
    disabled:boolean=true;
    value: string | undefined;
    visible: boolean = false;
+   visible1: boolean = false;
    classList:object[] = [];
+   usertype = 0
 
    addClass = {name:"",desc:"",courseCode:"",content:[],instructor:{name:"",email:""},students:[]}
+
+   joinClass = ""
 
   ngAfterViewInit(): void {
     setTimeout(() => {  
@@ -42,12 +46,23 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
 
     ngOnInit(): void {
         this.store.select('classes').subscribe(data=> this.classList = data)
-        
+
+        this.store.select('user').subscribe(data=>{
+            this.usertype = data.userType
+        })
+
+        this.usertype = JSON.parse(localStorage.getItem('myUser') || "[]").userType
         this.addClass.instructor.name = "Abdul Karim Kazi"
     }
 
     showDialog() {
-        this.visible = true;
+        if(this.usertype === 0)
+        {
+            this.visible1 = true;
+        }
+        else{
+            this.visible = true;
+        }
     }
 
     submitForm(){

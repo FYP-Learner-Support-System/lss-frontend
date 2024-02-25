@@ -5,7 +5,7 @@
     <a class="btn sidenavbtn mb-3" [ngClass]="currentPath=='/v1/dashboard/quiz'?'active':''" routerLink="/v1/dashboard/quiz"><span class="material-icons me-3">description</span> Quiz Maker</a>
     <a class="btn sidenavbtn mb-3" [ngClass]="currentPath=='/v1/dashboard/statistics'?'active':''" routerLink="/v1/dashboard/statistics"><span class="material-icons me-3">bar_chart</span> Statistics</a>
     <a class="btn sidenavbtn mb-auto" [ngClass]="currentPath=='/v1/dashboard/settings'?'active':''" routerLink="/v1/dashboard/settings"><span class="material-icons me-3">settings</span> Settings</a>
-    <a class="btn active usernamebtn active mb-1" [ngClass]="currentPath=='/v1/dashboard/profile'?'active':''" routerLink="/v1/dashboard/profile"><span class="material-icons me-3">account_circle</span>Muhammad Uzair</a>
+    <a class="btn active usernamebtn active mb-1" [ngClass]="currentPath=='/v1/dashboard/profile'?'active':''" routerLink="/v1/dashboard/profile"><span class="material-icons me-3">account_circle</span>{{userName}}</a>
     <hr class="divider mb-0">
-    <button class="btn logout my-2">Log Out <span class="material-icons me-3">logout</span> </button>
+    <button class="btn logout my-2" (click)="logoutHandler()">Log Out <span class="material-icons me-3">logout</span> </button>
 </div>

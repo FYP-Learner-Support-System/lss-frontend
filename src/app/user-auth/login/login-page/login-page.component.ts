@@ -59,7 +59,7 @@ export class LoginPageComponent implements OnInit, OnDestroy{
         this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: `Welcome Back, ${res.body.firstName}` });
         this.spinner.nativeElement.classList.add('d-none')
         // console.log(res.body)
-        localStorage.setItem('myUser',JSON.stringify(res.body))
+        localStorage.setItem('myUser',JSON.stringify({"token":res.body.token}))
         this.router.navigateByUrl('/')
       },error => {
         this.spinner.nativeElement.classList.add('d-none')

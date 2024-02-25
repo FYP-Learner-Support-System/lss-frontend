@@ -24,6 +24,7 @@
     "@ng-icons/core": "^26.2.0",
     "@ng-icons/heroicons": "^26.2.0",
     "@ngrx/store": "^17.0.1",
+    "@types/node": "^20.11.20",
     "aos": "^2.3.4",
     "ng-image-slider": "^7.0.1",
     "primeicons": "^6.0.1",

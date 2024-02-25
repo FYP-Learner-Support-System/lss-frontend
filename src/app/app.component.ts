@@ -18,6 +18,9 @@ import { AvatarModule } from 'primeng/avatar';
 import AOS from "aos";
 import { Store } from '@ngrx/store';
 import { adduser } from './store/user/user.actions';
+import { UserService } from './services/user/user.service';
+import { SessionService } from './services/session/session.service';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -41,6 +44,9 @@ export class AppComponent {
   userName: any;
 
   store = inject(Store)
+  userService = inject(UserService)
+  sessionService = inject(SessionService)
+  messageService = inject(MessageService)
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
 
@@ -59,34 +65,49 @@ export class AppComponent {
       
       // this.isDashboardRoute = this.activatedRoute.snapshot.pathFromRoot.some(route => route.routeConfig?.path === '/v1/dashboard');
       console.log(this.isDashboardRoute, this.currentPath)
+
+      this.handleLoginStatus();
     });
   }
   //logic to get current path
 
 
   ngOnInit(){
-    console.log("app called")
-    const userObj = JSON.parse(localStorage.getItem('myUser') || "{}")
-    this.store.dispatch(adduser({useritem: userObj}))
+    AOS.init()
+  }
 
-    this.store.select('user').subscribe(data=>{
-        console.log("user State from app: ",data)
-        //now in status there will be token we make api call and check if that token is expired or not if not then we proceed but for now I am just checking if token is there or not
-        if(data.token){
-          this.loggedIn = true
-          this.userName = data.firstName + " " + data.lastName
-          if(this.userName.length > 14){
-            this.userName = data.lastName
-          }
-          console.log("status: ", this.loggedIn)
+  handleLoginStatus(){
+    const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+    if(token){
+      this.sessionService.isSessionValid(token).subscribe((res)=>{
+        console.log("session Valid: ",res)
+        if(res){
+          this.userService.GetUserDetails(token).subscribe((result)=>{
+              this.store.dispatch(adduser({useritem: result.body}))
+          })
+          
+          this.store.select('user').subscribe(data=>{
+            this.loggedIn = true
+            this.userName = data.firstName + " " + data.lastName
+            if(this.userName.length > 14){
+              this.userName = data.lastName
+            }
+          })
         }
         else{
+          this.messageService.add({key: 'tl', severity: 'info', summary: 'Error', detail: "You're logged out due to inactivity! Please Log in again." });
+          localStorage.removeItem('myUser');
           this.loggedIn = false
         }
-    })
-
-
-    AOS.init()
+      },error => {
+        this.messageService.add({key: 'tl', severity: 'info', summary: 'Error', detail: "Server Error occured! Please log In again." });
+        localStorage.removeItem('myUser');
+        this.loggedIn = false
+      })
+    }
+    else{
+      this.loggedIn = false
+    }
   }
 
   logoutHandler() {

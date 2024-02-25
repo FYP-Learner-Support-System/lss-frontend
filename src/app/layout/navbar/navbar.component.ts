@@ -24,11 +24,15 @@ export class NavbarComponent {
   colorchange:boolean = false;
 
   ngOnInit(){
-    const status = JSON.parse(localStorage.getItem('myUser') || "[]")
+    const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
     //now in status there will be token we make api call and check if that token is expired or not if not then we proceed but for now I am just checking if token is there or not
-    if(status.token){
+    if(token){
       this.loggedIn = true
     }
+    else{
+      this.loggedIn = false
+    }
+
     const changeNavbarColor = () =>{
       if(window.scrollY >= 20){
         this.colorchange = true

@@ -9,8 +9,7 @@ export class AuthService {
 
   // constructor(private http: HttpClient) { }
   http = inject(HttpClient)
-  domain:string = "https://localhost:7275/api/User"
-
+  domain:string = `https://localhost:7275/api/User`
   
   login(body: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders({'Content-Type':'application/json;'});

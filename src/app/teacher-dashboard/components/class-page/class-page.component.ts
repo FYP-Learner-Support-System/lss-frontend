@@ -50,8 +50,6 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
         this.store.select('user').subscribe(data=>{
             this.usertype = data.userType
         })
-
-        this.usertype = JSON.parse(localStorage.getItem('myUser') || "[]").userType
         this.addClass.instructor.name = "Abdul Karim Kazi"
     }
 

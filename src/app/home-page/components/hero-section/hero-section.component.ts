@@ -19,12 +19,10 @@ export class HeroSectionComponent implements OnInit{
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
 
-      const status = JSON.parse(localStorage.getItem('myUser') || "[]")
-      console.log("status: ", status)
+      const token = JSON.parse(localStorage.getItem('myUser') || "[]").token
       //now in status there will be token we make api call and check if that token is expired or not if not then we proceed but for now I am just checking if token is there or not
-      if(status.token){
+      if(token){
         this.navigationRoute = "/v1/dashboard"
-        console.log("navigationRoute: ", this.navigationRoute)
       }
       else{
           this.navigationRoute = "/login"

@@ -1,24 +1,39 @@
-<div class="m-3 m-lg-5">
+<div class="m-3 m-lg-5" style="font-size: 0.9rem !important;">
     <div class="my-5 mt-4">
         <h4 class="headingstyle">Teachers</h4>
         <hr class="text-dark">
         <div class="d-flex justify-content-start align-items-center flex-row my-3">
             <p-avatar class="me-4" icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
-            <h6 class="namestyle">{{teachers.name}}</h6>
+            <h6 class="namestyle">{{teachers?.name}}</h6>
         </div>
     </div>
     <div class="my-5">
         <div class="d-flex justify-content-start align-items-center flex-row">
             <h4 class="headingstyle me-auto">Students</h4>
-            <h4 class="stuheadingstyle">{{students.length}} Students</h4>
+            <h4 class="stuheadingstyle">{{approvedStudents?.length}} Students</h4>
         </div>
         <hr class="text-dark">
         
-        <div class="d-flex justify-content-start align-items-center flex-row my-3" *ngFor="let each of students">
+        <div class="d-flex justify-content-start align-items-center flex-row my-3" *ngFor="let each of approvedStudents">
             <p-avatar class="me-4" icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
-            <h6 class="namestyle">{{each.name}}</h6>
+            <h6 class="namestyle">{{each?.fullName}}</h6>
         </div>
+    </div>
 
-
+    <div class="my-5" *ngIf="userType === 1">
+        <div class="d-flex justify-content-start align-items-center flex-row">
+            <h4 class="headingstyle me-auto">Requests to Join</h4>
+            <h4 class="stuheadingstyle">{{studentRequests?.length}} Students</h4>
+        </div>
+        <hr class="text-dark">
+        
+        <div class="d-flex justify-content-start align-items-center flex-row my-3" *ngFor="let each of studentRequests">
+            <p-avatar class="me-4" icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+            <h6 class="namestyle me-auto">{{each?.fullName}}</h6>
+            <div class="d-flex justify-content-center align-items-center flex-row gap-3">
+                <button class="btn btn-outline-success btn-sm" (click)="acceptRequest(each.studentId)">Accept</button>
+                <button class="btn btn-outline-danger btn-sm" (click)="denyRequest(each.studentId)">Deny</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -13,7 +13,7 @@
         <!-- <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">info</span></button> -->
     </div>
 
-    <div class="d-flex justify-content-center align-items-center h-100" *ngIf="classList.length===0; else elseBlock">
+    <div class="d-flex justify-content-center align-items-center h-100" *ngIf="classList?.length===0; else elseBlock">
         <button (click)="showDialog()" class="btn d-flex justify-content-center align-items-center flex-column fw-normal fs-3" style="color: #b7b7b7;"><span class="material-icons" style="color: #b7b7b7; font-size: 10rem;">add_circle</span>Create a New Class</button>
     </div>
 
@@ -21,7 +21,7 @@
         <div class="container my-4">
             <div class="row d-flex justify-content-start align-items-center">
                 <div class="col-sm-12 col-md-4 my-3" *ngFor="let each of classList">
-                    <app-class-item [eachitem]="each"/>
+                    <app-class-item [eachitem]="each" [userType]="usertype"/>
                 </div>
             </div>
         </div>
@@ -33,34 +33,51 @@
         </ng-template>
 
         <label for="exampleFormControlInput1" class="mb-1 mt-3">Course Name</label>
-        <input type="text" [(ngModel)]="addClass.name" name="name" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Enter Class Name">
+        <input type="text" [(ngModel)]="addClass.className" name="name" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Enter Class Name">
 
         <label for="exampleFormControlInput2" class="mb-1">Course Description</label>
-        <input type="text" [(ngModel)]="addClass.desc" name="desc" class="form-control custominput mb-3" id="exampleFormControlInput2" placeholder="Enter Description">
+        <input type="text" [(ngModel)]="addClass.courseName" name="desc" class="form-control custominput mb-3" id="exampleFormControlInput2" placeholder="Enter Description">
 
         <label for="exampleFormControlInput3" class="mb-1">Course code</label>
         <input type="text" [(ngModel)]="addClass.courseCode" name="courseCode" class="form-control custominput" id="exampleFormControlInput3" placeholder="Enter Course Code">
 
         <ng-template pTemplate="footer">
             <div class="w-100 d-flex justify-content-start align-items-center">
-                <button class="btn sidenavbtn" (click)="submitForm()"><span class="material-icons me-2">add</span>Add Class</button>
+                <button class="btn sidenavbtn" (click)="submitForm()"><i class="pi pi-spin pi-spinner me-2 d-none" #spinner style="font-size: 1rem"></i>Add Class</button>
             </div>
         </ng-template>
     </p-dialog>
 
     <p-dialog header="Header" [(visible)]="visible1" [modal]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '30vw', border:'0px',borderRadius:'80px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
         <ng-template pTemplate="header">
-            <h5 class="white-space-nowrap fw-bold modalheading">Join a New Class</h5>
+            <h5 class="white-space-nowrap fw-bold modalheading ms-2">Join a New Class</h5>
         </ng-template>
 
-        <label for="exampleFormControlInput3" class="mb-1 mt-2">Class code</label>
-        <input type="text" [(ngModel)]="joinClass" name="courseCode" class="form-control custominput " id="exampleFormControlInput3" placeholder="Enter Class Code">
+        <!-- <label for="exampleFormControlInput3" class="mb-1 mt-3">Class code</label> -->
+        <input type="text" [(ngModel)]="joinClass" name="courseCode" class="form-control custominput" id="exampleFormControlInput3" placeholder="Enter Class Code">
 
         <ng-template pTemplate="footer">
             <div class="w-100 d-flex justify-content-start align-items-center">
-                <button class="btn sidenavbtn" (click)="submitForm()">Join Class</button>
+                <button class="btn sidenavbtn mt-2" (click)="enrollInClass()"><i class="pi pi-spin pi-spinner me-2 d-none" #spinner style="font-size: 1rem"></i>Join Class</button>
             </div>
         </ng-template>
+    </p-dialog>
+
+    <p-dialog header="Header" [(visible)]="visible2" [modal]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '30vw', border:'0px',borderRadius:'80px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+        <ng-template pTemplate="header">
+            <h5 class="white-space-nowrap fw-bold modalheading ms-2">Your class code</h5>
+        </ng-template>
+
+        <div class="d-flex justify-content-center align-items-center flex-row gap-2">
+            <input type="text" readonly [(ngModel)]="classcode" name="courseCode" class="form-control custominput" id="exampleFormControlInput3">
+            <button class="btn btn-outline-dark" (click)="copyCode()"><i class="pi pi-copy"></i></button>
+        </div>
+
+        <!-- <ng-template pTemplate="footer">
+            <div class="w-100 d-flex justify-content-start align-items-center">
+                <button class="btn sidenavbtn" (click)="submitForm()">Join Class</button>
+            </div>
+        </ng-template> -->
     </p-dialog>
 
 </div>

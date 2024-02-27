@@ -16,9 +16,9 @@ import { AuthService } from '../../../services/auth/auth.service';
 export class LoginPageComponent implements OnInit, OnDestroy{
 
   @ViewChild('spinner') spinner!: ElementRef;
+  messageService = inject(MessageService)
   authService = inject(AuthService)
   router = inject(Router)
-  messageService = inject(MessageService)
 
   email = new FormControl('',Validators.compose([Validators.required,Validators.email]))
   password = new FormControl('',Validators.compose([Validators.required]))

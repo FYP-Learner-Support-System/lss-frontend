@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, NgModule, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, NgModule, OnInit, ViewChild, inject } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { DrawerService } from '../../../services/drawer-service.service';
 import { DialogModule } from 'primeng/dialog';
@@ -8,7 +8,9 @@ import { Store } from '@ngrx/store';
 import { NgFor, NgIf } from '@angular/common';
 import { ClassItemComponent } from "../class-item/class-item.component";
 import { FormsModule } from '@angular/forms';
-import { addclass } from '../../../store/classes/classes.actions';
+import { addclass, fetchclass } from '../../../store/classes/classes.actions';
+import { ClassService } from '../../../services/class/class.service';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -19,19 +21,26 @@ import { addclass } from '../../../store/classes/classes.actions';
     imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule]
 })
 export class ClassPageComponent implements AfterViewInit, OnInit {
+
    constructor(private drawerService: DrawerService) {}
+   @ViewChild('spinner') spinner!: ElementRef;
    store = inject(Store);
+   classService = inject(ClassService);
+   messageService = inject(MessageService)
+
    drawer!: MatDrawer;
    disabled:boolean=true;
    value: string | undefined;
    visible: boolean = false;
    visible1: boolean = false;
+   visible2: boolean = false;
    classList:object[] = [];
    usertype = 0
 
-   addClass = {name:"",desc:"",courseCode:"",content:[],instructor:{name:"",email:""},students:[]}
+   addClass = {className:"",courseCode:"",courseName:""}
 
    joinClass = ""
+   classcode = ""
 
   ngAfterViewInit(): void {
     setTimeout(() => {  
@@ -45,12 +54,66 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
     }
 
     ngOnInit(): void {
+        const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+        this.store.select('user').subscribe((result)=>{
+            if(result.userType===0){
+                this.classService.GetStudentClassList(token).subscribe(res=>{
+                    console.log("joined classes",res?.body)
+                    this.store.dispatch(fetchclass({classlist:res?.body}))
+                })
+            }else if(result.userType===1){
+                this.classService.GetTeacherClassList(token).subscribe((res)=>{
+                    console.log("res: ",res?.body)
+                    this.store.dispatch(fetchclass({classlist:res?.body}))
+                })
+            } 
+        })
+
         this.store.select('classes').subscribe(data=> this.classList = data)
 
         this.store.select('user').subscribe(data=>{
             this.usertype = data.userType
         })
-        this.addClass.instructor.name = "Abdul Karim Kazi"
+    }
+
+    submitForm(){
+        this.spinner.nativeElement.classList.remove('d-none')
+        const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+        this.classService.createClass(token,this.addClass).subscribe((res)=>{
+            console.log("class creation:",res)
+            this.spinner.nativeElement.classList.add('d-none')
+            this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
+            this.store.select('classes').subscribe(data=> this.classList = data)
+            this.classcode = res?.body?.joiningCode
+            this.visible = false
+            this.visible2 = true
+        })
+    }
+
+    enrollInClass(){
+        this.spinner.nativeElement.classList.remove('d-none')
+        const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+        this.classService.joinClass(token,this.joinClass).subscribe((res)=>{
+            console.log("class joining:",res)
+            this.spinner.nativeElement.classList.add('d-none')
+            this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
+            this.visible1 = false;
+        },error => {
+            this.spinner.nativeElement.classList.add('d-none')
+            this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: "Error Occured! Please try again later." });
+        })
+    }
+
+    copyCode(){
+        navigator.clipboard.writeText(this.classcode).then(() => {
+            console.log('Value copied to clipboard:', this.classcode);
+            this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: "Copied Successfully" });
+            this.visible2 = false;
+            location.reload();
+          }, error => {
+            console.error('Error copying value to clipboard:', error);
+            alert('Error copying value to clipboard');
+          });
     }
 
     showDialog() {
@@ -61,10 +124,6 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
         else{
             this.visible = true;
         }
-    }
-
-    submitForm(){
-        console.log(this.addClass)
     }
 
 

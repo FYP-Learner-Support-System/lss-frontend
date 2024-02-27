@@ -34,12 +34,13 @@ export class StepTwoComponent implements OnInit,OnDestroy {
     console.log("token: ",this.code.value)
     try{
       this.authService.verifyUser(this.code.value).subscribe(res=>{
-        this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res.body.message });
+        console.log("res: ",res)
+        this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
         this.spinner.nativeElement.classList.add('d-none')
         this.router.navigateByUrl('/login')
       },error => {
         this.spinner.nativeElement.classList.add('d-none')
-        this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error.message.message });
+        this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: error?.message?.message });
         console.error(error.message.message);
       })
     }

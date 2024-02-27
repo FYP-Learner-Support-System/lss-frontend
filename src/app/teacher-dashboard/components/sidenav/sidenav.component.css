@@ -23,7 +23,7 @@
     align-items: center;
     width: 85%;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
 }
 
@@ -33,7 +33,7 @@
     align-items: center;
     width: 85%;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
     background-color: #333252;
     /* border: 0px; */
@@ -46,7 +46,7 @@
     margin-bottom: 0px;
     width: 85%;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
 }
 
@@ -57,7 +57,7 @@
     margin-bottom: 0px;
     width: 85%;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
     background-color: #545377;
     transition: 0.7 ease-in-out all;
@@ -80,6 +80,6 @@
     align-items: center;
     width: 85%;
     color: #a2a1b1;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
 }

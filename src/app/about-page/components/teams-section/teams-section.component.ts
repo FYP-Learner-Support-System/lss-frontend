@@ -15,17 +15,17 @@ export class TeamsSectionComponent {
     {
       bgimg:"https://thetork.com/demos/html/bitrader/assets/images/team/1-dark.png",
       name:"Abdul Rafay",
-      domain:"Web developer",
+      domain:"Front-end developer",
     },
     {
       bgimg:"https://thetork.com/demos/html/bitrader/assets/images/team/2-dark.png",
-      name:"Abdul Rafay",
-      domain:"Web developer"
+      name:"Faseeh ur Rehman",
+      domain:"Backend developer"
     },
     {
       bgimg:"https://thetork.com/demos/html/bitrader/assets/images/team/3-dark.png",
-      name:"Abdul Rafay",
-      domain:"Web developer"
+      name:"Muhammad Uzair",
+      domain:"Data Scientist"
     },
   ]
 }

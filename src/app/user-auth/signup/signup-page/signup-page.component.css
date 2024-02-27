@@ -4,6 +4,7 @@
   height: 100dvh !important;
   /* width: 100vw !important ; */
   overflow-x: hidden;
+  font-size: 0.9rem;
 }
 
 .herotxt{
@@ -47,25 +48,28 @@ height: 100dvh;
 
 .rightsection{
 background-color: #221b5f;
-/* background-color: #fff; */
-/* padding: 120px; */
 border-radius: 0px 15px 15px 0px;
 }
 
 .custominput{
 border-radius: 10px 10px 0px 0px;
 padding: 15px 10px;
-width: 75%;
+width: 85%;
 border-top: 0px solid rgb(231, 231, 231);
 border-right: 0px solid rgb(231, 231, 231);
 border-left: 0px solid rgb(231, 231, 231);
 border-bottom: 2px solid #e7e7e7;
 color: #e7e7e7;
 background-color: rgba(255, 255, 255, 0.082);
+font-size: 0.9rem;
 }
 
 .custominput::placeholder{
 color: #e7e7e7;
+}
+
+.custwidth{
+  width: 85%;
 }
 
 .welcometag{
@@ -74,7 +78,7 @@ background-image: linear-gradient(to right, #7a52d7, #9b59f1);
 padding: 15px 30px;
 border-radius: 0px 15px 15px 0px;
 top: 50px;
-left: 100%;
+left: 0%;
 z-index: 999;
 width: max-content;
 }
@@ -108,7 +112,7 @@ color: #e7e7e7;
   .leftsection{
     padding: 20px;
     border-radius: 15px 15px 0px 0px;
-    /* height: 80dvh; */
+    height: 100dvh;
   }
   
   .rightsection{
@@ -130,6 +134,10 @@ color: #e7e7e7;
     left: 0%;
     z-index: 999;
     width: max-content;
+  }
+
+  .custwidth{
+    width: 85%;
   }
 
 }

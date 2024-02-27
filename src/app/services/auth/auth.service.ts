@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   verifyUser(token: any): Observable<HttpResponse<any>> {
-    return this.http.get<any>(`${this.domain}/register/verification?token=${token}`, { observe: 'response' })
+    return this.http.post<any>(`${this.domain}/register/verification?token=${token}`,token, { observe: 'response' })
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError({ status: error.status, message: error.error }); // Forward the error to the caller

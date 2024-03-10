@@ -1,5 +1,5 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MenuItem } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
@@ -16,6 +16,7 @@ import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ClassService } from '../../../services/class/class.service';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @Component({
@@ -23,12 +24,16 @@ import { ClassService } from '../../../services/class/class.service';
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule]
+    imports: [InputTextareaModule,TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 
   constructor(private routeService: CurrentPathService, private drawerService: DrawerService, private activatedRoute:ActivatedRoute) {}
 
+  @ViewChild('chatContainer') chatContainer!: ElementRef;
+  @ViewChild('messageInput') messageInput!: ElementRef;
+  @ViewChild('classChatComponent') classChatComponent!: ClassChatComponent;
+  
   store = inject(Store)
   classService = inject(ClassService)
   drawer!: MatDrawer;
@@ -48,13 +53,22 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   question: string=""
 
   ngAfterViewInit(): void {
+    // this.classChatComponent.updateChat();
+    this.scrollToBottom();
     setTimeout(() => {  
         const drawer = this.drawerService.getDrawer();
         this.drawer = drawer
         this.disabled = false
         // console.log("class component: ",drawer)
     }, 500);
+    
+  }
 
+  scrollToBottom(): void {
+    try {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+      console.log(this.chatContainer.nativeElement.scrollTop)
+    } catch(err) { }
   }
 
   ngOnInit(): void {
@@ -66,7 +80,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
     this.routeService.currentpath$.subscribe(data=>{
       this.currentPath = data
     })
-
+    
     this.currentClass = {
       id: 1,
       name: "NLP 101",
@@ -120,6 +134,31 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   showDialog() {
     this.visible = true;
   }
+
+  sendQuery(){
+    this.question = ""
+    this.classChatComponent.updateChat();
+  }
+
+  onEnter(event: any) {
+    if (!event.shiftKey) {
+      event.preventDefault(); // Prevent the default Enter behavior (e.g., new line)
+      this.sendQuery(); // Call the send message function
+    }
+  }
+
+  insertNewLine(event: any) {
+    if (event.shiftKey) {
+      const textarea: HTMLTextAreaElement = this.messageInput.nativeElement;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const value = textarea.value;
+      textarea.value = value.substring(0, start) + '\n' + value.substring(end);
+      textarea.selectionStart = textarea.selectionEnd = start + 1;
+      event.preventDefault();
+    }
+  }
+    
 
 
 }

@@ -2,15 +2,15 @@ import { AfterViewInit, Component, ElementRef, Input, NgModule, OnInit, ViewChil
 import { MatDrawer } from '@angular/material/sidenav';
 import { DrawerService } from '../../../services/drawer-service.service';
 import { DialogModule } from 'primeng/dialog';
-import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { Store } from '@ngrx/store';
 import { NgFor, NgIf } from '@angular/common';
 import { ClassItemComponent } from "../class-item/class-item.component";
 import { FormsModule } from '@angular/forms';
-import { addclass, fetchclass } from '../../../store/classes/classes.actions';
+import { fetchclass } from '../../../store/classes/classes.actions';
 import { ClassService } from '../../../services/class/class.service';
 import { MessageService } from 'primeng/api';
+import { SkeletonModule } from 'primeng/skeleton';
 
 
 @Component({
@@ -18,7 +18,7 @@ import { MessageService } from 'primeng/api';
     standalone: true,
     templateUrl: './class-page.component.html',
     styleUrl: './class-page.component.css',
-    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule]
+    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule,SkeletonModule]
 })
 export class ClassPageComponent implements AfterViewInit, OnInit {
 
@@ -36,6 +36,8 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
    visible2: boolean = false;
    classList:object[] = [];
    usertype = 0
+
+   showSkeleton = false
 
    addClass = {className:"",courseCode:"",courseName:""}
 
@@ -57,14 +59,18 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
         const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
         this.store.select('user').subscribe((result)=>{
             if(result.userType===0){
+                this.showSkeleton = true
                 this.classService.GetStudentClassList(token).subscribe(res=>{
                     console.log("joined classes",res?.body)
                     this.store.dispatch(fetchclass({classlist:res?.body}))
+                    this.showSkeleton = false
                 })
             }else if(result.userType===1){
+                this.showSkeleton = true
                 this.classService.GetTeacherClassList(token).subscribe((res)=>{
                     console.log("res: ",res?.body)
                     this.store.dispatch(fetchclass({classlist:res?.body}))
+                    this.showSkeleton = false
                 })
             } 
         })

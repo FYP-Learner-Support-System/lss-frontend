@@ -14,7 +14,18 @@
     </div>
 
     <div class="d-flex justify-content-center align-items-center h-100" *ngIf="classList?.length===0; else elseBlock">
-        <button (click)="showDialog()" class="btn d-flex justify-content-center align-items-center flex-column fw-normal fs-3" style="color: #b7b7b7;"><span class="material-icons" style="color: #b7b7b7; font-size: 10rem;">add_circle</span>Create a New Class</button>
+        <div class="container" *ngIf="showSkeleton">
+            <div class="row d-flex justify-content-start align-items-center">
+                <div class="col-sm-12 col-md-4 my-2" *ngFor="let each of [0,1,2,3,4,5]">
+                    <p-skeleton styleClass="mb-2"></p-skeleton>
+                    <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                    <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                    <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+                    <p-skeleton width="10rem" height="4rem"></p-skeleton>
+                </div>
+            </div>
+        </div>
+        <button *ngIf="!showSkeleton" (click)="showDialog()" class="btn d-flex justify-content-center align-items-center flex-column fw-normal fs-3" style="color: #b7b7b7;"><span class="material-icons" style="color: #b7b7b7; font-size: 10rem;">add_circle</span>Create a New Class</button>
     </div>
 
     <ng-template #elseBlock>

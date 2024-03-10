@@ -36,10 +36,12 @@ export class HomeComponent implements OnInit{
                 else{
                     localStorage.removeItem('myUser');
                     this.messageService.add({key: 'tl', severity: 'info', summary: 'Error', detail: "You're logged out due to inactivity! Please Log in again." });
+                    location.reload();
                   }
             },error => {
                 this.messageService.add({key: 'tl', severity: 'info', summary: 'Error', detail: "Server Error occured! Please log In again." });
                 localStorage.removeItem('myUser');
+                location.reload();
               });
         }
     }

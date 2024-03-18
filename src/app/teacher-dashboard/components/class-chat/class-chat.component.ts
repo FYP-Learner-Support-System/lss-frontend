@@ -4,11 +4,14 @@ import { AvatarModule } from 'primeng/avatar';
 import {NgxTypedJsModule} from 'ngx-typed-js';
 import { NewlinePipe } from '../../../pipes/newline/newline.pipe';
 import { ChatService } from '../../../services/chat/chat.service';
+import { BoldPipe } from '../../../pipes/bold/bold.pipe';
+import { UnderlinePipe } from '../../../pipes/underline/underline.pipe';
+import { ColonPipe } from '../../../pipes/colon/colon.pipe';
 
 @Component({
   selector: 'app-class-chat',
   standalone: true,
-  imports: [AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule],
+  imports: [AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule,BoldPipe,UnderlinePipe,ColonPipe],
   templateUrl: './class-chat.component.html',
   styleUrl: './class-chat.component.css'
 })

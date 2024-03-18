@@ -67,7 +67,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   scrollToBottom(): void {
     try {
       this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-      console.log(this.chatContainer.nativeElement.scrollTop)
+      // console.log(this.chatContainer.nativeElement.scrollTop)
     } catch(err) { }
   }
 

@@ -1,4 +1,4 @@
-<div class="m-3 m-lg-4">
+<div class="m-3 m-lg-4" *ngIf="chat.length>0">
 
     <div *ngFor="let query of chat; let i = index;">
         <!-- Question -->
@@ -37,4 +37,9 @@
         </div>
     </div>
     
+</div>
+
+<div class="m-3 m-lg-4 d-flex justify-content-center align-items-center flex-column h-100" *ngIf="chat.length==0">
+    <img class="img-fluid mt-5 mb-4" src="../../../../assets/askspherelogo.png" alt="" width="100px" height="auto">
+    <h5 class="fw-bold text-dark">How can I help you today?</h5>
 </div>

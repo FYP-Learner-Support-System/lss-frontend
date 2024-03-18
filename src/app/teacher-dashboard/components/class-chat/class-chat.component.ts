@@ -91,7 +91,7 @@ export class ClassChatComponent {
     this.chat.push(newChatObj)
     this.chatService.getResponse({"question":this.question}).subscribe(res=>{
       console.log(res)
-      this.chat[this.chat.length-1].answer = "I apologize, but I don't have a specific response to provide for that query. Is there anything else I can assist you with?"
+      this.chat[this.chat.length-1].answer = res.body.response
       this.startTyping = true
     },error=>{
       console.log(error)

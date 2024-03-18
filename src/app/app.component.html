@@ -27,8 +27,9 @@
             <a class="btn active usernamebtn active mt-4" *ngIf="loggedIn" [ngClass]="currentPath=='/v1/dashboard/profile'?'active':''" routerLink="/v1/dashboard/profile"><span class="material-icons me-3">account_circle</span>{{userName}}</a>
             <hr class="divider mb-0">
             <button class="btn logout my-2" *ngIf="loggedIn" (click)="logoutHandler()" (click)="drawer.toggle()">Log Out <span class="material-icons me-3">logout</span> </button>
-            <button class="btn logout my-3" routerLink="/login" (click)="drawer.toggle()" *ngIf="!loggedIn">Log In <span class="material-icons me-3">logout</span> </button> 
-            <button class="btn logout" routerLink="/signup" (click)="drawer.toggle()" *ngIf="!loggedIn">Sign Up <span class="material-icons me-3">logout</span> </button>
+            <button class="btn logout mt-3 mb-2" routerLink="/login" (click)="drawer.toggle()" *ngIf="!loggedIn">Log In <span class="material-icons me-3">logout</span> </button> 
+            <button class="btn logout mb-3" routerLink="/signup" (click)="drawer.toggle()" *ngIf="!loggedIn">Sign Up <span class="material-icons me-3">logout</span> </button>
+            <button class="btn logout" routerLink="/v1/dashboard/classes/12/chat" (click)="drawer.toggle()" *ngIf="!loggedIn">Chat Now <span class="material-icons me-3">chat</span> </button>
         </div>
     </mat-drawer>
 

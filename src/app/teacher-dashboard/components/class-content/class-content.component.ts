@@ -55,6 +55,8 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   question: string=""
 
+  fileInput = []
+
   ngAfterViewInit(): void {
     // this.classChatComponent.updateChat();
     this.scrollToBottom();
@@ -160,6 +162,10 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
       textarea.selectionStart = textarea.selectionEnd = start + 1;
       event.preventDefault();
     }
+  }
+
+  tempfunc(){
+    console.log(this.fileInput)
   }
     
 

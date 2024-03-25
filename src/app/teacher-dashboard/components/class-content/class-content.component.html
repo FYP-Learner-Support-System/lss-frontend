@@ -1,6 +1,6 @@
 <div class="classSection m-0 m-lg-3 mb-0 mb-lg-3">
 
-    <div class="navbar1">
+    <div class="navbar1 py-3">
         <button class="btn mx-3 navbtn d-flex d-lg-none" (click)="drawer.toggle()" [disabled]="disabled"><span class="material-icons mb-0">menu</span></button>
         
         <h5 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">{{currentClass?.courseCode}}</h5>
@@ -8,10 +8,22 @@
             <span class="input-group-text searchicon pe-0" id="basic-addon1" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
             <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
-        <button class="btn me-2 pb-0 navbtn" *ngIf="usertype==1" (click)="showDialog()"><span class="material-icons mb-0">add</span></button>
-        <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">notifications</span></button>
+        <button class="btn me-2 pb-0 navbtn" *ngIf="usertype==1" (click)="showDialog()" pTooltip="Post Content" tooltipPosition="bottom"><span class="material-icons mb-0">add</span></button>
+        <button class="btn me-2 pb-0 navbtn me-3" pTooltip="Notifications" tooltipPosition="bottom" (click)="op.toggle($event)" pBadge value="2" severity="danger"><span class="material-icons mb-0">notifications</span></button>
         <!-- <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">info</span></button> -->
     </div>
+
+    <p-overlayPanel #op>
+        <ng-template pTemplate="content"> 
+            <h6 class="text-dark fw-bold mb-3">Notifications</h6>
+            <div class="d-flex justify-content-start align-items-center flex-row notiStyle">
+                <p-avatar icon="pi pi-user" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
+                <div class="d-flex justify-content-start align-items-start flex-column ms-2 notiContentStyle">
+                    <p class="text-dark mb-1"><strong>Dr. Saman Hina</strong> Posted a new Announcement</p>
+                </div>
+            </div>
+        </ng-template>
+    </p-overlayPanel>
 
     <div class="contentcontainer" #chatContainer>
         <app-class-material *ngIf="currentPath==materialroute"/>

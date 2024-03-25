@@ -11,6 +11,9 @@ import { fetchclass } from '../../../store/classes/classes.actions';
 import { ClassService } from '../../../services/class/class.service';
 import { MessageService } from 'primeng/api';
 import { SkeletonModule } from 'primeng/skeleton';
+import { TooltipModule } from 'primeng/tooltip';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { BadgeModule } from 'primeng/badge';
 
 
 @Component({
@@ -18,7 +21,7 @@ import { SkeletonModule } from 'primeng/skeleton';
     standalone: true,
     templateUrl: './class-page.component.html',
     styleUrl: './class-page.component.css',
-    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule,SkeletonModule]
+    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule,SkeletonModule,TooltipModule,OverlayPanelModule,BadgeModule]
 })
 export class ClassPageComponent implements AfterViewInit, OnInit {
 

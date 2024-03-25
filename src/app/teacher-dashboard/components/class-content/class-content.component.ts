@@ -17,6 +17,9 @@ import { Observable, map } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ClassService } from '../../../services/class/class.service';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TooltipModule } from 'primeng/tooltip';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import {AvatarModule} from 'primeng/avatar'
 
 
 @Component({
@@ -24,7 +27,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [InputTextareaModule,TabMenuModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule]
+    imports: [InputTextareaModule,TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule,TooltipModule,OverlayPanelModule]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 

@@ -2,11 +2,36 @@
     padding: 0.9rem !important;
 }
 
+::ng-deep .p-overlaypanel	{
+    padding: 0px !important;
+}
+
+::ng-deep .p-tooltip-text{
+    font-size: 0.9rem !important;
+}
+
 .navbtn{
     border: 1px solid #333252;
     color: #333252;
     transition: 0.7 ease-in-out all;
 
+}
+
+
+.notiStyle:first-of-type{
+    padding: 10px; 
+    border-bottom: 1px solid rgb(201, 201, 201);
+    border-top: 1px solid rgb(201, 201, 201);
+}
+
+.notiStyle:hover{
+    cursor: pointer;
+    background-color: #f6f6f8;
+}
+
+.notiStyle:not(:first-child){
+    padding: 10px; 
+    border-bottom: 1px solid rgb(201, 201, 201);
 }
 
 .navbtn:hover{
@@ -55,6 +80,11 @@
   .modalheading{
     margin-bottom: 0px;
   }
+  
+.notiContentStyle{
+    width:20vw; 
+    font-size: 0.9rem;
+}
 
 
   @media (max-width:576px){
@@ -71,5 +101,17 @@
     .modalheading{
         font-size: 1.1rem;
         margin-bottom: 0px;
-      }
+    }
+
+    .skeletonStyle{
+        height: 100dvh;
+        padding: 2rem 0rem;
+    }
+    ::ng-deep .p-overlaypanel{
+        width: 90%;
+    }
+    .notiContentStyle{
+        width:100vw; 
+        font-size: 0.9rem;
+    }
   }

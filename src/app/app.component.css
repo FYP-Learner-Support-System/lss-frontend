@@ -4,6 +4,10 @@ mat-drawer{
     /* height: 100dvh; */
 }
 
+mat-drawer-content{
+  overflow: hidden !important;
+}
+
 .stopscrolling{
     height: 100dvh; 
     overflow: hidden;

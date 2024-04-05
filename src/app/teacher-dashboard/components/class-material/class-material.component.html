@@ -58,5 +58,60 @@
         </div>
 
     </div>
+    <div class="classform my-4" *ngFor="let each of content">
+
+        <div class="row" *ngIf="each.postType==='announcement'">
+
+            <div class="col-12 d-flex justify-content-start align-items-start p-3 pb-0">
+                <p-avatar class="ms-3" icon="pi pi-user" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
+                <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
+                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.name}}</h6>
+                    <p class="text-muted mb-2">{{each.timeStamp | customDatePipe}}</p>
+                </div>
+            </div>
+
+            <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4">
+                <p-inplace closeIcon= "pi pi-angle-up" [closable]=true>
+                    <ng-template pTemplate="display">
+                        <p class="pb-0 mb-0 ms-3 text-dark">{{each.post.slice(0,50)}}...<a class="viewmore">Show more</a></p>
+                    </ng-template>
+                    <ng-template pTemplate="content">
+                        <p class="pb-0 mb-0 ms-3 text-dark">{{each.post}}</p>
+                    </ng-template>
+                </p-inplace>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="each.postType==='file'">
+
+            <div class="col-12 d-flex justify-content-start align-items-start p-3 pb-0">
+
+                <p-avatar class="ms-3" icon="pi pi-user" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
+                <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
+                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.name}}</h6>
+                    <p class="text-muted mb-2">{{each.timeStamp | customDatePipe}}</p>
+                </div>
+
+            </div>
+
+            <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4 pt-1">
+
+                <div class="classform1 mt-2 ms-3" style="cursor: pointer;">
+                    <div class="row">
+                        <div class="col-3 d-flex justify-content-start align-items-start thumbnail">
+                            
+                        </div>
+                        <div class="col-9 d-flex justify-content-start align-items-start flex-column p-3 px-4">
+                            <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.post.fileName}}</h6>
+                            <p class="text-muted mb-2">{{each.post.fileType}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>

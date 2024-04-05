@@ -2,6 +2,11 @@
     padding: 0.9rem !important;
 }
 
+:host ::ng-deep .p-dialog-content{
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
 ::ng-deep .p-overlaypanel	{
     padding: 0px !important;
 }

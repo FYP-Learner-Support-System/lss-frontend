@@ -43,41 +43,41 @@ export class TdashboardComponent implements OnInit{
 
   ngOnInit(){
 
-    // const userObj = JSON.parse(localStorage.getItem('myUser') || "{}")
-    // this.userService.GetUserDetails(userObj.token).subscribe((result)=>{
-    //     this.store.dispatch(adduser({useritem: result.body}))
-    // })
+    const userObj = JSON.parse(localStorage.getItem('myUser') || "{}")
+    this.userService.GetUserDetails(userObj.token).subscribe((result)=>{
+        this.store.dispatch(adduser({useritem: result.body}))
+    })
 
-    // const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
-    // if(token){
-    //   this.sessionService.isSessionValid(token).subscribe((res)=>{
-    //     if(res){
-    //       this.store.select('user').subscribe(data=>{
-    //         this.userName = data.firstName + " " + data.lastName
-    //         if(this.userName.length > 14){
-    //           this.userName = data.lastName
-    //         }
-    //       })
-    //     }
-    //     else{
-    //       localStorage.removeItem('myUser');
-    //       this.route.navigateByUrl('/')
-    //     }
-    //   },error => {
-    //     localStorage.removeItem('myUser');
-    //     this.route.navigateByUrl('/')
-    //   });  
-    // }
-    // else{
-    //   this.route.navigateByUrl('/')
-    // }
+    const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+    if(token){
+      this.sessionService.isSessionValid(token).subscribe((res)=>{
+        if(res){
+          this.store.select('user').subscribe(data=>{
+            this.userName = data.firstName + " " + data.lastName
+            if(this.userName.length > 14){
+              this.userName = data.lastName
+            }
+          })
+        }
+        else{
+          localStorage.removeItem('myUser');
+          this.route.navigateByUrl('/')
+        }
+      },error => {
+        localStorage.removeItem('myUser');
+        this.route.navigateByUrl('/')
+      });  
+    }
+    else{
+      this.route.navigateByUrl('/')
+    }
 
-    // this.routeService.currentpath$.subscribe(data=>{
-    //   this.currentPath = data
-    // });
-    // setTimeout(() => { 
-    //   this.isDashboardRoute = this.routeService.checkIsDashboardRoute();
-    // }, 200);
+    this.routeService.currentpath$.subscribe(data=>{
+      this.currentPath = data
+    });
+    setTimeout(() => { 
+      this.isDashboardRoute = this.routeService.checkIsDashboardRoute();
+    }, 200);
     
     AOS.init();
   }

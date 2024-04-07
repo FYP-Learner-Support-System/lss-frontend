@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <button *ngIf="!showSkeleton" (click)="showDialog()" class="btn d-flex justify-content-center align-items-center flex-column fw-normal fs-3" style="color: #b7b7b7;"><span class="material-icons" style="color: #b7b7b7; font-size: 10rem;">add_circle</span>{{usertype==0?'Join a New Class':'Create a New Class'}}</button>
+        <button *ngIf="!showSkeleton" (click)="showDialog()" class="btn d-flex justify-content-center align-items-center flex-column fw-normal fs-3" style="color: #b7b7b7;"><span class="material-icons" style="color: #b7b7b7; font-size: 10rem;">add_circle</span>{{usertype===0?'Join a New Class':'Create a New Class'}}</button>
     </div>
 
     <ng-template #elseBlock>

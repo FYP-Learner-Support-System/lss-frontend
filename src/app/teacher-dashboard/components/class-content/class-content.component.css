@@ -134,10 +134,15 @@
     width:20vw; 
     font-size: 0.9rem;
 }
+.contentcontainer{
+    height: 90dvh; 
+    overflow-y: auto; 
+    width: 100%;
+}
 
 @media (max-width:996px){
     .contentcontainer{
-        height: 80dvh; 
+        height: 100dvh; 
         overflow-y: auto; 
         width: 100%;
     }

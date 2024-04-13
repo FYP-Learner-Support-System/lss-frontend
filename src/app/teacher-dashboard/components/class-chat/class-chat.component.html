@@ -25,13 +25,13 @@
                 </div>
 
                 <!-- last response for type-writer effect -->
-                <p *ngIf="query.response !== 'loading' && i===chat.length-1 && !startTyping" class="text-dark my-2">{{query.response | newline | bold | underline}}</p>
+                <p *ngIf="query.response !== 'loading' && i===chat.length-1 && !startTyping" class="text-dark my-2 hello" [innerHTML]="query.response | newline | bold | underline"></p>
                 <ngx-typed-js *ngIf="query.response !== 'loading' && i===chat.length-1 && startTyping" [strings]="[query.response | newline | bold | underline]" [typeSpeed]="10" [showCursor]="false">
                     <p class="typing text-dark"></p>
                 </ngx-typed-js>
 
                 <!-- not last response nor its in the state of loading. text will be statically displayed through this p tag -->
-                <p *ngIf="query.response !== 'loading' && i!==chat.length-1" class="text-dark my-2">{{query.response | newline | bold | underline}}</p>
+                <p *ngIf="query.response !== 'loading' && i!==chat.length-1" class="text-dark my-2" [innerHTML]="query.response | newline | bold | underline"></p>
 
             </div>
         </div>

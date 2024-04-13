@@ -1,5 +1,5 @@
 <p-panel pRipple [header]="class.className" class="bgpanel" (click)="navigate()">
-    <p class="m-0 p-0">{{class.description}}</p>
+    <p class="m-0 p-0">{{class.description.length>20?class.description.slice(0,20) + "...":class.description}}</p>
     <div class="d-flex justify-content-start align-items-center flex-row gap-2 mt-2">
         <p-tag icon="pi pi-info-circle" class="tagclr" severity="success" [value]="class.courseCode"></p-tag>
         <p-tag *ngIf="userType===0" class="d-flex" icon="pi pi-user" severity="info" [value]="class.instructor.name"></p-tag>

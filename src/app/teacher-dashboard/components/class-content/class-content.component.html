@@ -8,7 +8,7 @@
             <span class="input-group-text searchicon pe-0" id="basic-addon1" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
             <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
-        <button class="btn me-2 pb-0 navbtn" *ngIf="usertype==1" (click)="showDialog()" pTooltip="Post Content" tooltipPosition="bottom"><span class="material-icons mb-0">add</span></button>
+        <button class="btn me-2 pb-0 navbtn" *ngIf="usertype==1" (click)="menu.toggle($event)" pTooltip="Post Content" tooltipPosition="bottom"><span class="material-icons mb-0">add</span></button>
         <button class="btn me-2 pb-0 navbtn me-3" pTooltip="Notifications" tooltipPosition="bottom" (click)="op.toggle($event)" pBadge value="2" severity="danger"><span class="material-icons mb-0">notifications</span></button>
         <!-- <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">info</span></button> -->
     </div>
@@ -24,6 +24,8 @@
             </div>
         </ng-template>
     </p-overlayPanel>
+
+    <p-menu #menu [model]="items" [popup]="true" ></p-menu>
 
     <div class="contentcontainer" #chatContainer>
         <app-class-material *ngIf="currentPath==materialroute"/>
@@ -58,14 +60,31 @@
         <ng-template pTemplate="header">
             <h5 class="white-space-nowrap fw-bold modalheading">Upload Materials</h5>
         </ng-template>
-        <label for="exampleFormControlInput1" class="mb-1 mt-3">Announcement</label>
-        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Write Your announcement here...">
+        <label for="exampleFormControlInput1" class="mb-1 mt-3">Title</label>
+        <input type="text" class="form-control custominput" id="exampleFormControlInput1" placeholder="Your Title here...">
+        <label for="exampleFormControlInput1" class="mb-1 mt-3">Description</label>
+        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Your Description here...">
         <label for="exampleFormControlInput2" class="mb-1">Your attachment</label>
-        <input type="file" class="form-control custominput mb-3" [(ngModel)]="fileInput" id="exampleFormControlInput2" placeholder="Enter Description" multiple>
+        <input type="file" class="form-control custominput mb-3" [(ngModel)]="fileInput" id="exampleFormControlInput2" placeholder="Choose File" multiple>
         
         <ng-template pTemplate="footer">
             <div class="w-100 d-flex justify-content-center align-items-center">
                 <a class="btn sidenavbtn mt-3" (click)="tempfunc()"><span class="material-icons me-2">add</span>Add material</a>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+
+    <p-dialog header="Header" [(visible)]="visible1" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '40vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+        <ng-template pTemplate="header">
+            <h5 class="white-space-nowrap fw-bold modalheading ms-2">New Announcement</h5>
+        </ng-template>
+        <label for="exampleFormControlInput1" class="mb-1 mt-3">Announcement</label>
+        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Write Your announcement here...">
+        
+        <ng-template pTemplate="footer">
+            <div class="w-100 d-flex justify-content-center align-items-center">
+                <a class="btn sidenavbtn mt-3" (click)="tempfunc()"><span class="material-icons me-2">add</span>Post</a>
             </div>
         </ng-template>
     </p-dialog>

@@ -20,14 +20,14 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import {AvatarModule} from 'primeng/avatar'
-
+import { MenuModule } from 'primeng/menu';
 
 @Component({
     selector: 'app-class-content',
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [InputTextareaModule,TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule,TooltipModule,OverlayPanelModule]
+    imports: [MenuModule, InputTextareaModule,TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule,TooltipModule,OverlayPanelModule]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 
@@ -37,6 +37,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   @ViewChild('messageInput') messageInput!: ElementRef;
   @ViewChild('classChatComponent') classChatComponent!: ClassChatComponent;
   
+  items: MenuItem[] | undefined;
   store = inject(Store)
   classService = inject(ClassService)
   drawer!: MatDrawer;
@@ -48,6 +49,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   chatroute:string = ""
   usertype = 0
   visible: boolean = false;
+  visible1: boolean = false;
 
   currentPath: string = "";
 
@@ -79,6 +81,28 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    this.items = [
+      {
+          label: 'Options',
+          items: [
+              {
+                  label: 'New Announcement',
+                  icon: 'pi pi-refresh',
+                  command: () => {
+                      this.showDialog1()
+                  }
+              },
+              {
+                  label: 'Book Upload',
+                  icon: 'pi pi-times',
+                  command: () => {
+                    this.showDialog()
+                  }
+              }
+          ]
+      },
+  ];
 
     this.store.select('user').subscribe(data=>{
       this.usertype = data.userType
@@ -140,6 +164,10 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   showDialog() {
     this.visible = true;
+  }
+
+  showDialog1() {
+    this.visible1 = true;
   }
 
   sendQuery(){

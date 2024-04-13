@@ -8,7 +8,7 @@
             </div>
             <div class="col-10 col-md-11">
                 <h6 class="fw-bold text-dark my-1">You</h6>
-                <p class="text-dark my-2" [innerHTML]="query.question | newline"></p>
+                <p class="text-dark my-2" [innerHTML]="query.request | newline"></p>
             </div>
         </div>
         <!-- Answer -->
@@ -20,18 +20,18 @@
                 <h6 class="fw-bold text-dark my-1">AskSphere</h6>
 
                 <!-- last response but in the state of loading -->
-                <div *ngIf="query.answer === 'loading' && i===chat.length-1" class="spinner-grow spinner-grow-sm text-dark my-2" role="status">
+                <div *ngIf="query.response === 'loading' && i===chat.length-1" class="spinner-grow spinner-grow-sm text-dark my-2" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
 
                 <!-- last response for type-writer effect -->
-                <p *ngIf="query.answer !== 'loading' && i===chat.length-1 && !startTyping" class="text-dark my-2">{{query.answer | newline | bold | underline}}</p>
-                <ngx-typed-js *ngIf="query.answer !== 'loading' && i===chat.length-1 && startTyping" [strings]="[query.answer | newline | bold | underline]" [typeSpeed]="10" [showCursor]="false">
+                <p *ngIf="query.response !== 'loading' && i===chat.length-1 && !startTyping" class="text-dark my-2">{{query.response | newline | bold | underline}}</p>
+                <ngx-typed-js *ngIf="query.response !== 'loading' && i===chat.length-1 && startTyping" [strings]="[query.response | newline | bold | underline]" [typeSpeed]="10" [showCursor]="false">
                     <p class="typing text-dark"></p>
                 </ngx-typed-js>
 
                 <!-- not last response nor its in the state of loading. text will be statically displayed through this p tag -->
-                <p *ngIf="query.answer !== 'loading' && i!==chat.length-1" class="text-dark my-2">{{query.answer | newline | bold | underline}}</p>
+                <p *ngIf="query.response !== 'loading' && i!==chat.length-1" class="text-dark my-2">{{query.response | newline | bold | underline}}</p>
 
             </div>
         </div>

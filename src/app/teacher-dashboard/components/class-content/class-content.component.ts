@@ -59,7 +59,9 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit(): void {
     // this.classChatComponent.updateChat();
-    this.scrollToBottom();
+    if(this.currentPath.includes("chat")){
+      this.scrollToBottom();
+    }
     setTimeout(() => {  
         const drawer = this.drawerService.getDrawer();
         this.drawer = drawer

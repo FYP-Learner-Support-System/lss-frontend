@@ -3,7 +3,8 @@
 }
 
 :host ::ng-deep .p-menu-list{
-    padding-left: 0rem !important;
+    padding: 2px !important;
+    gap: 20px;
 }
 
 :host ::ng-deep .p-menuitem-text{

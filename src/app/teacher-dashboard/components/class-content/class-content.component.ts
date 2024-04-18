@@ -84,18 +84,17 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
     this.items = [
       {
-          label: 'Options',
           items: [
               {
                   label: 'New Announcement',
-                  icon: 'pi pi-refresh',
+                  icon: 'pi pi-megaphone',
                   command: () => {
                       this.showDialog1()
                   }
               },
               {
                   label: 'Book Upload',
-                  icon: 'pi pi-times',
+                  icon: 'pi pi-book',
                   command: () => {
                     this.showDialog()
                   }

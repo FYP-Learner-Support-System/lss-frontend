@@ -7,12 +7,28 @@
 
     <div class="classform my-4" *ngFor="let each of content">
 
-        <div class="row" *ngIf="each.type==='announcement'">
+        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='announcement'">
+            <p-avatar class="me-3" icon="pi pi-megaphone" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+            <div class="d-flex justify-content-start align-items-start flex-column" >
+                <h6 class="text-dark mb-0" style="font-size: 0.9rem;"><strong>{{each.data.teacherName}} Posted a new Announcement</strong></h6>
+                <p class="text-muted mb-0" style="font-size: 0.8rem;">{{each.data.datetime | customDatePipe}}</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='classMaterial'">
+            <p-avatar class="me-3" icon="pi pi-book" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+            <div class="d-flex justify-content-start align-items-start flex-column" >
+                <h6 class="mb-0" style="font-size: 0.9rem; color: rgb(77, 77, 77);"><strong>{{each.data.teacherName}} Uploaded a new material: {{each.data.title}}</strong></h6>
+                <p class="text-muted mb-0" style="font-size: 0.8rem;">{{each.data.datetime | customDatePipe}}</p>
+            </div>
+        </div>
+
+        <!-- <div class="row" *ngIf="each.type==='announcement'">
 
             <div class="col-12 d-flex justify-content-start align-items-start p-3 pb-0">
                 <p-avatar class="ms-3" icon="pi pi-user" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
                 <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
-                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{"Dr. Saman Hina"}}</h6>
+                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.data.teacherName}}</h6>
                     <p class="text-muted mb-2">{{each.data.datetime | customDatePipe}}</p>
                 </div>
             </div>
@@ -20,22 +36,25 @@
             <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4">
                 <p-inplace closeIcon= "pi pi-angle-up" [closable]=true>
                     <ng-template pTemplate="display">
-                        <p class="pb-0 mb-0 ms-3 text-dark">{{each.data.announcementText.slice(0,50)}}...<a class="viewmore">Show more</a></p>
+                        <div class="d-flex flex-row">
+                            <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="each.data.announcementText.slice(0,50)"></p>
+                            <a class="viewmore">...Show more</a>
+                          </div>
                     </ng-template>
                     <ng-template pTemplate="content">
-                        <p class="pb-0 mb-0 ms-3 text-dark">{{each.data.announcementText}}</p>
+                        <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="each.data.announcementText"></p>
                     </ng-template>
                 </p-inplace>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row" *ngIf="each.type==='classMaterial'">
+        <!-- <div class="row" *ngIf="each.type==='classMaterial'">
 
             <div class="col-12 d-flex justify-content-start align-items-start p-3 pb-0">
 
                 <p-avatar class="ms-3" icon="pi pi-user" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
                 <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
-                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{"each.name"}}</h6>
+                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.data.teacherName}}</h6>
                     <p class="text-muted mb-2">{{each.data.datetime | customDatePipe}}</p>
                 </div>
 
@@ -57,7 +76,7 @@
 
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 

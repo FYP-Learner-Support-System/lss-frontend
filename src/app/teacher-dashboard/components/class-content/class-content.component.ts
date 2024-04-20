@@ -14,20 +14,22 @@ import { DialogModule } from 'primeng/dialog';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClassService } from '../../../services/class/class.service';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import {AvatarModule} from 'primeng/avatar'
 import { MenuModule } from 'primeng/menu';
+import { EditorModule } from 'primeng/editor';
+import { ContentService } from '../../../services/content/content.service';
 
 @Component({
     selector: 'app-class-content',
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [MenuModule, InputTextareaModule,TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule,TooltipModule,OverlayPanelModule]
+    imports: [EditorModule,MenuModule, InputTextareaModule,TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule,TooltipModule,OverlayPanelModule]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 
@@ -40,6 +42,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   items: MenuItem[] | undefined;
   store = inject(Store)
   classService = inject(ClassService)
+  contentService = inject(ContentService)
   drawer!: MatDrawer;
   disabled:boolean=true;
 
@@ -53,14 +56,28 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
   currentPath: string = "";
 
-  currentClass!:any;
+  courseCode!:any;
 
   question: string=""
 
-  fileInput = []
+  selectedFiles: File[] = [];
+
+  bookObj = {
+    ClassroomId: 0,
+    Title:"",
+    Description:"",
+    FileDetailsList : [] as File[]
+  }
+
+  announcementObj = {
+    ClassroomId: 0,
+    announcementText:"",
+  }
 
   ngAfterViewInit(): void {
-    // this.classChatComponent.updateChat();
+    this.bookObj.ClassroomId = this.currentClassId;
+    this.announcementObj.ClassroomId = this.currentClassId;
+
     if(this.currentPath.includes("chat")){
       this.scrollToBottom();
     }
@@ -110,41 +127,9 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
     this.routeService.currentpath$.subscribe(data=>{
       this.currentPath = data
     })
-    
-    this.currentClass = {
-      id: 1,
-      name: "NLP 101",
-      description: "Introduction to NLP",
-      courseCode: "NLP101",
-      content: [
-        {
-          name: "Dr. Saman Hina",
-          timeStamp: new Date,
-          post: { fileName: "NLP Introduction Slides", fileType: "PDF", thumbnail: "" },
-          postType: "file",
-        },
-        {
-          name: "Dr. Saman Hina",
-          timeStamp: new Date,
-          post: "Welcome to NLP 101! In this course, we'll explore the fundamentals of Natural Language Processing. I'm excited to embark on this learning journey with you. Please check the course materials for the syllabus and get ready for an engaging semester!",
-          postType: "announcement",
-        },
-      ],
-      instructor: {
-        name: "Dr. Saman Hina",
-        email: "samanhina123@gmail.com",
-      },
-      students: [
-        { name: "Muhammad Abdul Rafay", id: "A123" },
-        { name: "Muhammad Uzair Khan", id: "B456" },
-        { name: "Faseeh Ur Rehman", id: "B456" },
-      ],
-    }
+
     this.activatedRoute.params.subscribe(data=>{
-      this.currentClassId = data['id']
-      // this.getClassCode(+this.currentClassId).subscribe(data=>{
-      //   this.currentClass = data[0]
-      // })
+      this.currentClassId = +data['id']
       this.materialroute = `/v1/dashboard/classes/${this.currentClassId}/materials`
       this.studentsroute = `/v1/dashboard/classes/${this.currentClassId}/students`
       this.chatroute = `/v1/dashboard/classes/${this.currentClassId}/chat`
@@ -152,7 +137,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
     this.classService.GetClassById(this.currentClassId).subscribe((res)=>{
       console.log(res)
-      this.currentClass['courseCode'] = res?.body?.courseCode;
+      this.courseCode = res?.body?.courseCode;
     })
 
   }
@@ -193,8 +178,34 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
     }
   }
 
-  tempfunc(){
-    console.log(this.fileInput)
+  onFileSelected(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  addBook(){
+    console.log(this.bookObj)
+
+    const formData = new FormData();
+    formData.append('classroomId', this.bookObj.ClassroomId.toString());
+    formData.append('Title', this.bookObj.Title);
+    formData.append('Description', this.bookObj.Description);
+    
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      formData.append('FileDetailsList', this.selectedFiles[i], this.selectedFiles[i].name);
+    }
+
+    this.contentService.postBook(formData).subscribe((res)=>{
+      console.log(res)
+      this.visible = false
+    })
+  }
+
+  addAnnouncement(){
+    console.log(this.announcementObj)
+    this.contentService.postAnnouncement(this.announcementObj).subscribe((res)=>{
+      console.log(res)
+      this.visible1 = false
+    })
   }
     
 

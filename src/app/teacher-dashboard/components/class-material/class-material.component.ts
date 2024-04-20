@@ -9,6 +9,7 @@ import { CustomDatePipePipe } from '../../../pipes/custom-date-pipe.pipe';
 import { InplaceModule } from 'primeng/inplace';
 import { ContentService } from '../../../services/content/content.service';
 
+
 @Component({
   selector: 'app-class-material',
   standalone: true,

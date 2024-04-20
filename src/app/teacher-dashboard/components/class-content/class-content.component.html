@@ -3,7 +3,7 @@
     <div class="navbar1 py-3">
         <button class="btn mx-3 navbtn d-flex d-lg-none" (click)="drawer.toggle()" [disabled]="disabled"><span class="material-icons mb-0">menu</span></button>
         
-        <h5 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">{{currentClass?.courseCode}}</h5>
+        <h5 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">{{courseCode}}</h5>
         <div class="input-group d-none d-lg-flex" style="border-radius: 20px;">
             <span class="input-group-text searchicon pe-0" id="basic-addon1" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
             <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
@@ -62,35 +62,37 @@
     </div>
 
 
-    <p-dialog header="Header" [(visible)]="visible" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '40vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+    <p-dialog header="Header" [(visible)]="visible" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '80vw',height:'80vh', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
         <ng-template pTemplate="header">
             <h5 class="white-space-nowrap fw-bold modalheading ms-2">Upload Materials</h5>
         </ng-template>
         <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Title</label> -->
-        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Your Title here...">
+        <input [(ngModel)]="bookObj.Title" type="text" class="form-control custominput my-3" placeholder="Your title here">
         <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Description</label> -->
-        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Your Description here...">
+        <!-- <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Your Description here..."> -->
+        <p-editor [(ngModel)]="bookObj.Description" name="description" placeholder="Your description here" [style]="{ height: '170px' }"></p-editor>
         <!-- <label for="exampleFormControlInput2" class="mb-1">Your attachment</label> -->
-        <input type="file" class="form-control custominput mb-3" [(ngModel)]="fileInput" id="exampleFormControlInput2" placeholder="Choose File" multiple>
+        <input type="file" class="form-control custominput my-3" (change)="onFileSelected($event)" name="fileinput" placeholder="Choose File" multiple>
         
         <ng-template pTemplate="footer pt-5">
             <div class="w-100 d-flex justify-content-start align-items-center">
-                <a class="btn sidenavbtn" (click)="tempfunc()"><span class="material-icons me-2">add</span>Add material</a>
+                <a class="btn sidenavbtn" (click)="addBook()"><span class="material-icons me-2">add</span>Add material</a>
             </div>
         </ng-template>
     </p-dialog>
 
 
-    <p-dialog header="Header" [(visible)]="visible1" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '40vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+    <p-dialog header="Header" [(visible)]="visible1" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '60vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
         <ng-template pTemplate="header">
             <h5 class="white-space-nowrap fw-bold modalheading ms-2">New Announcement</h5>
         </ng-template>
         <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Announcement</label> -->
-        <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Write Your announcement here...">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write Your announcement here..." style="visibility: hidden;">
+        <p-editor [(ngModel)]="announcementObj.announcementText" name="description" placeholder="Your announcement here" [style]="{ height: '170px' }"></p-editor>
         
         <ng-template pTemplate="footer pt-5">
             <div class="w-100 d-flex justify-content-start align-items-center">
-                <a class="btn sidenavbtn mt-2" (click)="tempfunc()"><span class="material-icons me-2">add</span>Post Announcement</a>
+                <a class="btn sidenavbtn mt-3" (click)="addAnnouncement()"><span class="material-icons me-2">add</span>Post Announcement</a>
             </div>
         </ng-template>
     </p-dialog>

@@ -27,6 +27,7 @@ export class ClassChatComponent implements OnInit {
   store = inject(Store)
 
   constructor(private route: ActivatedRoute) { }
+  temp = "<h2>Assalam o alaikum</h2><p>These materials are <u>recommended</u> to be read by the studen<span class=\"ql-cursor\">﻿</span>ts. This will help in <strong>final exams.</strong></p>"
 
   chat :any = [
   ];  

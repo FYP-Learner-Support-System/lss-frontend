@@ -32,10 +32,10 @@ export class ContentService {
       );
   }
 
-  postBook(body: any): Observable<any>{
+  postBook(body: FormData): Observable<any>{
     const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
-    const headers = new HttpHeaders().set('Authorization', `${token}`).set('Content-Type', 'application/json');
-    return this.http.post<any>(`${this.domain}/api/Classroom/classroom-content/post-single-content`, body,{headers, observe: 'response' })
+    const headers = new HttpHeaders().set('Authorization', `${token}`)
+    return this.http.post<any>(`${this.domain}/api/Classroom/classroom-content/post-multiple-content`, body,{headers, observe: 'response' })
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError({ status: error.status, message: error.error }); // Forward the error to the caller

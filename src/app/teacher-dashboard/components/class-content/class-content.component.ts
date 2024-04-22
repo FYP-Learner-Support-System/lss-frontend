@@ -23,13 +23,16 @@ import {AvatarModule} from 'primeng/avatar'
 import { MenuModule } from 'primeng/menu';
 import { EditorModule } from 'primeng/editor';
 import { ContentService } from '../../../services/content/content.service';
+import { MessageService } from 'primeng/api';
+import { addMaterial } from '../../../store/material/materials.actions';
+import { ClassMaterialItemComponent } from "../class-material-item/class-material-item.component";
 
 @Component({
     selector: 'app-class-content',
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [EditorModule,MenuModule, InputTextareaModule,TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent,DialogModule,ScrollTopModule, FormsModule,TooltipModule,OverlayPanelModule]
+    imports: [EditorModule, MenuModule, InputTextareaModule, TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent, DialogModule, ScrollTopModule, FormsModule, TooltipModule, OverlayPanelModule, ClassMaterialItemComponent]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 
@@ -38,21 +41,27 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
   @ViewChild('messageInput') messageInput!: ElementRef;
   @ViewChild('classChatComponent') classChatComponent!: ClassChatComponent;
+  @ViewChild('spinner') spinner!: ElementRef;
   
   items: MenuItem[] | undefined;
   store = inject(Store)
   classService = inject(ClassService)
   contentService = inject(ContentService)
+  messageService = inject(MessageService)
   drawer!: MatDrawer;
   disabled:boolean=true;
 
   currentClassId!:number;
+  materialId!:number;
   materialroute:string = ""
   studentsroute:string = ""
   chatroute:string = ""
+  materialItemRoute = ""
   usertype = 0
   visible: boolean = false;
   visible1: boolean = false;
+
+  id = 0
 
   currentPath: string = "";
 
@@ -130,7 +139,9 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
     this.activatedRoute.params.subscribe(data=>{
       this.currentClassId = +data['id']
+      this.materialId = +data['materialId']
       this.materialroute = `/v1/dashboard/classes/${this.currentClassId}/materials`
+      this.materialItemRoute = `/v1/dashboard/classes/${this.currentClassId}/materials/${this.materialId}`
       this.studentsroute = `/v1/dashboard/classes/${this.currentClassId}/students`
       this.chatroute = `/v1/dashboard/classes/${this.currentClassId}/chat`
     })
@@ -196,15 +207,43 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
 
     this.contentService.postBook(formData).subscribe((res)=>{
       console.log(res)
+      this.activatedRoute.params.subscribe(data => {
+
+        this.id = +data['id'];
+        this.contentService.GetAllMaterial(this.id).subscribe((res)=>{
+          console.log(res.body)
+          this.store.dispatch(addMaterial({materialList:res.body}))
+        })
+  
+      });
+      this.spinner.nativeElement.classList.add('d-none')
+      this.messageService.add({severity: 'success', summary: 'Success', detail: "Announcement posted Successfully!" });
       this.visible = false
+    },error => {
+      this.spinner.nativeElement.classList.add('d-none')
+      this.messageService.add({severity: 'error', summary: 'Error', detail: "Error Occurred! Please try again." });
     })
   }
 
   addAnnouncement(){
-    console.log(this.announcementObj)
+    this.spinner.nativeElement.classList.remove('d-none')
     this.contentService.postAnnouncement(this.announcementObj).subscribe((res)=>{
       console.log(res)
+      this.activatedRoute.params.subscribe(data => {
+
+        this.id = +data['id'];
+        this.contentService.GetAllMaterial(this.id).subscribe((res)=>{
+          console.log(res.body)
+          this.store.dispatch(addMaterial({materialList:res.body}))
+        })
+  
+      });
+      this.spinner.nativeElement.classList.add('d-none')
+      this.messageService.add({severity: 'success', summary: 'Success', detail: "Announcement posted Successfully!" });
       this.visible1 = false
+    },error => {
+      this.spinner.nativeElement.classList.add('d-none')
+      this.messageService.add({severity: 'error', summary: 'Error', detail: "Error Occurred! Please try again." });
     })
   }
     

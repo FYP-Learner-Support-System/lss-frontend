@@ -36,6 +36,7 @@
     <div class="contentcontainer" #chatContainer>
         <app-class-material *ngIf="currentPath==materialroute"/>
         <app-class-students *ngIf="currentPath==studentsroute"/>
+        <app-class-material-item *ngIf="currentPath==materialItemRoute"/>
         <app-class-chat #classChatComponent *ngIf="currentPath==chatroute" [question]="question" [scrollToBottom]="scrollToBottom()"/>
         <!-- <p-scrollTop *ngIf="currentPath==chatroute" target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop> -->
     </div>
@@ -52,7 +53,7 @@
             <a class="btn snackbtn" [routerLink]="chatroute"><span class="pi pi-fw pi-comments me-1"></span>Chat</a>
         </div>
 
-        <div class="col-4 snackstyle2" [ngClass]="currentPath==materialroute?'active':''">
+        <div class="col-4 snackstyle2" [ngClass]="currentPath==materialroute || currentPath==materialItemRoute ?'active':''">
             <a class="btn snackbtn" [routerLink]="materialroute"><span class="pi pi-fw pi-book me-1"></span>Materials</a>
         </div>
 
@@ -76,7 +77,7 @@
         
         <ng-template pTemplate="footer pt-5">
             <div class="w-100 d-flex justify-content-start align-items-center">
-                <a class="btn sidenavbtn" (click)="addBook()"><span class="material-icons me-2">add</span>Add material</a>
+                <a class="btn sidenavbtn" (click)="addBook()"><i class="pi pi-spin pi-spinner me-2 d-none" #spinner style="font-size: 1rem"></i>Add material</a>
             </div>
         </ng-template>
     </p-dialog>
@@ -92,7 +93,7 @@
         
         <ng-template pTemplate="footer pt-5">
             <div class="w-100 d-flex justify-content-start align-items-center">
-                <a class="btn sidenavbtn mt-3" (click)="addAnnouncement()"><span class="material-icons me-2">add</span>Post Announcement</a>
+                <a class="btn sidenavbtn mt-3" (click)="addAnnouncement()"><i class="pi pi-spin pi-spinner me-2 d-none" #spinner style="font-size: 1rem"></i>Post Announcement</a>
             </div>
         </ng-template>
     </p-dialog>

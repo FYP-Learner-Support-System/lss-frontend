@@ -9,6 +9,7 @@ export const routes1: Routes = [
       {path:"", component:ClassPageComponent},
       {path:"quiz", component:QuizPageComponent},
       {path:"classes/:id/materials", component:ClassContentComponent},
+      {path:"classes/:id/materials/:materialId", component:ClassContentComponent},
       {path:"classes/:id/students", component:ClassContentComponent},
       {path:"classes/:id/chat", component:ClassContentComponent},
       {path:"classes/:id", redirectTo:"classes/:id/materials", pathMatch:"full"},

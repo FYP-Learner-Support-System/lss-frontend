@@ -43,4 +43,26 @@ export class ContentService {
       );
   }
 
+  deleteMaterial(id:number){
+    const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+    const headers = new HttpHeaders().set('Authorization', `${token}`)
+    return this.http.delete<any>(`${this.domain}/api/Classroom/class-material/${id}`,{headers, observe: 'response' })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError({ status: error.status, message: error.error }); // Forward the error to the caller
+        })
+      );
+  }
+
+  deleteAnnouncement(id:number){
+    const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+    const headers = new HttpHeaders().set('Authorization', `${token}`)
+    return this.http.delete<any>(`${this.domain}/api/Classroom/classroom-content/announcement/delete-announcement-${id}`,{headers, observe: 'response' })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError({ status: error.status, message: error.error }); // Forward the error to the caller
+        })
+      );
+  }
+
 }

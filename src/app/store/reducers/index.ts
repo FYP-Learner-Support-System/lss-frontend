@@ -8,6 +8,7 @@ import {
 } from '@ngrx/store';
 import { classesReducer } from '../classes/classes.reducer';
 import { UserReducer } from '../user/user.reducer';
+import { materialsReducer } from '../material/materials.reducer';
 
 export interface State {
 
@@ -15,7 +16,8 @@ export interface State {
 
 export const reducers: ActionReducerMap<State> = {
   classes: classesReducer,
-  user: UserReducer
+  user: UserReducer,
+  material: materialsReducer,
 };
 
 

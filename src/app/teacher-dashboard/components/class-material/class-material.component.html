@@ -1,83 +1,90 @@
 <div class="m-2">
 
-    <div *ngIf="content?.length===0" class="d-flex justify-content-center align-items-center flex-column" style="height: 70dvh;">
-        <img class="img-fluid my-5" src="../../../../assets/askspherelogo.png" alt="" width="130px" height="auto">
-        <h5 class="text-dark text-center">Currently, there's no content available. Please check back later for updates</h5>
+    <div *ngIf="content?.length===0 || content==undefined" [ngClass]="showSkeleton?'justify-content-start':'justify-content-center'" class="d-flex align-items-center flex-column" style="height: 70dvh;">
+        <div class="d-flex justify-content-center align-items-center flex-column" *ngIf="!showSkeleton">
+            <img class="img-fluid my-5" src="../../../../assets/askspherelogo.png" alt="" width="130px" height="auto">
+            <h5 class="text-dark text-center">Currently, there's no content available. Please check back later for updates</h5>
+        </div>
+        <div class="container" *ngIf="showSkeleton">
+            <div class="row d-flex justify-content-start align-items-center mt-5 px-3 skeletonStyle">
+                <div class="mb-5" *ngFor="let each of [0,1,2,3]">
+                    <p-skeleton width="auto" height="3rem"></p-skeleton>
+                </div>
+            </div>
+        </div>
     </div>
+
+    
 
     <div class="classform my-4" *ngFor="let each of content">
 
-        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='announcement'">
+        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='announcement'" (click)="navigateToMaterialItem(each.data.announcementId)">
             <p-avatar class="me-3" icon="pi pi-megaphone" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
-            <div class="d-flex justify-content-start align-items-start flex-column" >
+            <div class="d-flex justify-content-start align-items-start flex-column me-auto" >
                 <h6 class="text-dark mb-0" style="font-size: 0.9rem;"><strong>{{each.data.teacherName}} Posted a new Announcement</strong></h6>
                 <p class="text-muted mb-0" style="font-size: 0.8rem;">{{each.data.datetime | customDatePipe}}</p>
             </div>
+            <div class="dropdown" *ngIf="usertype==1">
+                <button class="btn me-4 p-0 menubtn"  data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom"><span class="pi pi-ellipsis-v icon"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="openEditAnnounceDialog(each.data)" style="cursor: pointer;"><span class="pi pi-pencil me-2"></span>Edit</a></li>
+                  <li><a class="dropdown-item" (click)="confirm2($event,each.data.announcementId,each.type)" style="cursor: pointer;"><span class="pi pi-trash me-2"></span>Delete</a></li>
+                </ul>
+            </div>
         </div>
 
-        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='classMaterial'">
+        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='classMaterial'" (click)="navigateToMaterialItem(each.data.classMaterialId)">
             <p-avatar class="me-3" icon="pi pi-book" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
-            <div class="d-flex justify-content-start align-items-start flex-column" >
+            <div class="d-flex justify-content-start align-items-start flex-column me-auto" >
                 <h6 class="mb-0" style="font-size: 0.9rem; color: rgb(77, 77, 77);"><strong>{{each.data.teacherName}} Uploaded a new material: {{each.data.title}}</strong></h6>
                 <p class="text-muted mb-0" style="font-size: 0.8rem;">{{each.data.datetime | customDatePipe}}</p>
             </div>
+            <div class="dropdown" *ngIf="usertype==1">
+                <button class="btn me-4 p-0 menubtn" data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom"><span class="pi pi-ellipsis-v icon"></span></button>
+                <ul class="dropdown-menu">
+                  <!-- <li><a class="dropdown-item" (click)="openEditBookDialog(each.data)" style="cursor: pointer;"><span class="pi pi-pencil me-2"></span>Edit</a></li> -->
+                  <li><a class="dropdown-item" (click)="confirm2($event,each.data.classMaterialId,each.type)" style="cursor: pointer;"><span class="pi pi-trash me-2"></span>Delete</a></li>
+                </ul>
+            </div>
         </div>
-
-        <!-- <div class="row" *ngIf="each.type==='announcement'">
-
-            <div class="col-12 d-flex justify-content-start align-items-start p-3 pb-0">
-                <p-avatar class="ms-3" icon="pi pi-user" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
-                <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
-                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.data.teacherName}}</h6>
-                    <p class="text-muted mb-2">{{each.data.datetime | customDatePipe}}</p>
-                </div>
-            </div>
-
-            <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4">
-                <p-inplace closeIcon= "pi pi-angle-up" [closable]=true>
-                    <ng-template pTemplate="display">
-                        <div class="d-flex flex-row">
-                            <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="each.data.announcementText.slice(0,50)"></p>
-                            <a class="viewmore">...Show more</a>
-                          </div>
-                    </ng-template>
-                    <ng-template pTemplate="content">
-                        <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="each.data.announcementText"></p>
-                    </ng-template>
-                </p-inplace>
-            </div>
-        </div> -->
-
-        <!-- <div class="row" *ngIf="each.type==='classMaterial'">
-
-            <div class="col-12 d-flex justify-content-start align-items-start p-3 pb-0">
-
-                <p-avatar class="ms-3" icon="pi pi-user" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
-                <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
-                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.data.teacherName}}</h6>
-                    <p class="text-muted mb-2">{{each.data.datetime | customDatePipe}}</p>
-                </div>
-
-            </div>
-
-            <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4 pt-1">
-
-                <div class="classform1 mt-2 ms-3" style="cursor: pointer;" *ngFor="let book of each.data.books">
-                    <div class="row">
-                        <div class="col-3 d-flex justify-content-start align-items-start thumbnail">
-                            
-                        </div>
-                        <div class="col-9 d-flex justify-content-start align-items-start flex-column p-3 px-4">
-                            <h6 class="fw-bold mb-0 pb-1 text-dark">{{book.fileName}}</h6>
-                            <p class="text-muted mb-2">PDF</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div> -->
-
     </div>
 
+    <p-confirmDialog [visible]="confirmVisible"></p-confirmDialog>
+
+    <p-dialog header="Header" [(visible)]="visibleAnnouncement" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '60vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+        <ng-template pTemplate="header">
+            <h5 class="white-space-nowrap fw-bold modalheading ms-2">Edit Announcement</h5>
+        </ng-template>
+        <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Announcement</label> -->
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write Your announcement here..." style="visibility: hidden;">
+        <p-editor [(ngModel)]="announcementObj.announcementText" name="description" placeholder="Your announcement here" [style]="{ height: '170px' }"></p-editor>
+        
+        <ng-template pTemplate="footer pt-5">
+            <div class="w-100 d-flex justify-content-start align-items-center">
+                <a class="btn sidenavbtn mt-3"  (click)="editAnnouncement()"><span class="material-icons me-2">add</span>Post Announcement</a>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+    <p-dialog header="Header" [(visible)]="visibleBook" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '80vw',height:'80vh', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
+        <ng-template pTemplate="header">
+            <h5 class="white-space-nowrap fw-bold modalheading ms-2">Edit Materials</h5>
+        </ng-template>
+        <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Title</label> -->
+        <input [(ngModel)]="bookObj.Title" type="text" class="form-control custominput my-3" placeholder="Your title here">
+        <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Description</label> -->
+        <!-- <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Your Description here..."> -->
+        <p-editor [(ngModel)]="bookObj.Description" name="description" placeholder="Your description here" [style]="{ height: '170px' }"></p-editor>
+        <!-- <label for="exampleFormControlInput2" class="mb-1">Your attachment</label> -->
+        <input type="file" class="form-control custominput my-3" (change)="onFileSelected($event)" name="fileinput" placeholder="Choose File" multiple>
+        
+        <ng-template pTemplate="footer pt-5">
+            <div class="w-100 d-flex justify-content-start align-items-center">
+                <a class="btn sidenavbtn" (click)="editMaterial()"><span class="material-icons me-2">add</span>Add material</a>
+            </div>
+        </ng-template>
+    </p-dialog>
 </div>
+
+
+        

@@ -51,10 +51,27 @@ export class ClassMaterialItemComponent implements OnInit {
   });
  }
 
- downloadBook(materialId:number,bookId:number){
+ downloadBook(materialId:number,bookId:number,fileName:string){
   console.log("clicked")
-  this.contentService.downloadBook(materialId,bookId).subscribe(res=>{
-    console.log(res)
-  })
+  this.contentService.downloadBook(materialId,bookId).subscribe((blob: Blob) => {
+    console.log(blob)
+    // Create a blob URL for the Blob object
+    const url = window.URL.createObjectURL(blob);
+    // Create a link element
+    const link = document.createElement('a');
+    // Set link attributes
+    link.href = url;
+    link.download = fileName; // Specify the filename
+    // Append the link to the document body
+    document.body.appendChild(link);
+    // Programmatically click the link to trigger the file download
+    link.click();
+    // Cleanup: remove the link and revoke the URL
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  }, error => {
+    console.error('Error downloading PDF:', error);
+  });
+
  }
 }

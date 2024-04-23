@@ -47,7 +47,7 @@
             </div>
 
             <div class="col-12 col-md-6 d-flex justify-content-start align-items-start flex-column p-3 px-4 pt-1" *ngFor="let book of materialItem[0].data.books">
-                <div class="classform1 mt-2" style="cursor: pointer;" (click)="downloadBook(materialItem[0].data.classMaterialId,book.bookId)">
+                <div class="classform1 mt-2" style="cursor: pointer;" (click)="downloadBook(materialItem[0].data.classMaterialId,book.bookId,book.fileName)">
                     <div class="row">
                         <div class="col-3 d-flex justify-content-start align-items-start thumbnail">
                             

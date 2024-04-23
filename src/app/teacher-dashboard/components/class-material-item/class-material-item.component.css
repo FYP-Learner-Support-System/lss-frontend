@@ -43,7 +43,7 @@
 .classintro{
     background-image: url('../../../../assets/img_bookclub.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     height: 30dvh;
     width: 70dvw;
     border-radius: 20px;
@@ -75,12 +75,12 @@
 .classform1{
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 20px;
-    margin: 0px 10px;
-    width: 50%;
+    /* margin: 0px 10px; */
+    width: 100%;
 }
 
 .thumbnail{
-    background-image: url('../../../../assets/nlpbookcover.jpg');
+    background-image: url('../../../../assets/pdfthumnail.png');
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px 0px 0px 20px;

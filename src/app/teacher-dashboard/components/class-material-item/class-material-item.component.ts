@@ -50,4 +50,11 @@ export class ClassMaterialItemComponent implements OnInit {
 
   });
  }
+
+ downloadBook(materialId:number,bookId:number){
+  console.log("clicked")
+  this.contentService.downloadBook(materialId,bookId).subscribe(res=>{
+    console.log(res)
+  })
+ }
 }

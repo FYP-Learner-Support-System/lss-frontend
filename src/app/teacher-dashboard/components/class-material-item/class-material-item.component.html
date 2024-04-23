@@ -46,20 +46,18 @@
                 <p class="text-dark text-start">{{materialItem[0].data.description}}</p>
             </div>
 
-            <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4 pt-1">
-
-                <div class="classform1 mt-2 ms-3" style="cursor: pointer;" *ngFor="let book of materialItem[0].data.books">
+            <div class="col-12 col-md-6 d-flex justify-content-start align-items-start flex-column p-3 px-4 pt-1" *ngFor="let book of materialItem[0].data.books">
+                <div class="classform1 mt-2" style="cursor: pointer;" (click)="downloadBook(materialItem[0].data.classMaterialId,book.bookId)">
                     <div class="row">
                         <div class="col-3 d-flex justify-content-start align-items-start thumbnail">
                             
                         </div>
-                        <div class="col-9 d-flex justify-content-start align-items-start flex-column p-3 px-4">
+                        <div class="col-9 d-flex justify-content-start align-items-start flex-column p-3">
                             <h6 class="fw-bold mb-0 pb-1 text-dark">{{book.fileName}}</h6>
                             <p class="text-muted mb-2">PDF</p>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>

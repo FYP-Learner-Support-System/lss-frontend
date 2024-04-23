@@ -65,4 +65,17 @@ export class ContentService {
       );
   }
 
+  downloadBook(materialId:number,bookId:number){
+    const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
+    const headers = new HttpHeaders().set('Authorization', `${token}`).set('Content-Type', 'application/json');
+    return this.http.get<any>(`${this.domain}/api/Classroom/classroom-content/get-file?MaterialId=${materialId}&BookId=${bookId}`,{headers, observe: 'response' })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError({ status: error.status, message: error.error }); // Forward the error to the caller
+        })
+      );
+  }
+
+
+
 }

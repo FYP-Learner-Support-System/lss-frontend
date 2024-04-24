@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {AvatarModule} from 'primeng/avatar'
 import { CurrentPathService } from '../../../services/current-path.service';
@@ -26,6 +26,8 @@ import { addMaterial } from '../../../store/material/materials.actions';
   styleUrl: './class-material.component.css'
 })
 export class ClassMaterialComponent implements OnInit {
+  constructor(private cdr: ChangeDetectorRef) {}
+  @ViewChild('spinner') spinner!: ElementRef;
 
   store = inject(Store);
   routerService = inject(CurrentPathService)
@@ -55,7 +57,7 @@ export class ClassMaterialComponent implements OnInit {
 
   announcementObj = {
     announcementId: 0,
-    announcementText:"",
+    newAnnouncementText:"",
   }
 
   ngOnInit(): void {
@@ -92,7 +94,8 @@ export class ClassMaterialComponent implements OnInit {
 
   openEditAnnounceDialog(data:any){
     this.visibleAnnouncement=true
-    this.announcementObj.announcementText = data.announcementText
+    this.announcementObj.newAnnouncementText = data.announcementText
+    this.announcementObj.announcementId = data.announcementId
   }
 
   editMaterial(){
@@ -100,7 +103,15 @@ export class ClassMaterialComponent implements OnInit {
   }
 
   editAnnouncement(){
-
+    this.spinner.nativeElement.classList.remove('d-none')
+    this.contentService.editAnnouncement(this.announcementObj).subscribe(res=>{
+      this.contentService.GetAllMaterial(this.id).subscribe(materials=>{
+        console.log("after Editing: ", materials.body)
+        this.store.dispatch(addMaterial({materialList:materials.body}))
+      })
+      this.spinner.nativeElement.classList.add('d-none')
+      this.visibleAnnouncement = false
+    })
   }
 
   deleteMaterial(id:number,type:string){
@@ -111,7 +122,7 @@ export class ClassMaterialComponent implements OnInit {
           console.log("after deleting: ", materials.body)
           this.store.dispatch(addMaterial({materialList:materials.body}))
         })
-        this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: `Record deleted of id ${id}` });
+        this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: `Announcement Deleted Successfully!` });
         this.confirmVisible = false
       },error => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error Occured! Please try again." });
@@ -120,7 +131,12 @@ export class ClassMaterialComponent implements OnInit {
     else if(type=="classMaterial"){
       this.contentService.deleteMaterial(id).subscribe(res=>{
         console.log(res)
-        this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: `Record deleted of id ${id}` });
+        this.contentService.GetAllMaterial(this.id).subscribe(materials=>{
+          console.log("after deleting: ", materials.body)
+          this.store.dispatch(addMaterial({materialList:materials.body}))
+        })
+        this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: `Material Deleted Successfully!` });
+        this.confirmVisible = false
       },error => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: "Error Occured! Please try again." });
       })

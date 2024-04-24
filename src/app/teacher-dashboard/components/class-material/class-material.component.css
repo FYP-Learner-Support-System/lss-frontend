@@ -7,6 +7,15 @@
     gap: 4px;
 }
 
+:host ::ng-deep .p-dialog-title{
+    padding-left: 0.7rem;
+}
+
+:host ::ng-deep .p-button{
+    background-color: transparent !important;
+    padding: 10px !important;
+}
+
 :host ::ng-deep .p-inplace-display:hover{
    background-color: transparent;
 }
@@ -72,12 +81,20 @@
     cursor: pointer;
 }
 
-.classform1{
+.classformAnnouncement{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    border-radius: 8px;
+    margin: 0px 10px;
+    padding: 15px 15px;
+}
+
+/* .classform1{
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 20px;
     margin: 0px 10px;
     width: 50%;
-}
+} */
 
 .thumbnail{
     background-image: url('../../../../assets/nlpbookcover.jpg');

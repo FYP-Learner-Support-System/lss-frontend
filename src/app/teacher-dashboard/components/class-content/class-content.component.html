@@ -71,7 +71,15 @@
         <input [(ngModel)]="bookObj.Title" type="text" class="form-control custominput my-3" placeholder="Your title here">
         <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Description</label> -->
         <!-- <input type="text" class="form-control custominput mb-3" id="exampleFormControlInput1" placeholder="Your Description here..."> -->
-        <p-editor [(ngModel)]="bookObj.Description" name="description" placeholder="Your description here" [style]="{ height: '170px' }"></p-editor>
+        <p-editor [(ngModel)]="bookObj.Description" name="description" placeholder="Your description here" [style]="{ height: '170px' }">
+            <ng-template pTemplate="header">
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold" aria-label="Bold"></button>
+                    <button type="button" class="ql-italic" aria-label="Italic"></button>
+                    <button type="button" class="ql-underline" aria-label="Underline"></button>
+                </span>
+            </ng-template>
+        </p-editor>
         <!-- <label for="exampleFormControlInput2" class="mb-1">Your attachment</label> -->
         <input type="file" class="form-control custominput my-3" (change)="onFileSelected($event)" name="fileinput" placeholder="Choose File" multiple>
         
@@ -85,11 +93,19 @@
 
     <p-dialog header="Header" [(visible)]="visible1" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '60vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
         <ng-template pTemplate="header">
-            <h5 class="white-space-nowrap fw-bold modalheading ms-2">New Announcement</h5>
+            <h5 class="white-space-nowrap fw-bold modalheading ms-3">New Announcement</h5>
         </ng-template>
         <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Announcement</label> -->
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write Your announcement here..." style="visibility: hidden;">
-        <p-editor [(ngModel)]="announcementObj.announcementText" name="description" placeholder="Your announcement here" [style]="{ height: '170px' }"></p-editor>
+        <!-- <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write Your announcement here..." style="visibility: hidden;"> -->
+        <p-editor [(ngModel)]="announcementObj.announcementText" name="description" placeholder="Your announcement here" [style]="{ height: '170px' }">
+            <ng-template pTemplate="header">
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold" aria-label="Bold"></button>
+                    <button type="button" class="ql-italic" aria-label="Italic"></button>
+                    <button type="button" class="ql-underline" aria-label="Underline"></button>
+                </span>
+            </ng-template>
+        </p-editor>
         
         <ng-template pTemplate="footer pt-5">
             <div class="w-100 d-flex justify-content-start align-items-center">

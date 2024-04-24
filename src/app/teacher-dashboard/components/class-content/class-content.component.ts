@@ -204,7 +204,8 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
     for (let i = 0; i < this.selectedFiles.length; i++) {
       formData.append('FileDetailsList', this.selectedFiles[i], this.selectedFiles[i].name);
     }
-
+    
+    this.spinner.nativeElement.classList.remove('d-none')
     this.contentService.postBook(formData).subscribe((res)=>{
       console.log(res)
       this.activatedRoute.params.subscribe(data => {

@@ -84,8 +84,8 @@ export class AppComponent {
         console.log("session Valid: ",res)
         if(res){
           this.userService.GetUserDetails(token).subscribe((result)=>{
-            console.log(result)
-              this.store.dispatch(adduser({useritem: result.body}))
+            console.log(result?.body)
+              this.store.dispatch(adduser({useritem: result?.body}))
           })
           
           this.store.select('user').subscribe(data=>{

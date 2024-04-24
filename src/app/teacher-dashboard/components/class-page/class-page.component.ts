@@ -15,6 +15,16 @@ import { TooltipModule } from 'primeng/tooltip';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BadgeModule } from 'primeng/badge';
 
+export type classListArr = Array<{
+    classId: number
+    className: string;
+    description: string;
+    courseCode: string;
+    classCode:string;
+    instructor: {
+      name: string
+    }
+  }>
 
 @Component({
     selector: 'app-class-page',
@@ -23,6 +33,7 @@ import { BadgeModule } from 'primeng/badge';
     styleUrl: './class-page.component.css',
     imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule,SkeletonModule,TooltipModule,OverlayPanelModule,BadgeModule]
 })
+
 export class ClassPageComponent implements AfterViewInit, OnInit {
 
    constructor(private drawerService: DrawerService) {}
@@ -37,8 +48,8 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
    visible: boolean = false;
    visible1: boolean = false;
    visible2: boolean = false;
-   classList:object[] = [];
-   usertype = 0
+   classList:classListArr = [];
+   usertype: number= 0
 
    showSkeleton = false
 
@@ -64,21 +75,21 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
             if(result.userType===0){
                 this.showSkeleton = true
                 this.classService.GetStudentClassList(token).subscribe(res=>{
-                    console.log("joined classes",res?.body)
+                    // console.log("joined classes",res?.body)
                     this.store.dispatch(fetchclass({classlist:res?.body}))
                     this.showSkeleton = false
                 })
             }else if(result.userType===1){
                 this.showSkeleton = true
                 this.classService.GetTeacherClassList(token).subscribe((res)=>{
-                    console.log("res: ",res?.body)
+                    // console.log("res: ",res?.body)
                     this.store.dispatch(fetchclass({classlist:res?.body}))
                     this.showSkeleton = false
                 })
             } 
+            this.store.select('classes').subscribe(data=> this.classList = data)
         })
 
-        this.store.select('classes').subscribe(data=> this.classList = data)
 
         this.store.select('user').subscribe(data=>{
             this.usertype = data.userType
@@ -89,7 +100,7 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
         this.spinner.nativeElement.classList.remove('d-none')
         const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
         this.classService.createClass(token,this.addClass).subscribe((res)=>{
-            console.log("class creation:",res)
+            // console.log("class creation:",res)
             this.spinner.nativeElement.classList.add('d-none')
             this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
             this.store.select('classes').subscribe(data=> this.classList = data)
@@ -103,7 +114,7 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
         this.spinner.nativeElement.classList.remove('d-none')
         const token = JSON.parse(localStorage.getItem('myUser') || "{}").token
         this.classService.joinClass(token,this.joinClass).subscribe((res)=>{
-            console.log("class joining:",res)
+            // console.log("class joining:",res)
             this.spinner.nativeElement.classList.add('d-none')
             this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: res?.body?.message });
             this.visible1 = false;
@@ -115,13 +126,13 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
 
     copyCode(){
         navigator.clipboard.writeText(this.classcode).then(() => {
-            console.log('Value copied to clipboard:', this.classcode);
+            // console.log('Value copied to clipboard:', this.classcode);
             this.messageService.add({key: 'tl', severity: 'success', summary: 'Success', detail: "Copied Successfully" });
             this.visible2 = false;
             location.reload();
           }, error => {
-            console.error('Error copying value to clipboard:', error);
-            alert('Error copying value to clipboard');
+            // console.error('Error copying value to clipboard:', error);
+            this.messageService.add({key: 'tl', severity: 'error', summary: 'Error', detail: "Error copying value to clipboard" });
           });
     }
 

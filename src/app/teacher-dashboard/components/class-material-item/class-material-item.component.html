@@ -1,31 +1,31 @@
 <div class="container my-2 px-2 px-md-5 pt-2">
 
-    <div class="row" *ngIf="materialItem[0].type==='announcement'">
+    <!-- <div class="row" *ngIf="materialItem[0].type==='announcement'">
 
-            <div class="col-12 d-flex justify-content-start align-items-start p-4 pb-0">
-                <p-avatar class="ms-3" icon="pi pi-megaphone" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
-                <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
-                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{materialItem[0].data.teacherName}}</h6>
-                    <p class="text-muted mb-0">{{materialItem[0].data.datetime | customDatePipe}}</p>
-                </div>
+        <div class="col-12 d-flex justify-content-start align-items-start p-4 pb-0">
+            <p-avatar class="ms-3" icon="pi pi-megaphone" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
+            <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
+                <h6 class="fw-bold mb-0 pb-1 text-dark">{{materialItem[0].data.teacherName}}</h6>
+                <p class="text-muted mb-0">{{materialItem[0].data.datetime | customDatePipe}}</p>
             </div>
+        </div>
 
-            <hr class="hrStyle mt-3">
+        <hr class="hrStyle mt-3">
 
-            <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4">
-                <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="materialItem[0].data.announcementText"></p>
-                <!-- <p-inplace closeIcon= "pi pi-angle-up" [closable]=true>
-                    <ng-template pTemplate="display">
-                        <div class="d-flex flex-row">
-                            <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="materialItem[0].data.announcementText.slice(0,50)"></p>
-                            <a class="viewmore">...Show more</a>
-                          </div>
-                    </ng-template>
-                    <ng-template pTemplate="content">
-                    </ng-template>
-                </p-inplace> -->
-            </div>
-        </div> 
+        <div class="col-12 d-flex justify-content-start align-items-start flex-column p-3 px-4">
+            <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="materialItem[0].data.announcementText"></p>
+            <p-inplace closeIcon= "pi pi-angle-up" [closable]=true>
+                <ng-template pTemplate="display">
+                    <div class="d-flex flex-row">
+                        <p class="pb-0 mb-0 ms-3 text-dark" [innerHTML]="materialItem[0].data.announcementText.slice(0,50)"></p>
+                        <a class="viewmore">...Show more</a>
+                        </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                </ng-template>
+            </p-inplace>
+        </div>
+    </div>  -->
 
         <div class="row" *ngIf="materialItem[0].type==='classMaterial'">
 
@@ -43,7 +43,7 @@
             <hr class="hrStyle mt-3">
             
             <div class="p-3 px-4 pt-1">
-                <p class="text-dark text-start">{{materialItem[0].data.description}}</p>
+                <p class="text-dark text-start" [innerHTML]="materialItem[0].data.description"></p>
             </div>
 
             <div class="col-12 col-md-6 d-flex justify-content-start align-items-start flex-column p-3 px-4 pt-1" *ngFor="let book of materialItem[0].data.books">

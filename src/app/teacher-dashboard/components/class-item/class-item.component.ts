@@ -6,6 +6,17 @@ import {TagModule} from 'primeng/tag'
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
+export interface classObj {
+  classId: number
+  className: string;
+  description: string;
+  courseCode: string;
+  classCode:string;
+  instructor: {
+    name: string
+  }
+}
+
 @Component({
   selector: 'app-class-item',
   standalone: true,
@@ -13,11 +24,12 @@ import { NgIf } from '@angular/common';
   templateUrl: './class-item.component.html',
   styleUrl: './class-item.component.css'
 })
+
 export class ClassItemComponent implements OnInit {
 
-  @Input() eachitem!:any;
-  @Input() userType!:any;
-  class!:any;
+  @Input() eachitem!:classObj;
+  @Input() userType!:number;
+  class!:classObj;
 
   constructor(private router:Router){}
 

@@ -16,34 +16,58 @@
 
     
 
-    <div class="classform my-4" *ngFor="let each of content">
+    <div class="px-4 pt-4 my-4" [ngClass]="each.type==='classMaterial'?'classform':'classformAnnouncement'" *ngFor="let each of content">
 
-        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='announcement'" (click)="navigateToMaterialItem(each.data.announcementId)">
+        <!-- <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='announcement'" (click)="navigateToMaterialItem(each.data.announcementId)">
             <p-avatar class="me-3" icon="pi pi-megaphone" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
             <div class="d-flex justify-content-start align-items-start flex-column me-auto" >
                 <h6 class="text-dark mb-0" style="font-size: 0.9rem;"><strong>{{each.data.teacherName}} Posted a new Announcement</strong></h6>
                 <p class="text-muted mb-0" style="font-size: 0.8rem;">{{each.data.datetime | customDatePipe}}</p>
             </div>
             <div class="dropdown" *ngIf="usertype==1">
-                <button class="btn me-4 p-0 menubtn"  data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom"><span class="pi pi-ellipsis-v icon"></span></button>
+                <button class="btn me-4 p-0 menubtn" style="z-index: 999;"  data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom" (click)="$event.stopPropagation()"><span class="pi pi-ellipsis-v icon"></span></button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" (click)="openEditAnnounceDialog(each.data)" style="cursor: pointer;"><span class="pi pi-pencil me-2"></span>Edit</a></li>
                   <li><a class="dropdown-item" (click)="confirm2($event,each.data.announcementId,each.type)" style="cursor: pointer;"><span class="pi pi-trash me-2"></span>Delete</a></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
-        <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='classMaterial'" (click)="navigateToMaterialItem(each.data.classMaterialId)">
-            <p-avatar class="me-3" icon="pi pi-book" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+        <div class="row" *ngIf="each.type==='announcement'">
+
+            <div class="col-12 d-flex justify-content-start align-items-start">
+                <p-avatar class="me-3" icon="pi pi-megaphone" styleClass="mr-2"  [style]="{ 'background-color': '#393268', color: '#ffffff' }" shape="circle"></p-avatar>
+                <div class="d-flex justify-content-start align-items-start flex-column me-auto" >
+                    <h6 class="fw-bold mb-0 pb-1 text-dark">{{each.data.teacherName}}</h6>
+                    <p class="text-muted mb-0" style="font-size: 0.9rem;">{{each.data.datetime | customDatePipe}} {{each.data.isEdited?"(Edited)":""}}</p>
+                </div>
+                <div class="dropdown" *ngIf="usertype==1">
+                    <button class="btn me-4 p-0 menubtn" data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom" (click)="$event.stopPropagation()"><span class="pi pi-ellipsis-v icon"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" (click)="openEditAnnounceDialog(each.data)" style="cursor: pointer;"><span class="pi pi-pencil me-2"></span>Edit</a></li>
+                      <li><a class="dropdown-item" (click)="confirm2($event,each.data.announcementId,each.type)" style="cursor: pointer;"><span class="pi pi-trash me-2"></span>Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="hrStyle mt-2">
+
+            <div class="col-12 d-flex justify-content-start align-items-start flex-column">
+                <p class="pb-0 mb-0 text-dark" [innerHTML]="each.data.announcementText"></p>
+            </div>
+        </div> 
+
+        <div class="d-flex justify-content-start align-items-start flex-row" *ngIf="each.type==='classMaterial'" (click)="navigateToMaterialItem(each.data.classMaterialId)">
+            <p-avatar class="me-3" icon="pi pi-book" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2"  shape="circle"></p-avatar>
             <div class="d-flex justify-content-start align-items-start flex-column me-auto" >
                 <h6 class="mb-0" style="font-size: 0.9rem; color: rgb(77, 77, 77);"><strong>{{each.data.teacherName}} Uploaded a new material: {{each.data.title}}</strong></h6>
                 <p class="text-muted mb-0" style="font-size: 0.8rem;">{{each.data.datetime | customDatePipe}}</p>
             </div>
             <div class="dropdown" *ngIf="usertype==1">
-                <button class="btn me-4 p-0 menubtn" data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom"><span class="pi pi-ellipsis-v icon"></span></button>
+                <button class="btn me-4 p-0 menubtn" data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom" (click)="$event.stopPropagation()"><span class="pi pi-ellipsis-v icon"></span></button>
                 <ul class="dropdown-menu">
                   <!-- <li><a class="dropdown-item" (click)="openEditBookDialog(each.data)" style="cursor: pointer;"><span class="pi pi-pencil me-2"></span>Edit</a></li> -->
-                  <li><a class="dropdown-item" (click)="confirm2($event,each.data.classMaterialId,each.type)" style="cursor: pointer;"><span class="pi pi-trash me-2"></span>Delete</a></li>
+                  <li><a class="dropdown-item" (click)="$event.stopPropagation()" (click)="confirm2($event,each.data.classMaterialId,each.type)" style="cursor: pointer;"><span class="pi pi-trash me-2"></span>Delete</a></li>
                 </ul>
             </div>
         </div>
@@ -53,15 +77,23 @@
 
     <p-dialog header="Header" [(visible)]="visibleAnnouncement" [modal]="true" [dismissableMask]="true" [breakpoints]="{ '960px': '85vw' }" [draggable]="false" [resizable]="false" [style]="{width: '60vw', border:'0px',borderRadius:'50px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
         <ng-template pTemplate="header">
-            <h5 class="white-space-nowrap fw-bold modalheading ms-2">Edit Announcement</h5>
+            <h5 class="white-space-nowrap fw-bold modalheading ms-3">Edit Announcement</h5>
         </ng-template>
         <!-- <label for="exampleFormControlInput1" class="mb-1 mt-3">Announcement</label> -->
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write Your announcement here..." style="visibility: hidden;">
-        <p-editor [(ngModel)]="announcementObj.announcementText" name="description" placeholder="Your announcement here" [style]="{ height: '170px' }"></p-editor>
+        <!-- <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write Your announcement here..." style="visibility: hidden;"> -->
+        <p-editor [(ngModel)]="announcementObj.newAnnouncementText" name="description" placeholder="Your announcement here" [style]="{ height: '170px' }">
+            <ng-template pTemplate="header">
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold" aria-label="Bold"></button>
+                    <button type="button" class="ql-italic" aria-label="Italic"></button>
+                    <button type="button" class="ql-underline" aria-label="Underline"></button>
+                </span>
+            </ng-template>
+        </p-editor>
         
         <ng-template pTemplate="footer pt-5">
             <div class="w-100 d-flex justify-content-start align-items-center">
-                <a class="btn sidenavbtn mt-3"  (click)="editAnnouncement()"><span class="material-icons me-2">add</span>Post Announcement</a>
+                <a class="btn sidenavbtn mt-3"  (click)="editAnnouncement()"><i class="pi pi-spin pi-spinner me-2 d-none" #spinner style="font-size: 1rem"></i>Edit Announcement</a>
             </div>
         </ng-template>
     </p-dialog>

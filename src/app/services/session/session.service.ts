@@ -17,11 +17,8 @@ export class SessionService {
           const expirationTime = new Date(response.body.item.expirationTime);
           expirationTime.setHours(expirationTime.getHours() + 5);
           const currentTime = new Date();
-
-          console.log("expirationTime:",expirationTime)
-          console.log("currentTime:",currentTime)
-
-
+          // console.log("expirationTime:",expirationTime)
+          // console.log("currentTime:",currentTime)
           return expirationTime > currentTime;
         }),
         catchError((error: HttpErrorResponse) => {

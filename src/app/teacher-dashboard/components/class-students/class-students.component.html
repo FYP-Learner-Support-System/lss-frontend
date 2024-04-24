@@ -3,7 +3,7 @@
         <h4 class="headingstyle">Teachers</h4>
         <hr class="text-dark">
         <div class="d-flex justify-content-start align-items-center flex-row my-3">
-            <p-avatar class="me-4" icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+            <p-avatar class="me-4" icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2"  shape="circle"></p-avatar>
             <h6 class="namestyle mb-0">{{teachers?.name}}</h6>
         </div>
     </div>
@@ -15,7 +15,7 @@
         <hr class="text-dark">
         
         <div class="d-flex justify-content-start align-items-center flex-row my-3" *ngFor="let each of approvedStudents">
-            <p-avatar class="me-4" icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+            <p-avatar class="me-4" icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2"  shape="circle"></p-avatar>
             <h6 class="namestyle mb-0">{{each?.fullName}}</h6>
         </div>
     </div>

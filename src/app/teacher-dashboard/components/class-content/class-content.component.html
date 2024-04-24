@@ -48,7 +48,7 @@
         <button class="btn sendbtn" (click)="sendQuery()"><span class="material-icons sendicon mt-1">send</span></button>
     </form>
     <!-- <input *ngIf="currentPath==chatroute" class="form-control chatinput my-3" type="text" placeholder="Message AskSphere..."> -->
-    <div class="row snackbar">
+    <div class="row snackbar" [ngClass]="currentPath===chatroute?'changeHeight':''">
         <div class="col-4 snackstyle1" [ngClass]="currentPath==chatroute?'active':''">
             <a class="btn snackbtn" [routerLink]="chatroute"><span class="pi pi-fw pi-comments me-1"></span>Chat</a>
         </div>

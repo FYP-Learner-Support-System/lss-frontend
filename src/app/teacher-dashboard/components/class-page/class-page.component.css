@@ -76,6 +76,18 @@
     border-left: 0px;
     color: rgb(65, 57, 94);
     border: 1px solid rgb(74, 61, 97);
+    flex: 4;
+  }
+
+.custominput1{
+    border-radius: 10px;
+    padding: 15px 10px;
+    width: 100%;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border: 1px solid rgb(74, 61, 97);
+    flex: 1;
   }
   
   .custominput::placeholder{

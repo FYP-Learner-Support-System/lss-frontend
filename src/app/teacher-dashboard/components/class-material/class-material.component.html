@@ -2,8 +2,8 @@
 
     <div *ngIf="content?.length===0 || content==undefined" [ngClass]="showSkeleton?'justify-content-start':'justify-content-center'" class="d-flex align-items-center flex-column" style="height: 70dvh;">
         <div class="d-flex justify-content-center align-items-center flex-column" *ngIf="!showSkeleton">
-            <img class="img-fluid my-5" src="../../../../assets/askspherelogo.png" alt="" width="130px" height="auto">
-            <h5 class="text-dark text-center">Currently, there's no content available. Please check back later for updates</h5>
+            <img class="img-fluid my-3" src="../../../../assets/noData.png" alt="" width="250px" height="auto">
+            <h5 class="text-center text-muted">Currently, there's no content available. Please check back later for updates</h5>
         </div>
         <div class="container" *ngIf="showSkeleton">
             <div class="row d-flex justify-content-start align-items-center mt-5 px-3 skeletonStyle">

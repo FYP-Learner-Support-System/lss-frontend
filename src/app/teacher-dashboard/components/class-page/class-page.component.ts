@@ -14,6 +14,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { TooltipModule } from 'primeng/tooltip';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BadgeModule } from 'primeng/badge';
+import { SearchFilterPipe } from '../../../pipes/searchFilterPipe/search-filter.pipe';
 
 export type classListArr = Array<{
     classId: number
@@ -31,7 +32,7 @@ export type classListArr = Array<{
     standalone: true,
     templateUrl: './class-page.component.html',
     styleUrl: './class-page.component.css',
-    imports: [DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule,SkeletonModule,TooltipModule,OverlayPanelModule,BadgeModule]
+    imports: [SearchFilterPipe,DialogModule, AvatarModule, NgIf,NgFor, ClassItemComponent,FormsModule,SkeletonModule,TooltipModule,OverlayPanelModule,BadgeModule]
 })
 
 export class ClassPageComponent implements AfterViewInit, OnInit {
@@ -57,6 +58,8 @@ export class ClassPageComponent implements AfterViewInit, OnInit {
 
    joinClass = ""
    classcode = ""
+
+   searchVal!:string
 
   ngAfterViewInit(): void {
     setTimeout(() => {  

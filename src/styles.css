@@ -87,6 +87,10 @@ body.side-nav-open {
     color: #333252;
 }
 
+.changeHeight{
+    height: 80px;
+}
+
 .snackbtn{
     display: flex;
     justify-content: center;

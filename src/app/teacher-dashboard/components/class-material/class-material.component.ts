@@ -16,12 +16,13 @@ import { Editor, EditorModule } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
 import Quill from 'quill';
 import { addMaterial } from '../../../store/material/materials.actions';
+import { RemoveMarginbottomPipe } from '../../../pipes/removeMarginBottom/remove-marginbottom.pipe';
 
 
 @Component({
   selector: 'app-class-material',
   standalone: true,
-  imports: [EditorModule,DialogModule,ConfirmDialogModule,SkeletonModule,AvatarModule,NgFor,NgIf, CustomDatePipePipe,InplaceModule,NgClass,FormsModule],
+  imports: [RemoveMarginbottomPipe,EditorModule,DialogModule,ConfirmDialogModule,SkeletonModule,AvatarModule,NgFor,NgIf, CustomDatePipePipe,InplaceModule,NgClass,FormsModule],
   templateUrl: './class-material.component.html',
   styleUrl: './class-material.component.css'
 })

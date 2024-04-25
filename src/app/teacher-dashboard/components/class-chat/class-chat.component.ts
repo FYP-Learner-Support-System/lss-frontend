@@ -77,6 +77,7 @@ export class ClassChatComponent implements OnInit {
           }
 
           this.chatService.getAllChats(this.getAllChat_reqBody).subscribe((res)=>{
+            console.log("all chats: ", res)
             this.chat = res.body
           })
 

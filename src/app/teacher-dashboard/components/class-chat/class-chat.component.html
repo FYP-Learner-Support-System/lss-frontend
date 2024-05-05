@@ -1,10 +1,10 @@
 <div class="m-3 m-lg-4" *ngIf="chat.length>0">
 
-    <div *ngFor="let query of chat; let i = index;">
+    <div class="mb-5" *ngFor="let query of chat; let i = index;">
         <!-- Question -->
         <div class="row d-flex justify-content-start align-items-start my-3">
             <div class="col-2 col-md-1">
-                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+                <p-avatar icon="pi pi-user" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>
             </div>
             <div class="col-10 col-md-11">
                 <h6 class="fw-bold text-dark my-1">You</h6>
@@ -14,9 +14,9 @@
         <!-- Answer -->
         <div class="row d-flex justify-content-start align-items-start mt-3">
             <div class="col-2 col-md-1">
-                <p-avatar image="assets/gptlogo.png" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+                <p-avatar image="assets/askspherelogo.ico" styleClass="mr-2" size="large" shape="circle"></p-avatar>
             </div>
-            <div class="col-10 col-md-11">
+            <div class="col-10 col-md-11 response">
                 <h6 class="fw-bold text-dark my-1">AskSphere</h6>
 
                 <!-- last response but in the state of loading -->
@@ -33,18 +33,23 @@
                 <!-- not last response nor its in the state of loading. text will be statically displayed through this p tag -->
                 <p *ngIf="query.response !== 'loading' && i!==chat.length-1" class="text-dark my-2" [innerHTML]="query.response | newline | bold | underline"></p>
 
-                <!-- <h6 class="fw-bold text-dark mt-3 mb-1">Sources:</h6>
+                <div class="d-flex justify-content-start align-items-center flex-row mb-4 responseOption">
+                    <i class="pi me-2" [ngClass]="copiedItem.copied && copiedItem.text===query.response?'pi-check':'pi-copy'" (click)="copyResponse(query.response)" style="color: rgb(41, 30, 110); font-size: 1rem; cursor: pointer;"></i>
+                    <i class="pi pi-thumbs-down" style="color: rgb(41, 30, 110); font-size: 1rem; cursor: pointer;"></i>
+                </div>
+
+                <h6 class="fw-bold text-dark mt-3 mb-1">Reference(s):</h6>
 
                 <div class="row gap-3 ms-0 mt-3">
-                    <div class="col-6 d-flex justify-content-start align-items-start flex-column text-dark p-3" style="border-radius: 10px; font-size: 0.9rem; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; width: max-content; background-color: rgb(241, 237, 248);">
+                    <div class="col-6 d-flex justify-content-center align-items-start flex-column text-dark p-2 sourceStyle">
+                        <p class="mb-0"><i class="pi pi-book me-1" style="color: rgb(196, 52, 160); font-size: 0.9rem;"></i> Introduction to Natural Language Processing</p>
+                        <p class="mb-0 d-flex justify-content-center align-items-center"><span class="material-icons me-1" style="color: rgb(196, 52, 160); font-size: 1.1rem;">ads_click</span><strong style="color: rgb(58, 58, 58);">54, 62, 77</strong></p>
+                    </div>
+                    <!-- <div class="col-6 d-flex justify-content-start align-items-start flex-column text-dark p-3" style="border-radius: 10px; font-size: 0.9rem; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; width: max-content; background-color: rgb(241, 237, 248);">
                         <p class="mb-0"><strong>Book Title:</strong> Intorduction to NLP</p>
                         <p class="mb-0"><strong>Page No:</strong> 54,62,77</p>
-                    </div>
-                    <div class="col-6 d-flex justify-content-start align-items-start flex-column text-dark p-3" style="border-radius: 10px; font-size: 0.9rem; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; width: max-content; background-color: rgb(241, 237, 248);">
-                        <p class="mb-0"><strong>Book Title:</strong> Intorduction to NLP</p>
-                        <p class="mb-0"><strong>Page No:</strong> 54,62,77</p>
-                    </div>
-                </div> -->
+                    </div> -->
+                </div>
             </div>
         </div>
     </div>

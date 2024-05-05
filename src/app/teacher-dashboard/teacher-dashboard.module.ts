@@ -10,7 +10,7 @@ import { ClassPageComponent } from './components/class-page/class-page.component
   imports: [
     CommonModule,
     TdashboardComponent,
-    ClassPageComponent,
+    ClassPageComponent
   ],
   exports: [
     TdashboardComponent,

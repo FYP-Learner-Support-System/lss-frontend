@@ -42,6 +42,8 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   @ViewChild('messageInput') messageInput!: ElementRef;
   @ViewChild('classChatComponent') classChatComponent!: ClassChatComponent;
   @ViewChild('spinner') spinner!: ElementRef;
+
+  scrollFlag = false;
   
   items: MenuItem[] | undefined;
   store = inject(Store)
@@ -100,10 +102,18 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   }
 
   scrollToBottom(): void {
-    try {
-      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-      // console.log(this.chatContainer.nativeElement.scrollTop)
-    } catch(err) { }
+    if(!this.scrollFlag){
+      try {
+        this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+        // console.log(this.chatContainer.nativeElement.scrollTop)
+      } catch(err) { }
+    }
+  }
+
+  handleBooleanValue(value: boolean): void {
+    this.scrollFlag = value
+    console.log('Received boolean value from child:', value);
+    // Do something with the received boolean value
   }
 
   ngOnInit(): void {

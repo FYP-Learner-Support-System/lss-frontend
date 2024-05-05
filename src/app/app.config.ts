@@ -10,6 +10,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { provideServiceWorker } from '@angular/service-worker';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideRouter(routes1), provideAnimations(), provideStore(reducers, { metaReducers }), provideHttpClient(), MessageService,ConfirmationService, provideServiceWorker('ngsw-worker.js', {

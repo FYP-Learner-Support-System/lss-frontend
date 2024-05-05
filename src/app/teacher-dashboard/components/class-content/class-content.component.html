@@ -37,14 +37,14 @@
         <app-class-material *ngIf="currentPath==materialroute"/>
         <app-class-students *ngIf="currentPath==studentsroute"/>
         <app-class-material-item *ngIf="currentPath==materialItemRoute"/>
-        <app-class-chat #classChatComponent *ngIf="currentPath==chatroute" [question]="question" [scrollToBottom]="scrollToBottom()"/>
+        <app-class-chat #classChatComponent *ngIf="currentPath==chatroute" [question]="question" [scrollToBottom]="scrollToBottom()" (booleanValueChange)="handleBooleanValue($event)"/>
         <!-- <p-scrollTop *ngIf="currentPath==chatroute" target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop> -->
     </div>
 
     <!-- <hr class="m-0 mb-auto"> -->
     <!-- <p class="text-dark" style="white-space: pre-wrap;">{{question}}</p> -->
     <form *ngIf="currentPath==chatroute" class="d-flex justify-content-center align-items-center newsform my-3" action="">
-        <textarea required rows="2" cols="30" pInputTextarea [(ngModel)]="question" name="question" class="form-control chatinput" placeholder="Message AskSphere..." (keydown.enter)="onEnter($event)" (keydown.shift.enter)="insertNewLine($event)" #messageInput></textarea>
+        <textarea required rows="1" cols="30" pInputTextarea [(ngModel)]="question" name="question" class="form-control chatinput" placeholder="Message AskSphere..." (keydown.enter)="onEnter($event)" (keydown.shift.enter)="insertNewLine($event)" #messageInput></textarea>
         <button class="btn sendbtn" (click)="sendQuery()"><span class="material-icons sendicon mt-1">send</span></button>
     </form>
     <!-- <input *ngIf="currentPath==chatroute" class="form-control chatinput my-3" type="text" placeholder="Message AskSphere..."> -->

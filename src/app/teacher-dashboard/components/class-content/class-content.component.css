@@ -88,7 +88,8 @@
 
 .chatinput {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 100px;
     border: none;
     background: white;
     color: black;
@@ -96,6 +97,10 @@
     padding: 12px 70px 10px 20px !important;
     border-radius: 15px;
 }
+
+/* .chatinput:focus {
+    border: none;
+} */
 
 .chatinput::placeholder{
     color: rgb(138, 138, 138);

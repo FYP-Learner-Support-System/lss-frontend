@@ -33,7 +33,7 @@
 
                 <div class="d-flex justify-content-start align-items-start flex-column custwidth mb-3">
                     <input type="password" [formControl]="cpassword" class="form-control custominput w-100 mb-2" id="cpassword" placeholder="Confirm Password">
-                    <small id="username-help" class="text-danger" *ngIf="cpassword.invalid && (cpassword.dirty)">Passwords do not match.</small>
+                    <small id="username-help" class="text-danger" *ngIf="!password.invalid && password?.value != cpassword?.value && (cpassword.dirty)">Passwords do not match.</small>
                 </div>
 
                 <div class="d-flex justify-content-start align-items-center flex-row gap-3 custwidth mb-3">

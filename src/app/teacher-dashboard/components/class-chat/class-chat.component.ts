@@ -1,5 +1,5 @@
-import { NgFor, NgIf } from '@angular/common';
-import { Component, ElementRef, Input, OnInit, ViewChild, inject } from '@angular/core';
+import { NgClass, NgFor, NgIf } from '@angular/common';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { AvatarModule } from 'primeng/avatar';
 import {NgxTypedJsModule} from 'ngx-typed-js';
 import { NewlinePipe } from '../../../pipes/newline/newline.pipe';
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-class-chat',
   standalone: true,
-  imports: [AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule,BoldPipe,UnderlinePipe,ColonPipe],
+  imports: [AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule,BoldPipe,UnderlinePipe,ColonPipe,NgClass],
   templateUrl: './class-chat.component.html',
   styleUrl: './class-chat.component.css'
 })
@@ -23,11 +23,17 @@ export class ClassChatComponent implements OnInit {
   @Input() scrollToBottom:any;
   @ViewChild('typeWriter') typeWriterElement!:ElementRef;
 
+  @Output() booleanValueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   chatService = inject(ChatService)
   store = inject(Store)
 
   constructor(private route: ActivatedRoute) { }
-  temp = "<h2>Assalam o alaikum</h2><p>These materials are <u>recommended</u> to be read by the studen<span class=\"ql-cursor\">﻿</span>ts. This will help in <strong>final exams.</strong></p>"
+  booleanValue = true; // Or set to false if needed
+  copiedItem = {
+    copied : false,
+    text:""
+  }
 
   chat :any = [
   ];  
@@ -102,8 +108,29 @@ export class ClassChatComponent implements OnInit {
           this.chat[this.chat.length-1].response = "Some Error Occured! Please Try Again Later..."
           this.startTyping = true
         })
+        this.booleanValue = false
+        this.booleanValueChange.emit(this.booleanValue);
         this.scrollToBottom();
     }
 
+    copyResponse(html:string){
+      
+      this.booleanValueChange.emit(this.booleanValue);
+      this.copiedItem.text = html
+      const text = this.removeTags(html)
+      navigator.clipboard.writeText(text).then(() => {
+        this.copiedItem.copied = true
+        setTimeout(() => {
+          this.copiedItem.copied = false
+        }, 3000);
+      }, error => {
+        console.log(error)
+      });
+    }
+
+    removeTags(html: string): string {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      return doc.body.textContent || "";
+    }
 
 }

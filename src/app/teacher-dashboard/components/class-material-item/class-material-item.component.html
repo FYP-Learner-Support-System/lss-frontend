@@ -33,8 +33,8 @@
                 <p-avatar class="ms-0" icon="pi pi-book" styleClass="mr-2" size="large" [style]="{ 'background-color': '#333252', color: '#ffffff' }" shape="circle"></p-avatar>
                 <div class="d-flex justify-content-start align-items-start flex-column ms-3" >
                     <h4 class="fw-bold mb-0 pb-1 text-dark">{{materialItem[0].data.title}}</h4>
-                    <div class="d-flex justify-content-start align-items-start flex-row">
-                        <p class="text-muted mb-2 me-2">{{materialItem[0].data.teacherName}}</p>
+                    <div class="d-flex justify-content-start align-items-start flex-column flex-lg-row">
+                        <p class="text-muted mb-0 me-2">{{materialItem[0].data.teacherName}}</p>
                         <p class="text-muted mb-2">({{materialItem[0].data.datetime | customDatePipe}})</p>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
             <hr class="hrStyle mt-3">
             
             <div class="p-3 px-4 pt-1">
-                <p class="text-dark text-start" [innerHTML]="materialItem[0].data.description"></p>
+                <p class="text-dark text-start" [innerHTML]="materialItem[0].data.description | removeMarginbottom"></p>
             </div>
 
             <div class="col-12 col-md-6 d-flex justify-content-start align-items-start flex-column p-3 px-4 pt-1" *ngFor="let book of materialItem[0].data.books">

@@ -182,5 +182,9 @@ export class ClassMaterialComponent implements OnInit {
   navigateToMaterialItem(materialId:number){
     this.route.navigateByUrl(`/v1/dashboard/classes/${this.id}/materials/${materialId}`)
   }
+
+  navigateToEditAnnouncement(announcementId:number){
+    this.route.navigateByUrl(`/v1/dashboard/classes/${this.id}/materials/edit/${announcementId}`)
+  }
   
 }

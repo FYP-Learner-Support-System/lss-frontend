@@ -1,11 +1,11 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { Location, NgClass, NgFor, NgIf } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MenuItem } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { DrawerService } from '../../../services/drawer-service.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CurrentPathService } from '../../../services/current-path.service';
 import { ClassMaterialComponent } from "../class-material/class-material.component";
 import { ClassStudentsComponent } from "../class-students/class-students.component";
@@ -26,13 +26,14 @@ import { ContentService } from '../../../services/content/content.service';
 import { MessageService } from 'primeng/api';
 import { addMaterial } from '../../../store/material/materials.actions';
 import { ClassMaterialItemComponent } from "../class-material-item/class-material-item.component";
+import { EditAnnouncementComponent } from "../edit-announcement/edit-announcement.component";
 
 @Component({
     selector: 'app-class-content',
     standalone: true,
     templateUrl: './class-content.component.html',
     styleUrl: './class-content.component.css',
-    imports: [EditorModule, MenuModule, InputTextareaModule, TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent, DialogModule, ScrollTopModule, FormsModule, TooltipModule, OverlayPanelModule, ClassMaterialItemComponent]
+    imports: [EditorModule, MenuModule, InputTextareaModule, TabMenuModule, AvatarModule, BadgeModule, NgIf, NgFor, NgClass, ClassMaterialComponent, ClassStudentsComponent, ClassChatComponent, DialogModule, ScrollTopModule, FormsModule, TooltipModule, OverlayPanelModule, ClassMaterialItemComponent, EditAnnouncementComponent]
 })
 export class ClassContentComponent implements OnInit,AfterViewInit {
 
@@ -50,6 +51,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   classService = inject(ClassService)
   contentService = inject(ContentService)
   messageService = inject(MessageService)
+  location = inject(Location)
   drawer!: MatDrawer;
   disabled:boolean=true;
 
@@ -59,6 +61,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   studentsroute:string = ""
   chatroute:string = ""
   materialItemRoute = ""
+  editAnnouncementRoute = ""
   usertype = 0
   visible: boolean = false;
   visible1: boolean = false;
@@ -152,6 +155,7 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
       this.materialId = +data['materialId']
       this.materialroute = `/v1/dashboard/classes/${this.currentClassId}/materials`
       this.materialItemRoute = `/v1/dashboard/classes/${this.currentClassId}/materials/${this.materialId}`
+      this.editAnnouncementRoute = `/v1/dashboard/classes/${this.currentClassId}/materials/edit/${+data['announcementId']}`
       this.studentsroute = `/v1/dashboard/classes/${this.currentClassId}/students`
       this.chatroute = `/v1/dashboard/classes/${this.currentClassId}/chat`
     })

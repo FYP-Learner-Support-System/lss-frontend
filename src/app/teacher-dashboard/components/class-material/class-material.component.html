@@ -1,4 +1,4 @@
-<div class="m-2">
+<div class="m-2 mx-3">
 
     <div *ngIf="content?.length===0 || content==undefined" [ngClass]="showSkeleton?'justify-content-start':'justify-content-center'" class="d-flex align-items-center flex-column" style="height: 70dvh;">
         <div class="d-flex justify-content-center align-items-center flex-column" *ngIf="!showSkeleton">
@@ -44,7 +44,7 @@
                 <div class="dropdown" *ngIf="usertype==1">
                     <button class="btn me-4 p-0 menubtn" data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom" (click)="$event.stopPropagation()"><span class="pi pi-ellipsis-v icon"></span></button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" (click)="openEditAnnounceDialog(each.data)" style="cursor: pointer;"><span class="pi pi-pencil me-2"></span>Edit</a></li>
+                      <li><a class="dropdown-item" (click)="navigateToEditAnnouncement(each.data.announcementId)" style="cursor: pointer;"><span class="pi pi-pencil me-2"></span>Edit</a></li>
                       <li><a class="dropdown-item" (click)="confirm2($event,each.data.announcementId,each.type)" style="cursor: pointer;"><span class="pi pi-trash me-2"></span>Delete</a></li>
                     </ul>
                 </div>

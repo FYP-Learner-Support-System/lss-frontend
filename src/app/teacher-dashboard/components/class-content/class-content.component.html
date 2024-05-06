@@ -3,7 +3,8 @@
     <div class="navbar1 py-3">
         <button class="btn mx-3 navbtn d-flex d-lg-none" (click)="drawer.toggle()" [disabled]="disabled"><span class="material-icons mb-0">menu</span></button>
         
-        <h5 class="mb-0 ms-1 ms-lg-4 me-auto fw-bold">{{courseCode}}</h5>
+        <span class="pi pi-arrow-left ms-1 ms-lg-3 d-none d-lg-flex" (click)="location.back()" style="cursor: pointer;"></span>
+        <h5 class="mb-0 ms-1 ms-lg-3 me-auto fw-bold">{{currentPath == editAnnouncementRoute ?'Edit Announcement':courseCode}}</h5>
         <div class="input-group d-none d-lg-flex" style="border-radius: 20px;">
             <span class="input-group-text searchicon pe-0" id="basic-addon1" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
             <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
@@ -37,6 +38,7 @@
         <app-class-material *ngIf="currentPath==materialroute"/>
         <app-class-students *ngIf="currentPath==studentsroute"/>
         <app-class-material-item *ngIf="currentPath==materialItemRoute"/>
+        <app-edit-announcement *ngIf="currentPath==editAnnouncementRoute"/>
         <app-class-chat #classChatComponent *ngIf="currentPath==chatroute" [question]="question" [scrollToBottom]="scrollToBottom()" (booleanValueChange)="handleBooleanValue($event)"/>
         <!-- <p-scrollTop *ngIf="currentPath==chatroute" target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop> -->
     </div>

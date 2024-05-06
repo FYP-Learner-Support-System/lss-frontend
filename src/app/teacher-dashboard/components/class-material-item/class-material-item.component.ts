@@ -44,7 +44,7 @@ export class ClassMaterialItemComponent implements OnInit {
     this.contentService.GetAllMaterial(this.classid).subscribe((res)=>{
       console.log("materails List: ",res.body)
       this.materialItem = res.body.filter((each:any)=>{
-        return (each.data.announcementId == this.materialId || each.data.classMaterialId == this.materialId)
+        return (each.data.classMaterialId == this.materialId)
       })
       console.log("material Item: ",this.materialItem)
     })

@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 export class EditAnnouncementComponent {
 
   @ViewChild('spinner') spinner!: ElementRef;
+  @ViewChild('ckeditor') ckeditor!: ElementRef;
   store = inject(Store);
   activatedRoute = inject(ActivatedRoute)
   route = inject(Router)

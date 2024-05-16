@@ -19,3 +19,7 @@
     background-color: #474669;
     /* border: 0px; */
 }
+
+.borderStyle{
+    border: 1px solid rgb(214, 183, 218);
+}

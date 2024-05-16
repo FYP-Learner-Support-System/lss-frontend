@@ -7,6 +7,10 @@
   font-weight:normal;
 }
 
+.active{
+  color: white;
+}
+
 .brandname span{
   font-weight:bold;
   color: #ef04cf;

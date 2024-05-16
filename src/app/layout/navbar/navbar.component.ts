@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { MatDrawer } from '@angular/material/sidenav';
+import { filter } from 'rxjs';
 
 
 @Component({
@@ -15,10 +16,18 @@ export class NavbarComponent {
 
   @Input() drawer: MatDrawer;
   loggedIn = false
+  currentPath: string = "";
 
   // Initialize the property in the constructor
-  constructor() {
+  constructor(private router: Router) {
     this.drawer = {} as MatDrawer;
+
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      // Access the current route URL
+      this.currentPath = event.url;
+    });
   }
   
   colorchange:boolean = false;

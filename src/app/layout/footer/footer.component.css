@@ -7,10 +7,20 @@
     flex-direction: column;
 }
 
+.footertxtclr1{
+    color: white;
+    text-decoration: none;
+    padding: 0px;
+}
+
 .footertxtclr{
     color: white;
     text-decoration: none;
     padding: 0px;
+}
+
+.footertxtclr:hover{
+    border-bottom: 1px solid white;
 }
 
 ul{

@@ -8,7 +8,8 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class ClassService {
 
   http = inject(HttpClient)
-  domain:string = "https://localhost:7275/api/Classroom"
+  domain:string = "https://asksphere.azurewebsites.net/api/Classroom"
+  // domain:string = "https://localhost:7275/api/Classroom"
 
   GetClassById(id: any): Observable<any>{
     // const headers = new HttpHeaders().set('Authorization', `${token}`).set('Content-Type', 'application/json');

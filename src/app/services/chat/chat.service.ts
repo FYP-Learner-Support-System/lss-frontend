@@ -9,7 +9,8 @@ export class ChatService {
 
   http = inject(HttpClient)
   domain:string = "https://model-production-0858.up.railway.app/get_response/"
-  domain1:string = "https://localhost:7275"
+  domain1:string = "https://asksphere.azurewebsites.net"
+  // domain1:string = "https://localhost:7275"
 
   getResponse(body: any): Observable<any>{
     const token = JSON.parse(localStorage.getItem('myUser') || "{}").token

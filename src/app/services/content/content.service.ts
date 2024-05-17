@@ -8,7 +8,9 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class ContentService {
 
   http = inject(HttpClient)
-  domain:string = "https://localhost:7275"
+  
+  domain:string = "https://asksphere.azurewebsites.net"
+  // domain:string = "https://localhost:7275"
 
   GetAllMaterial(classId: number): Observable<any>{
     const token = JSON.parse(localStorage.getItem('myUser') || "{}").token

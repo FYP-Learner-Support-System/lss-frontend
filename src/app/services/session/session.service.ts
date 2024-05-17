@@ -8,7 +8,8 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 export class SessionService {
 
   http = inject(HttpClient)
-  domain:string = "https://localhost:7275/api/Session"
+  domain:string = "https://asksphere.azurewebsites.net/api/Session"
+  // domain:string = "https://localhost:7275/api/Session"
 
   isSessionValid(token: any): Observable<boolean> {
     return this.http.get<any>(`${this.domain}/${token}`, { observe: 'response' })

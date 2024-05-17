@@ -8,7 +8,8 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class UserService {
 
   http = inject(HttpClient)
-  domain:string = "https://localhost:7275/api/User"
+  domain:string = "https://asksphere.azurewebsites.net/api/User"
+  // domain:string = "https://localhost:7275/api/User"
 
   GetUserDetails(token: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders().set('Authorization', `${token}`);

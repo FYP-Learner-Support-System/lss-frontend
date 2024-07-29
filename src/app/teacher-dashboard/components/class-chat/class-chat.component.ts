@@ -36,6 +36,10 @@ export class ClassChatComponent implements OnInit {
   }
 
   chat :any = [
+    {
+      request: "What is Quantization in NLP?",
+      response:"Quantization in NLP (Natural Language Processing) refers to the process of mapping a large set of continuous values to a smaller set of discrete values. This is often used in the context of reducing the computational and memory requirements of machine learning models, particularly those involving deep neural networks.\n\n Key Points of Quantization in NLP:\n\n1. **Model Compression:**\nQuantization helps in compressing large NLP models by reducing the precision of the weights and activations. For example, converting 32-bit floating-point numbers to 8-bit integers.\n\n2. **Inference Efficiency:**\nQuantized models can perform faster inference and consume less power, making them suitable for deployment on edge devices or in resource-constrained environments."
+    }
   ];  
 
   startTyping = false
@@ -84,7 +88,7 @@ export class ClassChatComponent implements OnInit {
 
           this.chatService.getAllChats(this.getAllChat_reqBody).subscribe((res)=>{
             console.log("all chats: ", res)
-            this.chat = res.body
+            // this.chat = res.body
           })
 
         });

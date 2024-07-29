@@ -11,65 +11,76 @@ import { NgImageSliderModule } from 'ng-image-slider';
 export class RoadmapSectionComponent {
   imageObject: Array<object> = [
       {
-        image: 'assets/oxford.png',
-        thumbImage: 'assets/oxford.png',
+        image: 'assets/gemini.png',
+        thumbImage: 'assets/gemini.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/cambridge.png',
-        thumbImage: 'assets/cambridge.png',
+        image: 'assets/angular.png',
+        thumbImage: 'assets/angular.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/pearson.png',
-        thumbImage: 'assets/pearson.png',
+        image: 'assets/aws.png',
+        thumbImage: 'assets/aws.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/oxford.png',
-        thumbImage: 'assets/oxford.png',
+        image: 'assets/azure.png',
+        thumbImage: 'assets/azure.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/cambridge.png',
-        thumbImage: 'assets/cambridge.png',
+        image: 'assets/python.png',
+        thumbImage: 'assets/python.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/pearson.png',
-        thumbImage: 'assets/pearson.png',
+        image: 'assets/dotnet.png',
+        thumbImage: 'assets/dotnet.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/pearson.png',
-        thumbImage: 'assets/pearson.png',
+        image: 'assets/gemini.png',
+        thumbImage: 'assets/gemini.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/oxford.png',
-        thumbImage: 'assets/oxford.png',
+        image: 'assets/angular.png',
+        thumbImage: 'assets/angular.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/cambridge.png',
-        thumbImage: 'assets/cambridge.png',
+        image: 'assets/aws.png',
+        thumbImage: 'assets/aws.png',
         alt: 'classroom',
         title: ''
       },
       {
-        image: 'assets/pearson.png',
-        thumbImage: 'assets/pearson.png',
+        image: 'assets/azure.png',
+        thumbImage: 'assets/azure.png',
         alt: 'classroom',
         title: ''
       },
-
+      {
+        image: 'assets/python.png',
+        thumbImage: 'assets/python.png',
+        alt: 'classroom',
+        title: ''
+      },
+      {
+        image: 'assets/dotnet.png',
+        thumbImage: 'assets/dotnet.png',
+        alt: 'classroom',
+        title: ''
+      }
   ]
 }

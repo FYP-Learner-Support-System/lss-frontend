@@ -1,5 +1,5 @@
 .hero{
-    background-image: url("https://pixboost.com/api/2/img/https://res.cloudinary.com/df9dncnci/image/upload/v1710749700/bg2-min_kcy8kf.png/resize?size=1440&auth=MTI3OTQ0NTAyMA__");
+    background-image: url("../../../../assets/herobg.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -8,25 +8,31 @@
     align-items: center;
     height: 100dvh;
 }
-.textdiv{
+
+/* .textdiv{
   margin-left: 6rem;
-}
+} */
 
 .innerdiv{
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .herotxt{
   color: #fff;
   font-size: 5rem;
   font-weight: bold;
+  font-family: "poppins-bold";
+  text-align: center;
 }
 .herotxt span{
   color: #ef04cf;
 }
 .heropara2{
-  text-align: start;
-  padding-right: 10rem;
+  text-align: center;
+  /* padding-right: 10rem; */
 }
 .heropara{
   font-size: 2.5rem;
@@ -50,6 +56,20 @@
     transition: 0.6s ease all;
 }
 
+.joinbtnContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lg-view{
+  display: inline-block;
+}
+
+.sm-view{
+  display: none;
+}
+
 @media (max-width:992px){
   .herotxt{
     color: #fff;
@@ -58,7 +78,7 @@
   }
 
   .heropara2{
-    text-align: start;
+    text-align: center;
     padding-right: 0px;
   }
 
@@ -66,19 +86,29 @@
     width: 100%;
   }
 
-  .textdiv{
-    margin-left: 2rem;
+ .joinbtnContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero{
     height: auto;
-    background-image: url("../../../../assets/bg3.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 60dvh;
+  }
+
+  .lg-view{
+    display: none;
+  }
+  
+  .sm-view{
+    display: inline-block;
   }
 }
 
@@ -95,9 +125,13 @@
   .heropara2{
     text-align: start;
   }
+
+  .textdiv{
+    margin-left: 2rem;
+  }
+
   .hero{
     height: 100dvh;
-    background-image: url("../../../../assets/bg3.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -105,5 +139,20 @@
     justify-content: center;
     align-items: center;
   }
+
+  .joinbtnContainer{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.lg-view{
+  display: none;
+}
+
+.sm-view{
+  display: inline-block;
+}
+
 }
 

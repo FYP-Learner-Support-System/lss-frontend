@@ -4,10 +4,31 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
+@font-face {
+    font-family: 'poppins-regular';
+    src: url('../src/assets/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: 'poppins-medium';
+    src: url('../src/assets/Poppins-Medium.ttf');
+}
+@font-face {
+    font-family: 'poppins-bold';
+    src: url('../src/assets/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'poppins-extrabold';
+    src: url('../src/assets/Poppins-ExtraBold.ttf');
+}
+@font-face {
+    font-family: 'poppins-black';
+    src: url('../src/assets/Poppins-Black.ttf');
+}
+
 html,
 body { 
     margin: 0; 
-    font-family: poppins, "Helvetica Neue", sans-serif !important;
+    font-family: "poppins-regular";
     /* overflow: hidden; */
     /* margin-top: 2rem;  */
 }

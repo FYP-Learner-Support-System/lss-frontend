@@ -8,6 +8,7 @@ import { StepTwoComponent } from './user-auth/signup/step-two/step-two.component
 import { ContactComponent } from './contact-page/contact/contact.component';
 import { NewPasswordComponent } from './user-auth/new-password/new-password.component';
 import { VerifyEmailComponent } from './user-auth/verify-email/verify-email.component';
+import { PricingPageComponent } from './pricing-page/pricing-page.component';
 
 export const routes: Routes = [
     {
@@ -21,6 +22,10 @@ export const routes: Routes = [
     {
         path:"contact",
         component: ContactComponent
+    },
+    {
+        path:"pricing",
+        component: PricingPageComponent
     },
     {
         path:"login",

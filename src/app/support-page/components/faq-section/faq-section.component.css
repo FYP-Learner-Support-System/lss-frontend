@@ -1,9 +1,27 @@
+:host ::ng-deep .p-accordion-content{
+    background-color: rgb(230, 227, 233);
+}
+
+:host ::ng-deep .p-accordion{
+    background-color: rgb(230, 227, 233);
+}
+
+:host ::ng-deep .p-accordion-header{
+    background-color: #4a446d;
+}
+
+:host ::ng-deep .p-accordion-header-link{
+    background-color: #4a446d;
+    text-decoration: none;
+    color: white;
+}
+
 .outerdiv{
     /* background-image: url("https://thetork.com/demos/html/bitrader/assets/images/header/1.png"); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    padding: 0rem 0rem 7rem 0rem;
+    padding: 10rem 0rem 7rem 0rem;
     /* margin-top: 75px !important; */
 }
 
@@ -12,6 +30,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 75%;
 }
 
 .innerdiv h1{
@@ -23,9 +42,13 @@
 
 @media (max-width:576px){
     .outerdiv{
-        padding: 3rem 2rem 0rem;
+        padding: 3rem 2rem 3rem;
     }
     .innerdiv h1{
         font-size: 2.5rem;
+    }
+
+    .innerdiv{
+        width: 95%;
     }
 }

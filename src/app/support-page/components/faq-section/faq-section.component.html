@@ -1,37 +1,31 @@
 <div class="outerdiv d-flex justify-content-center flex-column align-items-center">
     <div class="innerdiv">
-        <!-- <cdk-accordion class="example-accordion">
-            <cdk-accordion-item
-              *ngFor="let item of items; let index = index;"
-              #accordionItem="cdkAccordionItem"
-              class="example-accordion-item"
-              role="button"
-              tabindex="0"
-              [attr.id]="'accordion-header-' + index"
-              [attr.aria-expanded]="accordionItem.expanded"
-              [attr.aria-controls]="'accordion-body-' + index">
-              <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
-                <span style="margin-right: 10px;">
-                  {{ item.question }}
-                </span>
-                <span class="example-accordion-item-description" *ngIf="accordionItem.expanded else elseblock">
-                  <i class="pi pi-minus-circle text-light fs-4"></i>
-                </span>
-                <ng-template #elseblock>
-                  <span class="example-accordion-item-description">
-                    <i class="pi pi-plus-circle text-light fs-4"></i>
-                  </span>
-                </ng-template>
-              </div>
-              <div
-                class="example-accordion-item-body"
-                role="region"
-                [style.display]="accordionItem.expanded ? '' : 'none'"
-                [attr.id]="'accordion-body-' + index"
-                [attr.aria-labelledby]="'accordion-header-' + index">
-                {{item.answer}}
-              </div>
-            </cdk-accordion-item>
-          </cdk-accordion> -->
+        <p-accordion [activeIndex]="0">
+            <p-accordionTab header="What is AskSphere?">
+                <p>
+                    AskSphere is a cutting-edge NLP-based Learner Support System designed to simplify the learning process. It allows students and teachers to create accounts, join or create classes, share announcements, upload course materials, and interact with AI models for querying and understanding course content.
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="How can I create a class on AskSphere?">
+                <p>
+                    To create a class on AskSphere, log in to your account, navigate to the "Create Class" section, and fill in the required details such as class name, subject, and description. Once created, you can invite students to join your class through unique invitation codes.
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="What types of content can I upload to AskSphere?">
+                <p>
+                    AskSphere supports a wide range of content types, including PDFs, Word documents, PowerPoint presentations, and images. These materials can be uploaded to specific classes and shared with students for easy access and reference.
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="How does the AI model in AskSphere help students?">
+                <p>
+                    The AI model in AskSphere leverages natural language processing (NLP) to help students understand complex concepts and answer their queries. By analyzing the uploaded course materials, the AI can provide accurate and contextually relevant answers, enhancing the learning experience.
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="Is AskSphere secure for my data and personal information?">
+                <p>
+                    Yes, AskSphere prioritizes the security and privacy of your data. We implement advanced encryption methods and adhere to strict data protection protocols to ensure that your personal information and uploaded content are safe and secure.
+                </p>
+            </p-accordionTab>
+        </p-accordion>
     </div>
 </div>

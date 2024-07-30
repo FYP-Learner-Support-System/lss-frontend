@@ -5,11 +5,12 @@ import { Router, RouterModule } from '@angular/router';
 import { ZeroPrefixPipe } from '../../../pipes/zeroPrefix/zero-prefix.pipe';
 import { AuthService } from '../../../services/auth/auth.service';
 import { MessageService } from 'primeng/api';
+import { InputOtpModule } from 'primeng/inputotp';
 
 @Component({
   selector: 'app-step-two',
   standalone: true,
-  imports: [NgFor,RouterModule,ReactiveFormsModule,ZeroPrefixPipe,NgIf],
+  imports: [NgFor,RouterModule,ReactiveFormsModule,ZeroPrefixPipe,NgIf,InputOtpModule],
   templateUrl: './step-two.component.html',
   styleUrl: './step-two.component.css'
 })

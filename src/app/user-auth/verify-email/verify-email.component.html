@@ -18,7 +18,7 @@
                 <div class="mb-4 w-75">
                     <p class="text-center">Verification code has been sent to your email. Please Enter the OTP(One Time Password) below</p>
                 </div>
-                <input type="text" [formControl]="code" class="form-control custominput mb-2" id="code" placeholder="Enter verification code">
+                <!-- <input type="text" [formControl]="code" class="form-control custominput mb-2" id="code" placeholder="Enter verification code"> -->
                 <div class="w-75 mb-3 d-flex justify-content-start align-items-center flex-row">
                     <p class='text-start resendcode mb-0 me-2'>Resend code in {{mint | zeroPrefix}}:{{sec | zeroPrefix}}</p>
                     <button class="btn" style="border: 0px transparent;" [disabled]="disableResendBtn" (click)="resendHandler()"><i class="pi pi-refresh" style="font-size: 0.9rem; color: #000000; background-color: rgb(148, 216, 162); border-radius: 50%; padding: 2px; font-weight: 700;"></i></button>

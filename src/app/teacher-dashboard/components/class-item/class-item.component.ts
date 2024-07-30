@@ -14,7 +14,8 @@ export interface classObj {
   classCode:string;
   instructor: {
     name: string
-  }
+  };
+  isPending: boolean
 }
 
 @Component({
@@ -38,8 +39,11 @@ export class ClassItemComponent implements OnInit {
     // console.log("classitem: ",this.class)
   }
 
-  navigate(){
-    this.router.navigateByUrl(`/v1/dashboard/classes/${this.class.classId}/materials`)
+  navigate(isPending:boolean){
+    console.log(isPending)
+    if(!isPending){
+      this.router.navigateByUrl(`/v1/dashboard/classes/${this.class.classId}/materials`)
+    }
   }
 
 }

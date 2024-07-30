@@ -13,7 +13,7 @@ export class TeamsSectionComponent {
 
   teamdetails: Array<object> = [
     {
-      bgimg:"https://thetork.com/demos/html/bitrader/assets/images/team/1-dark.png",
+      bgimg:"../../../assets/rafayportrait2.png",
       name:"Abdul Rafay",
       domain:"Front-end developer",
     },

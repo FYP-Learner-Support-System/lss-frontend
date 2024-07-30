@@ -1,5 +1,6 @@
 .outerdiv{
-    height: 100dvh;
+    /* height: 100dvh; */
+    padding-top: 5%;
     background-image: radial-gradient(closest-side,#393268, #29244d);
 }
 
@@ -14,12 +15,21 @@
     color: rgb(207, 21, 207);
 }
 
+.btnholder{
+    position: absolute;
+    bottom: 0;
+    width: 87%;
+    padding-bottom: 20px;
+}
+
 .colstyle{
+    position: relative;
     border-radius: 8px;
-    opacity: 0.7;
+    opacity: 0.9;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: #9d96cf;
+    min-height: 70dvh;
 }
 
 .colstyle:hover{
@@ -27,7 +37,7 @@
     opacity: 1;
     z-index: 999;
     padding: 20px;
-    transform: scale(1.1);
+    transform: scale(1.08);
     transition: 0.4s ease all;
 }
 
@@ -51,4 +61,9 @@ ul.custom-bullets1 li::before {
     padding-right: 10px;
 }
 
+@media (max-width:576px) {
+    .outerdiv{
+        padding-top: 15%;
+    }
+}
 

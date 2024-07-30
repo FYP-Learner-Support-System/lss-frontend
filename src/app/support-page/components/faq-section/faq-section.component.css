@@ -1,0 +1,31 @@
+.outerdiv{
+    /* background-image: url("https://thetork.com/demos/html/bitrader/assets/images/header/1.png"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 0rem 0rem 7rem 0rem;
+    /* margin-top: 75px !important; */
+}
+
+.innerdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.innerdiv h1{
+    font-size: 3rem;
+}
+.innerdiv h6{
+    font-size: 1.2rem;
+}
+
+@media (max-width:576px){
+    .outerdiv{
+        padding: 3rem 2rem 0rem;
+    }
+    .innerdiv h1{
+        font-size: 2.5rem;
+    }
+}

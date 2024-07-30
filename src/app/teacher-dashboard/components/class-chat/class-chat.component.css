@@ -8,17 +8,17 @@
 
 }
 
-.responseOption{
+/* .responseOption{
     visibility: hidden;
 }
 
 .response:hover .responseOption{
     visibility: visible;
-}
+} */
 
 .sourceStyle:hover{
-    cursor: pointer;
+    cursor:default;
     background-color: rgb(231, 228, 233);
     transition: 0.3s ease-out all;
-    transform: scale(1.03);
+    /* transform: scale(1.03); */
 }

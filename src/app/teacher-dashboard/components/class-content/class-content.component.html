@@ -7,7 +7,7 @@
         <h5 class="mb-0 ms-1 ms-lg-3 me-auto fw-bold">{{currentPath == editAnnouncementRoute ?'Edit Announcement':courseCode}}</h5>
         <div class="input-group d-none d-lg-flex" style="border-radius: 20px;">
             <span class="input-group-text searchicon pe-0" id="content-search" style="border-right: 0px;"><span class="material-icons mb-0" style="color: #c2c2c2;">search</span></span>
-            <input class="me-3 py-1 searchinput form-control" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
+            <input class="me-3 py-1 searchinput form-control" [(ngModel)]="searchVal" style="border-left: 0px;" type="text" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
         <div class="dropdown">
             <button class="btn me-2 pb-0 navbtn" *ngIf="usertype==1"  data-bs-toggle="dropdown" pTooltip="Post Content" tooltipPosition="bottom"><span class="material-icons mb-0">add</span></button>
@@ -16,7 +16,7 @@
               <li><a class="dropdown-item" (click)="showDialog1()" style="cursor: pointer;"><span class="pi pi-megaphone me-2"></span>New Announcement</a></li>
             </ul>
           </div>
-        <button class="btn me-2 pb-0 navbtn me-3" pTooltip="Notifications" tooltipPosition="bottom" (click)="op.toggle($event)" pBadge value="2" severity="danger"><span class="material-icons mb-0">notifications</span></button>
+        <!-- <button class="btn me-2 pb-0 navbtn me-3" pTooltip="Notifications" tooltipPosition="bottom" (click)="op.toggle($event)" pBadge value="2" severity="danger"><span class="material-icons mb-0">notifications</span></button> -->
         <!-- <button class="btn me-2 pb-0 navbtn"><span class="material-icons mb-0">info</span></button> -->
     </div>
 
@@ -35,11 +35,11 @@
     <!-- <p-menu #menu [model]="items" [popup]="true" ></p-menu> -->
 
     <div class="contentcontainer" #chatContainer>
-        <app-class-material *ngIf="currentPath==materialroute"/>
+        <app-class-material [searchVal]="searchVal" *ngIf="currentPath==materialroute"/>
         <app-class-students *ngIf="currentPath==studentsroute"/>
         <app-class-material-item *ngIf="currentPath==materialItemRoute"/>
         <app-edit-announcement *ngIf="currentPath==editAnnouncementRoute"/>
-        <app-class-chat #classChatComponent *ngIf="currentPath==chatroute" [question]="question" [scrollToBottom]="scrollToBottom()" (booleanValueChange)="handleBooleanValue($event)"/>
+        <app-class-chat #classChatComponent [searchVal]="searchVal" *ngIf="currentPath==chatroute" [question]="question" [scrollToBottom]="scrollToBottom()" (booleanValueChange)="handleBooleanValue($event)"/>
         <!-- <p-scrollTop *ngIf="currentPath==chatroute" target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop> -->
     </div>
 

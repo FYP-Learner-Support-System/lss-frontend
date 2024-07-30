@@ -20,6 +20,9 @@ export class OrderNumbersPipe implements PipeTransform {
     // Sort the array of numbers
     numbersArray.sort((a, b) => a - b);
 
+    // Slice the array to get only the first 5 numbers
+    numbersArray = numbersArray.slice(0, 5);
+
     // Join the sorted numbers back into a string
     return numbersArray.join(' | ');
   }

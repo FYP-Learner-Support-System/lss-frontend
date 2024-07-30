@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {AvatarModule} from 'primeng/avatar'
 import { CurrentPathService } from '../../../services/current-path.service';
@@ -23,6 +23,7 @@ import { BoldPipe } from "../../../pipes/bold/bold.pipe";
 import { UnderlinePipe } from "../../../pipes/underline/underline.pipe";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FilterMaterialPipe } from '../../../pipes/filterMaterial/filter-material.pipe';
 
 
 @Component({
@@ -30,12 +31,13 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     standalone: true,
     templateUrl: './class-material.component.html',
     styleUrl: './class-material.component.css',
-    imports: [CKEditorModule,RemoveMarginbottomPipe, EditorModule, DialogModule, ConfirmDialogModule, SkeletonModule, AvatarModule, NgFor, NgIf, CustomDatePipePipe, InplaceModule, NgClass, FormsModule, RemovePTagPipe, NewlinePipe, BoldPipe, UnderlinePipe]
+    imports: [FilterMaterialPipe,CKEditorModule,RemoveMarginbottomPipe, EditorModule, DialogModule, ConfirmDialogModule, SkeletonModule, AvatarModule, NgFor, NgIf, CustomDatePipePipe, InplaceModule, NgClass, FormsModule, RemovePTagPipe, NewlinePipe, BoldPipe, UnderlinePipe]
 })
 export class ClassMaterialComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) {}
   @ViewChild('spinner') spinner!: ElementRef;
   @ViewChild('editor') editor!: Editor;
+  @Input() searchVal!:any;
 
   public Editor = ClassicEditor;
   ckeditorConfig: any = {

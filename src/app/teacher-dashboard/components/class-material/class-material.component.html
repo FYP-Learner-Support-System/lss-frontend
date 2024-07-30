@@ -16,7 +16,7 @@
 
     
 
-    <div class="px-4 pt-4 my-4" [ngClass]="each.type==='classMaterial'?'classform':'classformAnnouncement'" *ngFor="let each of content">
+    <div class="px-4 pt-4 my-4" [ngClass]="each.type==='classMaterial'?'classform':'classformAnnouncement'" *ngFor="let each of content | filterMaterial:searchVal;">
 
         <!-- <div class="d-flex justify-content-start align-items-center flex-row" *ngIf="each.type==='announcement'" (click)="navigateToMaterialItem(each.data.announcementId)">
             <p-avatar class="me-3" icon="pi pi-megaphone" [style]="{ 'background-color': '#393268', color: '#ffffff' }" styleClass="mr-2" size="large" shape="circle"></p-avatar>

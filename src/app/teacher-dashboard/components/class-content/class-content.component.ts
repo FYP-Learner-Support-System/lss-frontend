@@ -45,6 +45,8 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   @ViewChild('spinner') spinner!: ElementRef;
 
   scrollFlag = false;
+
+  searchVal!:string
   
   items: MenuItem[] | undefined;
   store = inject(Store)
@@ -120,7 +122,6 @@ export class ClassContentComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit(): void {
-
     this.items = [
       {
           items: [

@@ -10,17 +10,19 @@ import { ColonPipe } from '../../../pipes/colon/colon.pipe';
 import { OrderNumbersPipe } from '../../../pipes/orderNumbers/order-numbers.pipe';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
+import { FilterChatPipe } from '../../../pipes/filterChat/filter-chat.pipe';
 
 @Component({
   selector: 'app-class-chat',
   standalone: true,
-  imports: [AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule,BoldPipe,UnderlinePipe,ColonPipe,NgClass,OrderNumbersPipe],
+  imports: [FilterChatPipe,AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule,BoldPipe,UnderlinePipe,ColonPipe,NgClass,OrderNumbersPipe],
   templateUrl: './class-chat.component.html',
   styleUrl: './class-chat.component.css'
 })
 export class ClassChatComponent implements OnInit {
 
   @Input() question !: any;
+  @Input() searchVal !: any;
   @Input() scrollToBottom:any;
   @ViewChild('typeWriter') typeWriterElement!:ElementRef;
 
@@ -62,7 +64,6 @@ export class ClassChatComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
       this.store.select('user').subscribe((result) => {
         // Subscribe to paramMap observable instead of accessing snapshot
         this.route.paramMap.subscribe(paramMap => {

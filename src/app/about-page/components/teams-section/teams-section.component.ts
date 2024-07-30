@@ -14,18 +14,18 @@ export class TeamsSectionComponent {
   teamdetails: Array<object> = [
     {
       bgimg:"../../../assets/rafayportrait2.png",
-      name:"Abdul Rafay",
-      domain:"Front-end developer",
+      name:"Muhammad Abdul Rafay",
+      domain:"Front-end Developer",
     },
     {
-      bgimg:"https://thetork.com/demos/html/bitrader/assets/images/team/2-dark.png",
-      name:"Faseeh ur Rehman",
-      domain:"Backend developer"
+      bgimg:"../../../assets/faseeh.png",
+      name:"Faseeh Ur Rehman",
+      domain:"Backend Developer"
     },
     {
-      bgimg:"https://thetork.com/demos/html/bitrader/assets/images/team/3-dark.png",
+      bgimg:"../../../assets/uzair.png",
       name:"Muhammad Uzair",
-      domain:"Data Scientist"
+      domain:"AI/ML Engineer"
     },
   ]
 }

@@ -7,13 +7,14 @@ import { ChatService } from '../../../services/chat/chat.service';
 import { BoldPipe } from '../../../pipes/bold/bold.pipe';
 import { UnderlinePipe } from '../../../pipes/underline/underline.pipe';
 import { ColonPipe } from '../../../pipes/colon/colon.pipe';
+import { OrderNumbersPipe } from '../../../pipes/orderNumbers/order-numbers.pipe';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-class-chat',
   standalone: true,
-  imports: [AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule,BoldPipe,UnderlinePipe,ColonPipe,NgClass],
+  imports: [AvatarModule,NgFor,NgIf,NewlinePipe,NgxTypedJsModule,BoldPipe,UnderlinePipe,ColonPipe,NgClass,OrderNumbersPipe],
   templateUrl: './class-chat.component.html',
   styleUrl: './class-chat.component.css'
 })

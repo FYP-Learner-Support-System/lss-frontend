@@ -43,7 +43,7 @@
                 <div class="row gap-3 ms-0 mt-3" *ngIf="query.pages !== 'loading'">
                     <div class="col-6 d-flex justify-content-center align-items-start flex-column text-dark p-3 sourceStyle">
                         <p class="mb-0"><i class="pi pi-book me-1" style="color: rgb(196, 52, 160); font-size: 0.9rem;"></i>{{query.title}}</p>
-                        <p class="mb-0 d-flex justify-content-center align-items-center"><span class="material-icons me-1" style="color: rgb(196, 52, 160); font-size: 1.1rem;">ads_click</span><strong style="color: rgb(58, 58, 58);">{{query.pages}}</strong></p>
+                        <p class="mb-0 d-flex justify-content-center align-items-center"><span class="material-icons me-1" style="color: rgb(196, 52, 160); font-size: 1rem;">ads_click</span><strong style="color: rgb(58, 58, 58);">{{query.pages | orderNumbers}}</strong></p>
                     </div>
                 </div>
             </div>
